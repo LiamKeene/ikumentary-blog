@@ -9,4 +9,19 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Ikumentary::Application.config.secret_key_base = '0f314135725b6d893eace1c699bdb4ae8b00c5767e9bf1855a089a4e4dcf32ca582b82b53f30ccc2fab446f4e795b0e138552ce6d6ccd6397e4cd6f61ff401b2'
+require 'securerandom'
+
+def secure_token
+  token_file = Rails.root.join('.secret')
+  if File.exist?(token_file)
+    # Use the existing token.
+    File.read(token_file).chomp
+  else
+    # Generate a new token and store it in token_file.
+    token = SecureRandom.hex(64)
+    File.write(token_file, token)
+    token
+  end
+end
+
+Ikumentary::Application.config.secret_key_base = secure_token
