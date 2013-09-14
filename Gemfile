@@ -7,6 +7,7 @@ group :development, :test do
   # If a more complicated DB required, change to Postgres
   gem 'sqlite3', '1.3.7'
   gem 'rspec-rails', '2.14.0'
+  gem 'guard-rspec', '3.0.2'
 end
 
 group :test do
