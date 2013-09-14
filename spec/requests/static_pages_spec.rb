@@ -8,7 +8,7 @@ describe "StaticPages" do
     before { visit root_path }
     
     it { should have_content('Ikumentary') }
-    it { should have_title('Ikumentary') }
+    it { should have_title(full_title('')) }
     it { should_not have_title('Home |') }
   end
 
@@ -16,13 +16,13 @@ describe "StaticPages" do
     before { visit about_path }
     
     it { should have_content('About') }
-    it { should have_title('About | Ikumentary') }
+    it { should have_title(full_title('About')) }
   end
 
   describe "Contact Page" do
     before { visit contact_path }
     
     it { should have_content('Contact') }
-    it { should have_title('Contact | Ikumentary') }
+    it { should have_title(full_title('Contact')) }
   end
 end
