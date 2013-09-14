@@ -10,6 +10,7 @@ group :development, :test do
 end
 
 group :test do
+  gem 'rubyzip', '< 1.0.0'
   gem 'selenium-webdriver', '2.33.0'
   gem 'capybara', '2.1.0'
 end
