@@ -16,4 +16,21 @@ describe User do
   it { should respond_to(:password) }
   it { should respond_to(:user_type) }
 
+  it { should be_valid }
+
+  describe 'when name is not present' do
+    before { @user.name = '' }
+    it { should_not be_valid }
+  end
+
+  describe 'when email is not present' do
+    before { @user.email = '' }
+    it { should_not be_valid }
+  end
+
+  describe 'when password is not present' do
+    before { @user.password = '' }
+    it { should_not be_valid }
+  end
+
 end
