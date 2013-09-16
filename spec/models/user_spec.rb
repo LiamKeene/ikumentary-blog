@@ -23,13 +23,56 @@ describe User do
     it { should_not be_valid }
   end
 
+  describe 'when name is too long' do
+    before { @user.name = 'x' * 101 }
+    it { should_not be_valid }
+  end
+
   describe 'when email is not present' do
     before { @user.email = '' }
     it { should_not be_valid }
   end
 
+  describe 'when email is already in use' do
+    before do
+      user_with_same_email = @user.dup
+      user_with_same_email.email.upcase!
+      # Set login to another value so we know we are testing the `email` field
+      user_with_same_email.login = 'Another'
+      user_with_same_email.save
+    end
+
+    it { should_not be_valid }
+  end
+
+  describe 'when login is too short' do
+    before { @user.login = 'x' * 2 }
+    it { should_not be_valid }
+  end
+
+  describe 'when login is too long' do
+    before { @user.login = 'x' * 41 }
+    it { should_not be_valid }
+  end
+
+  describe 'when login is already in use' do
+    before do
+      user_with_same_login = @user.dup
+      # Set email to another value so we know we are testing the `login` field
+      user_with_same_login.email = 'another@example.com'
+      user_with_same_login.save
+    end
+
+    it { should_not be_valid }
+  end
+
   describe 'when password is not present' do
     before { @user.password = '' }
+    it { should_not be_valid }
+  end
+
+  describe 'when password is too short' do
+    before { @user.password = 'x' * 3 }
     it { should_not be_valid }
   end
 
