@@ -51,6 +51,16 @@ describe User do
     it { should_not be_valid }
   end
 
+  describe 'email address has mixed case' do
+    let(:mixed_case_email) { 'usER@eXAmPle.cOM' }
+
+    it 'should be saved as lower case' do
+      @user.email = mixed_case_email
+      @user.save
+      expect(@user.reload.email).to eq mixed_case_email.downcase
+    end
+  end
+
   describe 'when login is too short' do
     before { @user.login = 'x' * 2 }
     it { should_not be_valid }
