@@ -13,4 +13,26 @@ describe Post do
   it { should respond_to(:content) }
   it { should respond_to(:author_id) }
   it { should respond_to(:status) }
+
+  it { should be_valid }
+
+  describe 'when title is not present' do
+    before { @post.title = '' }
+    it { should_not be_valid }
+  end
+
+  describe 'when slug is not present' do
+    before { @post.slug = '' }
+    it { should_not be_valid }
+  end
+
+  describe 'when content is not present' do
+    before { @post.content = '' }
+    it { should_not be_valid }
+  end
+
+  describe 'when author_id is not present' do
+    before { @post.author_id = nil }
+    it { should_not be_valid }
+  end
 end
