@@ -21,8 +21,27 @@ describe Post do
     it { should_not be_valid }
   end
 
+  describe 'when title is too long' do
+    before { @post.title = 'x' * 256 }
+    it { should_not be_valid }
+  end
+
   describe 'when slug is not present' do
     before { @post.slug = '' }
+    it { should_not be_valid }
+  end
+
+  describe 'when slug is too long' do
+    before { @post.slug = 'x' * 101 }
+    it { should_not be_valid }
+  end
+
+  describe 'when slug is already in use' do
+    before do
+      post_with_same_slug = @post.dup
+      post_with_same_slug.save
+    end
+
     it { should_not be_valid }
   end
 
