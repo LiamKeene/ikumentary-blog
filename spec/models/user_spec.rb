@@ -2,10 +2,9 @@ require 'spec_helper'
 
 describe User do
 
-  before { @user = User.new(name: 'Example User', display_name: 'Example', 
-    email: 'user@example.com', url: 'example.com', login: 'example', 
-    password: 'password', password_confirmation: 'password', 
-    user_type: 'administrator') }
+  before do
+    @user = FactoryGirl.create(:user)
+  end 
 
   subject { @user }
 
@@ -40,15 +39,16 @@ describe User do
   end
 
   describe 'when email is already in use' do
-    before do
-      user_with_same_email = @user.dup
-      user_with_same_email.email.upcase!
-      # Set login to another value so we know we are testing the `email` field
-      user_with_same_email.login = 'Another'
-      user_with_same_email.save
-    end
+    let(:user_with_same_email) { @user.dup }
+     
+      it 'should not be valid' do
+        user_with_same_email.email.upcase!
+        
+        # Set login to another value so we know we are testing the `email` field
+        user_with_same_email.login = 'Another'
 
-    it { should_not be_valid }
+        expect(user_with_same_email).to_not be_valid
+      end
   end
 
   describe 'email address has mixed case' do
@@ -72,14 +72,14 @@ describe User do
   end
 
   describe 'when login is already in use' do
-    before do
-      user_with_same_login = @user.dup
+    let(:user_with_same_login) { @user.dup }
+
+    it 'should not be valid' do
       # Set email to another value so we know we are testing the `login` field
       user_with_same_login.email = 'another@example.com'
-      user_with_same_login.save
+      
+      expect(user_with_same_login).to_not be_valid
     end
-
-    it { should_not be_valid }
   end
 
   describe 'when password is not present' do
@@ -111,8 +111,8 @@ describe User do
 
     describe 'with invalid password' do
       let(:user_for_invalid_password) { found_user.authenticate('invalid') }
-       it { should_not eq user_for_invalid_password }
-       specify { expect(user_for_invalid_password).to be_false }
+      it { should_not eq user_for_invalid_password }
+      specify { expect(user_for_invalid_password).to be_false }
      end
   end
 
