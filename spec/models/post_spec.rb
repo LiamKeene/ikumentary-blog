@@ -39,10 +39,21 @@ describe Post do
   describe 'when slug is already in use' do
     before do
       post_with_same_slug = @post.dup
+      post_with_same_slug.slug.upcase!
       post_with_same_slug.save
     end
 
     it { should_not be_valid }
+  end
+
+  describe 'when slug has mixed case' do
+    before do
+      post_with_mixed_case_slug = @post.dup
+      post_with_mixed_case_slug.slug = 'First-Posting'
+      post_with_mixed_case_slug.save
+    end
+
+    it { should be_valid }
   end
 
   describe 'when content is not present' do
