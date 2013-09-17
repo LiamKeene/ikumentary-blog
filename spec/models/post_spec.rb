@@ -14,6 +14,9 @@ describe Post do
   it { should respond_to(:author_id) }
   it { should respond_to(:status) }
 
+  it { should respond_to(:author) }
+  its(:author) { should eq user }
+
   it { should be_valid }
 
   describe 'when title is not present' do
