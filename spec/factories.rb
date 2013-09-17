@@ -9,4 +9,12 @@ FactoryGirl.define do
     password_confirmation 'password'
     user_type 'administrator'
   end
+
+  factory :post do
+    sequence(:title)        { |n| "Post #{n}" }
+    sequence(:slug)         { |n| "post-#{n}" }
+    sequence(:content)      { |n| "This is the content of post #{n}" }
+    author_id 1
+    status 'Published'
+  end
 end

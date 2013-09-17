@@ -2,9 +2,9 @@ require 'spec_helper'
 
 describe Post do
 
-  before { @post = Post.new(title: 'First Post', slug: 'first-post', 
-    content: 'This is the content of the first post', 
-    author_id: 1, status: 'Published') }
+  before do 
+    @post = FactoryGirl.create(:post)
+  end
 
   subject { @post }
 
@@ -37,13 +37,13 @@ describe Post do
   end
 
   describe 'when slug is already in use' do
-    before do
-      post_with_same_slug = @post.dup
-      post_with_same_slug.slug.upcase!
-      post_with_same_slug.save
-    end
+    let(:post_with_same_slug) { @post.dup }
 
-    it { should_not be_valid }
+    it 'should not be valid' do
+      post_with_same_slug.slug.upcase!
+
+      expect(post_with_same_slug).to_not be_valid
+    end
   end
 
   describe 'when slug has mixed case' do
