@@ -43,6 +43,8 @@ describe Post do
     let(:post_with_same_slug) { @post.dup }
 
     it 'should not be valid' do
+      @post.save
+      
       post_with_same_slug.slug.upcase!
 
       expect(post_with_same_slug).to_not be_valid
