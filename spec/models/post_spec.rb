@@ -2,9 +2,9 @@ require 'spec_helper'
 
 describe Post do
 
-  before do 
-    @post = FactoryGirl.create(:post)
-  end
+  let(:user) { FactoryGirl.create(:user) }
+  before { @post = user.posts.build(FactoryGirl.attributes_for(:post)) }
+  
 
   subject { @post }
 
