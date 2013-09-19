@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :user do
+  factory :user, aliases: [:author] do
     sequence(:name)         { |n| "Example User #{n}" }
     sequence(:display_name) { |n| "User #{n}" }
     sequence(:email)        { |n| "user_#{n}@example.com" }
@@ -14,7 +14,7 @@ FactoryGirl.define do
     sequence(:title)        { |n| "Post #{n}" }
     sequence(:slug)         { |n| "post-#{n}" }
     sequence(:content)      { |n| "This is the content of post #{n}" }
-    author_id 1
+    author
     status 'Published'
   end
 end
