@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 ruby '2.0.0'
 
 gem 'rails', '4.0.0'
+gem 'bcrypt-ruby', '3.0.1'
 
 group :development, :test do
   # If a more complicated DB required, change to Postgres
@@ -17,6 +18,7 @@ group :test do
   gem 'rubyzip', '< 1.0.0'
   gem 'selenium-webdriver', '2.33.0'
   gem 'capybara', '2.1.0'
+  gem 'factory_girl_rails', '4.2.1'
 end
 
 gem 'sass-rails', '4.0.0'
