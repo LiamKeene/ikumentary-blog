@@ -17,4 +17,11 @@ FactoryGirl.define do
     author
     status 'Published'
   end
+
+  factory :comment do
+    post
+    sequence(:author)       { |n| "Author #{n}" }
+    sequence(:email)        { |n| "author_#{n}@example.com" }
+    sequence(:content)      { |n| "This is the content of comment #{n}" }
+  end
 end

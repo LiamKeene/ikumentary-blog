@@ -17,6 +17,8 @@ describe Post do
   it { should respond_to(:author) }
   its(:author) { should eq user }
 
+  it { should respond_to(:comments) }
+
   it { should be_valid }
 
   describe 'when title is not present' do
@@ -69,5 +71,19 @@ describe Post do
   describe 'when author_id is not present' do
     before { @post.author_id = nil }
     it { should_not be_valid }
+  end
+
+  describe 'comment associations' do
+
+    it 'should destroy associated comments' do
+      comments = @post.comments.to_a
+      @post.destroy
+
+      expect(comments).not_to be_empty
+
+      comments.each do |comment|
+        expect(Comment.where(id: comment.id)).to be_empty
+      end
+    end
   end
 end
