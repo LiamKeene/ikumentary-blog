@@ -118,4 +118,28 @@ describe User do
      end
   end
 
+  describe 'post associations' do
+    before { @user.save }
+    let!(:older_post) do
+      FactoryGirl.create(:post, author: @user, created_at: 1.day.ago)
+    end
+    let!(:newer_post) do
+      FactoryGirl.create(:post, author: @user, created_at: 1.hour.ago)
+    end
+
+    it 'should have the latest posts in descending order by created_at' do
+      expect(@user.posts.latest.to_a).to eq [newer_post, older_post]
+    end
+
+    it 'should destroy associated posts' do
+      posts = @user.posts.to_a
+      @user.destroy
+
+      expect(posts).not_to be_empty
+
+      posts.each do |post|
+        expect(Post.where(id: post.id)).to be_empty
+      end
+    end
+  end
 end
