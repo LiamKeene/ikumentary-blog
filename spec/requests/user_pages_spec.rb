@@ -33,4 +33,12 @@ describe "User Pages" do
     it { should have_content(user.name) }
   end
 
+  describe "edit user page" do
+    let(:user) { FactoryGirl.create(:user) }
+    before { visit edit_user_path(user) }
+
+    it { should have_title(full_title("Edit User")) }
+    it { should have_content("Edit User") }
+  end
+
 end
