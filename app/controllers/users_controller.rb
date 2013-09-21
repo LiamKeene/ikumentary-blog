@@ -36,6 +36,13 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+
+    redirect_to users_path
+  end
+
   private
     # Never trust params from the interwebs!  Only allow white-listed params
     def user_params
