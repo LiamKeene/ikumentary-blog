@@ -4,6 +4,20 @@ describe "User Pages" do
 
   subject { page }
 
+  describe "index" do
+    let(:users) { FactoryGirl.create_list(:user, 5) }
+    before { visit users_path }
+
+    it { should have_title(full_title('All Users')) }
+    it { should have_content('All Users') }
+
+    it "should tabulate each user" do
+      User.all.each do |user|
+        expect(page).to have_selector('td', text: user.name)
+      end
+    end
+  end
+
   describe "new user page" do
     before { visit new_user_path }
 
