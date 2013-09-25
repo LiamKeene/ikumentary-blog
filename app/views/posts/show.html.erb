@@ -1,0 +1,28 @@
+<% provide(:title, @post.title) %>
+<p>
+  <strong>Post title:</strong>
+  <%= @post.title %>
+</p>
+
+<p>
+  <strong>Post slug:</strong>
+  <%= @post.slug %>
+</p>
+
+<p>
+  <strong>Post content:</strong>
+  <%= @post.content %>
+</p>
+
+<p>
+  <strong>Post author:</strong>
+  <%= @post.author %>
+</p>
+
+<p>
+  <strong>Post status:</strong>
+  <%= @post.status %>
+</p>
+
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', posts_path %>

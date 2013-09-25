@@ -4,7 +4,6 @@ describe Post do
 
   let(:user) { FactoryGirl.create(:user) }
   before { @post = user.posts.build(FactoryGirl.attributes_for(:post)) }
-  
 
   subject { @post }
 
