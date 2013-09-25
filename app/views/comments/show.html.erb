@@ -1,0 +1,23 @@
+<% provide(:title, 'Comment') %>
+<p>
+  <strong>Comment post:</strong>
+  <%= @comment.post %>
+</p>
+
+<p>
+  <strong>Comment author:</strong>
+  <%= @comment.author %>
+</p>
+
+<p>
+  <strong>Comment email:</strong>
+  <%= @comment.email %>
+</p>
+
+<p>
+  <strong>Comment content:</strong>
+  <%= @comment.content %>
+</p>
+
+<%= link_to 'Edit', edit_comment_path(@comment) %> |
+<%= link_to 'Back', comments_path %>
