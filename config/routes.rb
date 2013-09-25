@@ -18,6 +18,7 @@ Ikumentary::Application.routes.draw do
   #   resources :products
   resources :users
   resources :posts
+  resources :comments
 
   # Example resource route with options:
   #   resources :products do
