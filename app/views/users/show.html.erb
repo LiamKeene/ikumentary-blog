@@ -1,37 +1,37 @@
 <% provide(:title, @user.name) %>
 <p>
-  <strong>User name:</strong>
+  <strong>Name:</strong>
   <%= @user.name %>
 </p>
 
 <p>
-  <strong>User display name:</strong>
+  <strong>Display Name:</strong>
   <%= @user.display_name %>
 </p>
 
 <p>
-  <strong>User email:</strong>
+  <strong>Email:</strong>
   <%= @user.email %>
 </p>
 
 <p>
-  <strong>User url:</strong>
+  <strong>Url:</strong>
   <%= @user.url %>
 </p>
 
 <p>
-  <strong>User login:</strong>
+  <strong>Login:</strong>
   <%= @user.login %>
 </p>
 
 <p>
-  <strong>User password:</strong>
-  <%= @user.password %>
+  <strong>User Type:</strong>
+  <%= @user.user_type %>
 </p>
 
 <p>
-  <strong>User type:</strong>
-  <%= @user.user_type %>
+  <strong>Created:</strong>
+  <%= @user.created_at %>
 </p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |

@@ -7,13 +7,12 @@
 <table>
   <thead>
     <tr>
-      <th>User name</th>
-      <th>User display name</th>
-      <th>User email</th>
-      <th>User url</th>
-      <th>User login</th>
-      <th>User password</th>
-      <th>User type</th>
+      <th>Name</th>
+      <th>Display Name</th>
+      <th>Login</th>
+      <th>Email</th>
+      <th>User Type</th>
+      <th>Created</th>
       <th></th>
       <th></th>
       <th></th>
@@ -25,11 +24,10 @@
       <tr>
         <td><%= user.name %></td>
         <td><%= user.display_name %></td>
-        <td><%= user.email %></td>
-        <td><%= user.url %></td>
         <td><%= user.login %></td>
-        <td><%= user.password %></td>
+        <td><%= user.email %></td>
         <td><%= user.user_type %></td>
+        <td><%= user.created_at %></td>
         <td><%= link_to 'Show', user %></td>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>
         <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>         
