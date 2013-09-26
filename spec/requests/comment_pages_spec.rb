@@ -30,7 +30,7 @@ describe "Comment Pages" do
     before { visit comment_path(comment) }
 
     it { should have_title(full_title('Comment')) }
-    it { should have_content('Comment') }
+    it { should have_content(comment.content) }
   end
 
   describe "edit comment page" do
