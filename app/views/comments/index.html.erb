@@ -7,10 +7,10 @@
 <table>
   <thead>
     <tr>
-      <th>Comment post</th>
-      <th>Comment author</th>
-      <th>Comment email</th>
-      <th>Comment content</th>
+      <th>Post</th>
+      <th>Author</th>
+      <th>Email</th>
+      <th>Content</th>
       <th>Created</th>
       <th></th>
       <th></th>
@@ -21,7 +21,7 @@
   <tbody>
     <% @comments.each do |comment| %>
       <tr>
-        <td><%= comment.post %></td>
+        <td><%= comment.post.title %></td>
         <td><%= comment.author %></td>
         <td><%= comment.email %></td>
         <td><%= comment.content %></td>

@@ -1,22 +1,27 @@
 <% provide(:title, 'Comment') %>
 <p>
-  <strong>Comment post:</strong>
-  <%= @comment.post %>
+  <strong>Post:</strong>
+  <%= @comment.post.title %>
 </p>
 
 <p>
-  <strong>Comment author:</strong>
+  <strong>Author:</strong>
   <%= @comment.author %>
 </p>
 
 <p>
-  <strong>Comment email:</strong>
+  <strong>Email:</strong>
   <%= @comment.email %>
 </p>
 
 <p>
-  <strong>Comment content:</strong>
+  <strong>Content:</strong>
   <%= @comment.content %>
+</p>
+
+<p>
+  <strong>Created:</strong>
+  <%= @comment.created_at %>
 </p>
 
 <%= link_to 'Edit', edit_comment_path(@comment) %> |
