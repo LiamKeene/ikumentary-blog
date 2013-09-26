@@ -7,11 +7,11 @@
 <table>
   <thead>
     <tr>
-      <th>Post title</th>
-      <th>Post slug</th>
-      <th>Post content</th>
-      <th>Post author</th>
-      <th>Post status</th>
+      <th>Title</th>
+      <th>Slug</th>
+      <th>Content</th>
+      <th>Author</th>
+      <th>Status</th>
       <th>Created</th>
       <th></th>
       <th></th>
@@ -25,7 +25,7 @@
         <td><%= post.title %></td>
         <td><%= post.slug %></td>
         <td><%= post.content %></td>
-        <td><%= post.author %></td>
+        <td><%= post.author.name %></td>
         <td><%= post.status %></td>
         <td><%= post.created_at %></td>
         <td><%= link_to 'Show', post %></td>
