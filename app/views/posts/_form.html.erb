@@ -25,7 +25,7 @@
   </div>
   <div>
     <%= f.label :author %><br>
-    <%= f.text_field :author %>
+    <%= f.collection_select :author_id, User.all, :id, :name %>
   </div>
   <div>
     <%= f.label :status %><br>
