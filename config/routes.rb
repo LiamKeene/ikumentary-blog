@@ -20,6 +20,11 @@ Ikumentary::Application.routes.draw do
     resources :users
     resources :posts
     resources :comments
+
+    resources :sessions, only: [:create]
+
+    get 'signin', to: 'sessions#new', as: 'sign_in'
+    delete 'signout', to: 'sessions#destroy', as: 'sign_out'
   end
 
   # Example resource route with options:
