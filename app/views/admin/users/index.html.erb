@@ -1,6 +1,6 @@
 <% provide(:title, 'All Users') %>
 
-<p><%= link_to 'New User', new_user_path %></p>
+<p><%= link_to 'New User', [:new, :admin, :user] %></p>
 
 <h1>All Users</h1>
 
@@ -28,12 +28,12 @@
         <td><%= user.email %></td>
         <td><%= user.user_type %></td>
         <td><%= user.created_at %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>         
+        <td><%= link_to 'Show', [:admin, user] %></td>
+        <td><%= link_to 'Edit', [:edit, :admin, user] %></td>
+        <td><%= link_to 'Destroy', [:admin, user], method: :delete, data: { confirm: 'Are you sure?' } %></td>         
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<p><%= link_to 'New User', new_user_path %></p>
+<p><%= link_to 'New User', [:new, :admin, :user] %></p>

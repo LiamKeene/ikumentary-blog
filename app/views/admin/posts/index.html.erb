@@ -1,6 +1,6 @@
 <% provide(:title, 'All Posts') %>
 
-<p><%= link_to 'New Post', new_post_path %></p>
+<p><%= link_to 'New Post', [:new, :admin, :post] %></p>
 
 <h1>All Posts</h1>
 
@@ -28,12 +28,12 @@
         <td><%= post.author.name %></td>
         <td><%= post.status %></td>
         <td><%= post.created_at %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>         
+        <td><%= link_to 'Show', [:admin, post] %></td>
+        <td><%= link_to 'Edit', [:edit, :admin, post] %></td>
+        <td><%= link_to 'Destroy', [:admin, post], method: :delete, data: { confirm: 'Are you sure?' } %></td>         
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<p><%= link_to 'New Post', new_post_path %></p>
+<p><%= link_to 'New Post', [:new, :admin, :post] %></p>

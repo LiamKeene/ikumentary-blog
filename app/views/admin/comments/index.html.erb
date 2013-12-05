@@ -1,6 +1,6 @@
 <% provide(:title, 'All Comments') %>
 
-<p><%= link_to 'New Comment', new_comment_path %></p>
+<p><%= link_to 'New Comment', [:new, :admin, :comment] %></p>
 
 <h1>All Comments</h1>
 
@@ -26,12 +26,12 @@
         <td><%= comment.email %></td>
         <td><%= comment.content %></td>
         <td><%= comment.created_at %></td>
-        <td><%= link_to 'Show', comment %></td>
-        <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
-        <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>         
+        <td><%= link_to 'Show', [:admin, comment] %></td>
+        <td><%= link_to 'Edit', [:edit, :admin, comment] %></td>
+        <td><%= link_to 'Destroy', [:admin, comment], method: :delete, data: { confirm: 'Are you sure?' } %></td>         
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<p><%= link_to 'New Comment', new_comment_path %></p>
+<p><%= link_to 'New Comment', [:new, :admin, :comment] %></p>

@@ -6,7 +6,7 @@ describe "User Pages" do
 
   describe "index" do
     let(:users) { FactoryGirl.create_list(:user, 5) }
-    before { visit users_path }
+    before { visit admin_users_path }
 
     it { should have_title(full_title('All Users')) }
     it { should have_content('All Users') }
@@ -19,7 +19,7 @@ describe "User Pages" do
   end
 
   describe "new user page" do
-    before { visit new_user_path }
+    before { visit new_admin_user_path }
 
     it { should have_title(full_title('New User')) }
     it { should have_content('New User') }
@@ -27,7 +27,7 @@ describe "User Pages" do
 
   describe "show user page" do
     let(:user) { FactoryGirl.create(:user) }
-    before { visit user_path(user) }
+    before { visit admin_user_path(user) }
 
     it { should have_title(full_title(user.name)) }
     it { should have_content(user.name) }
@@ -35,7 +35,7 @@ describe "User Pages" do
 
   describe "edit user page" do
     let(:user) { FactoryGirl.create(:user) }
-    before { visit edit_user_path(user) }
+    before { visit edit_admin_user_path(user) }
 
     it { should have_title(full_title("Edit User")) }
     it { should have_content("Edit User") }

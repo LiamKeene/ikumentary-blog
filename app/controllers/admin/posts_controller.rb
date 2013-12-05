@@ -1,4 +1,4 @@
-class PostsController < ApplicationController
+class Admin::PostsController < ApplicationController
   
   def index
     @posts = Post.all
@@ -20,7 +20,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
 
     if @post.save
-      redirect_to @post
+      redirect_to [:admin, @post]
     else
       render 'new'
     end
@@ -30,7 +30,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     
     if @post.update_attributes(post_params)
-      redirect_to @post
+      redirect_to [:admin, @post]
     else
       render 'edit'
     end
@@ -40,7 +40,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.destroy
 
-    redirect_to posts_path
+    redirect_to [:admin, posts]
   end
 
   private

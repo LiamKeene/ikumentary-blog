@@ -6,7 +6,7 @@ describe "Post Pages" do
 
   describe "index" do
     let(:posts) { FactoryGirl.create_list(:post, 5) }
-    before { visit posts_path }
+    before { visit admin_posts_path }
 
     it { should have_title(full_title('All Posts')) }
     it { should have_content('All Posts') }
@@ -19,7 +19,7 @@ describe "Post Pages" do
   end
 
   describe "new post page" do
-    before { visit new_post_path }
+    before { visit new_admin_post_path }
 
     it { should have_title(full_title('New Post')) }
     it { should have_content('New Post') }
@@ -27,7 +27,7 @@ describe "Post Pages" do
 
   describe "show post page" do
     let(:post) { FactoryGirl.create(:post) }
-    before { visit post_path(post) }
+    before { visit admin_post_path(post) }
 
     it { should have_title(full_title(post.title)) }
     it { should have_content(post.title) }
@@ -35,7 +35,7 @@ describe "Post Pages" do
 
   describe "edit post page" do
     let(:post) { FactoryGirl.create(:post) }
-    before { visit edit_post_path(post) }
+    before { visit edit_admin_post_path(post) }
 
     it { should have_title(full_title("Edit Post")) }
     it { should have_content("Edit Post") }
