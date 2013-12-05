@@ -9,9 +9,16 @@
 </head>
 <body>
   <%= render 'layouts/header' %>
+
+  <div class="container">
+    <% flash.each do |key, value| %>
+    <div class="error error-<%= key %>"><%= value %></div>
+    <% end %>
+  </div>
   <div>
     <%= yield %>
   </div>
   <%= render 'layouts/footer' %>
+  <%= debug(params) if Rails.env.development? %>
 </body>
 </html>
