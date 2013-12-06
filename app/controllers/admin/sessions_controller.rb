@@ -6,7 +6,7 @@ class Admin::SessionsController < ApplicationController
     user = User.find_by(login: params[:session][:login])
     if user && user.authenticate(params[:session][:password])
       sign_in user
-      redirect_back_or admin_user_path(user)
+      redirect_back_or admin_path
     else
       flash.now[:error] = 'Invalid login/password combination'
       render 'new'
