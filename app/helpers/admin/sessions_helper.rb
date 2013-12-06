@@ -1,4 +1,8 @@
 module Admin::SessionsHelper
+  def authorize
+    redirect_to admin_sign_in_url, alert: "Not authorized" if not signed_in?
+  end
+
   def sign_in(user)
     remember_token = User.new_remember_token
     cookies.permanent[:remember_token] = remember_token
