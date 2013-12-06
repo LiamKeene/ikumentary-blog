@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe "Post Pages" do
+  let(:user) { FactoryGirl.create(:user) }
+  before(:each) { sign_in(user) }
 
   subject { page }
 
