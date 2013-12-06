@@ -25,11 +25,7 @@ describe "Authentication" do
     describe "with valid information" do
       let(:user) { FactoryGirl.create(:user) }
 
-      before do
-        fill_in 'Login',    with: user.login
-        fill_in 'Password', with: user.password
-        click_button 'Sign In'
-      end
+      before { sign_in(user) }
 
       it { should have_link('Sign Out', href: admin_sign_out_path) }
       it { should_not have_link('Sign In', href: admin_sign_in_path) }
