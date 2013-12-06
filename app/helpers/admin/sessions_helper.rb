@@ -1,5 +1,6 @@
 module Admin::SessionsHelper
   def authorize
+    store_location
     redirect_to admin_sign_in_url, alert: "Not authorized" if not signed_in?
   end
 
