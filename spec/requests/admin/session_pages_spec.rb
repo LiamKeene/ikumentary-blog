@@ -27,6 +27,7 @@ describe "Authentication" do
 
       before { sign_in(user) }
 
+      it { should have_link('Dashboard', href: admin_path) }
       it { should have_link('Sign Out', href: admin_sign_out_path) }
       it { should_not have_link('Sign In', href: admin_sign_in_path) }
     end

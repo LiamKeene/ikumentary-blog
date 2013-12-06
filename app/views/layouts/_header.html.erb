@@ -10,6 +10,7 @@
       <%= link_to 'About', about_path %>
       <%= link_to 'Contact', contact_path %>
       <% if signed_in? %>
+        <%= link_to 'Dashboard', admin_path %>
         <%= link_to 'Sign Out', admin_sign_out_path, method: 'delete' %>
       <% end %>
     </nav>
