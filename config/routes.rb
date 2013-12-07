@@ -16,9 +16,19 @@ Ikumentary::Application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-  resources :users
-  resources :posts
-  resources :comments
+  namespace :admin do
+
+    get '', to: 'dashboard#index', as: '/'
+
+    resources :users
+    resources :posts
+    resources :comments
+
+    resources :sessions, only: [:create]
+
+    get 'signin', to: 'sessions#new', as: 'sign_in'
+    delete 'signout', to: 'sessions#destroy', as: 'sign_out'
+  end
 
   # Example resource route with options:
   #   resources :products do

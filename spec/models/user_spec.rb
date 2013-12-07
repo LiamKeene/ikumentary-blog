@@ -19,9 +19,11 @@ describe User do
   it { should respond_to(:password) }
   it { should respond_to(:password_confirmation) }
 
-  it { should respond_to(:posts) }
+  it { should respond_to(:remember_token) }
 
   it { should respond_to(:authenticate) }
+
+  it { should respond_to(:posts) }
 
   it { should be_valid }
 
@@ -141,5 +143,11 @@ describe User do
         expect(Post.where(id: post.id)).to be_empty
       end
     end
+  end
+
+  describe "remember token" do
+    before { @user.save }
+
+    its(:remember_token) { should_not be_blank }
   end
 end

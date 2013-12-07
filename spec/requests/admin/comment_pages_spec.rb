@@ -1,12 +1,14 @@
 require 'spec_helper'
 
 describe "Comment Pages" do
+  let(:user) { FactoryGirl.create(:user) }
+  before(:each) { sign_in(user) }
 
   subject { page }
 
   describe "index" do
     let(:comments) { FactoryGirl.create_list(:comment, 5) }
-    before { visit comments_path }
+    before { visit admin_comments_path }
 
     it { should have_title(full_title('All Comments')) }
     it { should have_content('All Comments') }
@@ -19,7 +21,7 @@ describe "Comment Pages" do
   end
 
   describe "new comment page" do
-    before { visit new_comment_path }
+    before { visit new_admin_comment_path }
 
     it { should have_title(full_title('New Comment')) }
     it { should have_content('New Comment') }
@@ -27,7 +29,7 @@ describe "Comment Pages" do
 
   describe "show comment page" do
     let(:comment) { FactoryGirl.create(:comment) }
-    before { visit comment_path(comment) }
+    before { visit admin_comment_path(comment) }
 
     it { should have_title(full_title('Comment')) }
     it { should have_content(comment.content) }
@@ -35,7 +37,7 @@ describe "Comment Pages" do
 
   describe "edit comment page" do
     let(:comment) { FactoryGirl.create(:comment) }
-    before { visit edit_comment_path(comment) }
+    before { visit edit_admin_comment_path(comment) }
 
     it { should have_title(full_title("Edit Comment")) }
     it { should have_content("Edit Comment") }

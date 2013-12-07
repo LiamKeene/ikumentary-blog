@@ -1,4 +1,4 @@
-class CommentsController < ApplicationController
+class Admin::CommentsController < Admin::BaseController
   
   def index
     @comments = Comment.all
@@ -20,7 +20,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
 
     if @comment.save
-      redirect_to @comment
+      redirect_to [:admin, @comment]
     else
       render 'new'
     end
@@ -30,7 +30,7 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     
     if @comment.update_attributes(comment_params)
-      redirect_to @comment
+      redirect_to [:admin, @comment]
     else
       render 'edit'
     end
@@ -40,7 +40,7 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     @comment.destroy
 
-    redirect_to comments_path
+    redirect_to [:admin, :comments]
   end
 
   private

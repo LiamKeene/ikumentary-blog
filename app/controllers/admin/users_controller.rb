@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class Admin::UsersController < Admin::BaseController
 
   def index
     @users = User.all
@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to @user
+      redirect_to [:admin, @user]
     else
       render 'new'
     end
@@ -30,7 +30,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     
     if @user.update_attributes(user_params)
-      redirect_to @user
+      redirect_to [:admin, @user]
     else
       render 'edit'
     end
@@ -40,7 +40,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.destroy
 
-    redirect_to users_path
+    redirect_to [:admin, :users]
   end
 
   private
