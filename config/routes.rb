@@ -16,6 +16,8 @@ Ikumentary::Application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
+  resources :posts, only: [:index, :show]
+
   namespace :admin do
 
     get '', to: 'dashboard#index', as: '/'
