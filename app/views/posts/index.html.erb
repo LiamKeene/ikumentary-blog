@@ -1,0 +1,11 @@
+<% provide(:title, 'All Posts') %>
+
+<% @posts.each do |post| %>
+  <div>
+    <div>
+      <%= post.title %>
+    </div>
+    <%= post.content %>
+  </div>
+<% end %>
+<%= paginate @posts %>
