@@ -1,8 +1,30 @@
 <% provide(:title, @post.title) %>
 
-<div>
-  <div>
-    <%= @post.title %>
+<div class="post">
+  <div class="post-header">
+    <h2 class="post-title">
+      <%= @post.title %>
+    </h2>
+    <p class="post-datetime">
+      <%= @post.created_at.to_formatted_s(:long) %>
+    </p>
   </div>
-  <%= @post.content %>
+  <div class="post-content">
+    <%= @post.content.html_safe %>
+  </div>
+</div>
+<div id="comments">
+  <ol class="comment-list">
+  <% @post.comments.each do |comment| %>
+    <li class="comment">
+      <div class="comment-header">
+        <%= comment.author %>
+        <%= comment.created_at.to_formatted_s(:long) %>
+      </div>
+      <div class="comment-content" id="comment-<%= comment.id %>">
+        <%= comment.content %>
+      </div>
+    </li>
+  <% end %>
+  </ol>
 </div>
