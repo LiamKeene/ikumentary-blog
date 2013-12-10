@@ -1,11 +1,19 @@
 <% provide(:title, 'All Posts') %>
 
 <% @posts.each do |post| %>
-  <div>
-    <div>
-      <%= post.title %>
+  <div id="posts">
+    <div class="post-header">
+      <h2 class="post-title">
+        <%= link_to post.title, post_path(post) %>
+      </h2>
+      <p class="post-datetime">
+        <%= post.created_at.to_formatted_s(:long) %>
+      </p>
     </div>
-    <%= post.content %>
+    <div class="post-content">
+      <%= truncate_html(post.content, length: 500, omission: ' ... ' + (link_to 'Read More',
+        post_path(post))) %>
+    </div>
   </div>
 <% end %>
 <%= paginate @posts %>
