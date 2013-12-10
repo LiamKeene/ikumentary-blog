@@ -1,8 +1,10 @@
-    <div class="post-header">
-      <h2 class="post-title">
+    <header>
+      <h2>
         <%= link_to @post.title, post_path(@post) %>
       </h2>
       <p class="post-datetime">
-        <%= @post.created_at.to_formatted_s(:long) %>
+        <time datetime="<%= @post.created_at %>">
+          <%= @post.created_at.to_formatted_s(:day_and_month) %>
+        </time>
       </p>
-    </div>
+    </header>

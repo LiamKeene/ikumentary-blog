@@ -1,14 +1,14 @@
 <% provide(:title, 'All Posts') %>
 
 <% @posts.each do |post| %>
-  <div class="post">
+  <article class="post">
 
     <%= render 'post_header' %>
-    
+
     <div class="post-content">
-      <%= truncate_html(post.content, length: 500, omission: ' ... ' + (link_to 'Read More',
-        post_path(post))) %>
+      <%= truncate_html(post.content, length: 500, omission: ' ... ' + (link_to 'Read More', post_path(post))) %>
     </div>
-  </div>
+
+  </article>
 <% end %>
 <%= paginate @posts %>
