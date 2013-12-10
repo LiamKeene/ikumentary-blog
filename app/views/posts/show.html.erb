@@ -3,7 +3,7 @@
 <div class="post">
   <div class="post-header">
     <h2 class="post-title">
-      <%= @post.title %>
+      <%= link_to @post.title, post_path(@post) %>
     </h2>
     <p class="post-datetime">
       <%= @post.created_at.to_formatted_s(:long) %>
