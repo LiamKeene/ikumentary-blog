@@ -2,7 +2,7 @@
 
 <article class="post">
 
-  <%= render 'post_header' %>
+  <%= render partial: 'post_header', locals: { post: @post } %>
 
   <div class="post-content">
     <%= @post.content.html_safe %>
@@ -21,5 +21,5 @@
     </article>
   <% end %>
   </div>
-  
+
 </article>
