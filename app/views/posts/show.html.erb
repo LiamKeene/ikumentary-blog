@@ -1,8 +1,25 @@
 <% provide(:title, @post.title) %>
 
-<div>
-  <div>
-    <%= @post.title %>
+<article class="post">
+
+  <%= render partial: 'post_header', locals: { post: @post } %>
+
+  <div class="post-content">
+    <%= @post.content.html_safe %>
   </div>
-  <%= @post.content %>
-</div>
+
+  <div id="comments-list">
+  <% @post.comments.each do |comment| %>
+    <article class="comment">
+      <header>
+        <%= comment.author %>
+        <%= comment.created_at.to_formatted_s(:long) %>
+      </header>
+      <div class="comment-content" id="comment-<%= comment.id %>">
+        <%= comment.content %>
+      </div>
+    </article>
+  <% end %>
+  </div>
+
+</article>

@@ -1,11 +1,14 @@
 <% provide(:title, 'All Posts') %>
 
 <% @posts.each do |post| %>
-  <div>
-    <div>
-      <%= post.title %>
+  <article class="post">
+
+    <%= render partial: 'post_header', locals: { post: post } %>
+
+    <div class="post-content">
+      <%= truncate_html(post.content, length: 500, omission: ' ... ' + (link_to 'Read More', post_path(post))) %>
     </div>
-    <%= post.content %>
-  </div>
+
+  </article>
 <% end %>
 <%= paginate @posts %>
