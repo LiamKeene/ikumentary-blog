@@ -1,0 +1,9 @@
+  <article class="comment">
+    <header>
+      <%= comment.author %>
+      <%= comment.created_at.to_formatted_s(:long) %>
+    </header>
+    <div class="comment-content" id="comment-<%= comment.id %>">
+      <%= comment.content %>
+    </div>
+  </article>
