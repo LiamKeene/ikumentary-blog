@@ -12,6 +12,8 @@ describe Comment do
   it { should respond_to(:email) }
   it { should respond_to(:url) }
   it { should respond_to(:content) }
+  it { should respond_to(:ip_addr) }
+  it { should respond_to(:agent) }
 
   it { should respond_to(:post) }
   its(:post) { should eq post }
