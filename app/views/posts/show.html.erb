@@ -2,7 +2,7 @@
 
 <article class="post">
 
-  <%= render partial: 'post_header', locals: { post: @post } %>
+  <%= render partial: 'posts/post_header', locals: { post: @post } %>
 
   <div class="post-content">
     <%= @post.content.html_safe %>
@@ -13,7 +13,7 @@
   </div>
 
   <div id="comment-form">
-    <%= render 'comment_form' %>
+    <%= render 'posts/comment_form' %>
   </div>
 
 </article>
