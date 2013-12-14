@@ -1,0 +1,12 @@
+  <article class="comment">
+    <header>
+      <%= link_to comment.author, url_with_protocol(comment.url) %> said 
+      <time datetime="<%= comment.created_at %>">
+        <%= time_ago_in_words(comment.created_at) %> ago.
+      </time>
+      <%= link_to '#', post_path(comment.post, anchor: "comment-#{comment.id}"), title: 'Direct link to this comment' %>
+    </header>
+    <div class="comment-content" id="comment-<%= comment.id %>">
+      <%= comment.content %>
+    </div>
+  </article>

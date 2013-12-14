@@ -2,24 +2,18 @@
 
 <article class="post">
 
-  <%= render partial: 'post_header', locals: { post: @post } %>
+  <%= render partial: 'posts/post_header', locals: { post: @post } %>
 
   <div class="post-content">
     <%= @post.content.html_safe %>
   </div>
 
   <div id="comments-list">
-  <% @post.comments.each do |comment| %>
-    <article class="comment">
-      <header>
-        <%= comment.author %>
-        <%= comment.created_at.to_formatted_s(:long) %>
-      </header>
-      <div class="comment-content" id="comment-<%= comment.id %>">
-        <%= comment.content %>
-      </div>
-    </article>
-  <% end %>
+    <%= render @post.comments %>
+  </div>
+
+  <div id="comment-form">
+    <%= render 'posts/comment_form' %>
   </div>
 
 </article>

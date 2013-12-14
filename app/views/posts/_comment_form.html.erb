@@ -1,0 +1,37 @@
+<%= form_for ([@post, @comment]) do |f| %>
+
+  <%= render 'shared/error_messages', object: f.object %>
+  
+  <div>
+    <%= f.label :author  do %>
+      Name <span class="required">(required)</span>
+    <% end %>
+    <div class="form-input">
+      <%= f.text_field :author%>
+    </div>
+  </div>
+  <div>
+    <%= f.label :email do %>
+      Email <span class="required">(required)</span> <span class="nopublish">(Email never made public)</span>
+    <% end %>
+    <div class="form-input">
+      <%= f.text_field :email %>
+    </div>
+  </div>
+  <div>
+    <%= f.label :url %>
+    <div class="form-input">
+      <%= f.text_field :url %>
+    </div>
+  </div>
+  <div>
+    <%= f.label :content %>
+    <div class="form-input">
+      <%= f.text_area :content %>
+    </div>
+  </div>
+  <div>
+    <%= f.submit %>
+  </div>
+
+<% end %>

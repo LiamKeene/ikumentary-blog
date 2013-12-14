@@ -18,6 +18,7 @@ Ikumentary::Application.routes.draw do
   #   resources :products
   resources :posts, only: [:index, :show] do
     get 'page/:page', to: 'posts#index', on: :collection
+    resources :comments, only: [:create]
   end
 
   namespace :admin do
