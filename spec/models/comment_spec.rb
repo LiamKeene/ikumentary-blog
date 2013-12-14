@@ -10,6 +10,7 @@ describe Comment do
   it { should respond_to(:post_id) }
   it { should respond_to(:author) }
   it { should respond_to(:email) }
+  it { should respond_to(:url) }
   it { should respond_to(:content) }
 
   it { should respond_to(:post) }
