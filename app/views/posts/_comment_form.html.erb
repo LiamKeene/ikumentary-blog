@@ -3,16 +3,26 @@
   <%= render 'shared/error_messages', object: f.object %>
   
   <div>
-    <%= f.label :author %><br>
-    <%= f.text_field :author %>
+    <%= f.label :author  do %>
+      Name <span class="required">(required)</span>
+    <% end %>
+    <div class="form-input">
+      <%= f.text_field :author%>
+    </div>
   </div>
   <div>
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
+    <%= f.label :email do %>
+      Email <span class="required">(required)</span> <span class="nopublish">(Email never made public)</span>
+    <% end %>
+    <div class="form-input">
+      <%= f.text_field :email %>
+    </div>
   </div>
   <div>
-    <%= f.label :content %><br>
-    <%= f.text_area :content %>
+    <%= f.label :content %>
+    <div class="form-input">
+      <%= f.text_area :content %>
+    </div>
   </div>
   <div>
     <%= f.submit %>
