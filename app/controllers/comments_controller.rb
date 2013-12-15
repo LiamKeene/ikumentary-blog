@@ -7,6 +7,10 @@ class CommentsController < ApplicationController
     
     @comment.post = @post
 
+    # Assign the remote IP and user agent
+    @comment.ip_addr = request.remote_ip
+    @comment.agent = request.user_agent
+
     if @comment.save
       redirect_to post_path(@post)
     else
