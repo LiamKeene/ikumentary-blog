@@ -1,7 +1,7 @@
 <% provide(:title, 'Edit Comment') %>
 <h1>Edit Comment</h1>
 
-<%= render 'form' %>
+<%= render partial: 'form', locals: { edit: true } %>
 
 <%= link_to 'Show', [:admin, @comment] %> |
 <%= link_to 'Back', [:admin, :comments] %>

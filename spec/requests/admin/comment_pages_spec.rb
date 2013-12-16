@@ -25,6 +25,9 @@ describe "Comment Pages" do
 
     it { should have_title(full_title('New Comment')) }
     it { should have_content('New Comment') }
+
+    it { should_not have_selector('input[name="comment[ip_addr]"]') }
+    it { should_not have_selector('input[name="comment[agent]"]') }
   end
 
   describe "show comment page" do
@@ -41,6 +44,9 @@ describe "Comment Pages" do
 
     it { should have_title(full_title("Edit Comment")) }
     it { should have_content("Edit Comment") }
+
+    it { should have_selector('input[name="comment[ip_addr]"]') }
+    it { should have_selector('input[name="comment[agent]"]') }
   end
 
 end

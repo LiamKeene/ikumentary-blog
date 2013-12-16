@@ -24,5 +24,7 @@ FactoryGirl.define do
     sequence(:email)        { |n| "author_#{n}@example.com" }
     sequence(:url)          { |n| "author_#{n}.example.com" }
     sequence(:content)      { |n| "This is the content of comment #{n}" }
+    sequence(:ip_addr)      { |n| "12#{n}.12.34.#{n}#{n}#{n}"}
+    agent                   { ['Chrome', 'Firefox', 'Safari'].sample }
   end
 end

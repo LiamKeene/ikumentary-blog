@@ -18,6 +18,17 @@
     <%= f.label :content %><br>
     <%= f.text_area :content %>
   </div>
+  
+  <% if defined?(edit) && edit %>
+  <div>
+    <%= f.label :ip_addr %><br>
+    <%= f.text_field :ip_addr %>
+  </div>  
+  <div>
+    <%= f.label :agent %><br>
+    <%= f.text_field :agent %>
+  </div>
+  <% end %>
   <div>
     <%= f.submit %>
   </div>
