@@ -16,7 +16,7 @@ Ikumentary::Application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-  resources :posts, only: [:index, :show] do
+  resources :posts, only: [:index, :show], path: '/' do
     get 'page/:page', to: 'posts#index', on: :collection
     resources :comments, only: [:create]
   end
