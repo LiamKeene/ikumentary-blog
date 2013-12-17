@@ -1,28 +1,7 @@
 Ikumentary::Application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-
-  # You can have the root of your site routed with "root"
-  root 'posts#index'
-
-  match '/about',     to: 'static_pages#about',     via: 'get'
-  match '/contact',   to: 'static_pages#contact',   via: 'get'
-
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
-
-  # Example of named route that can be invoked with purchase_url(id: product.id)
-  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
-
-  # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
-  resources :posts, only: [:index, :show], path: '/' do
-    get 'page/:page', to: 'posts#index', on: :collection, as: 'post_page'
-    resources :comments, only: [:create]
-  end
-
   namespace :admin do
-
     get '', to: 'dashboard#index', as: '/'
 
     resources :users
@@ -34,6 +13,25 @@ Ikumentary::Application.routes.draw do
     get 'signin', to: 'sessions#new', as: 'sign_in'
     delete 'signout', to: 'sessions#destroy', as: 'sign_out'
   end
+
+  resources :posts, only: [:index, :show], path: '/' do
+    get 'page/:page', to: 'posts#index', on: :collection, as: 'post_page'
+    resources :comments, only: [:create]
+  end
+
+  match '/about',     to: 'static_pages#about',     via: 'get'
+  match '/contact',   to: 'static_pages#contact',   via: 'get'
+
+  root 'posts#index'
+
+  # Example of regular route:
+  #   get 'products/:id' => 'catalog#view'
+
+  # Example of named route that can be invoked with purchase_url(id: product.id)
+  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
+
+  # Example resource route (maps HTTP verbs to controller actions automatically):
+  #   resources :products
 
   # Example resource route with options:
   #   resources :products do
