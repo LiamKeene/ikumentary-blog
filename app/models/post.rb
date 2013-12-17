@@ -1,5 +1,10 @@
 class Post < ActiveRecord::Base
+
+  extend FriendlyId
+
   belongs_to :author, class_name: 'User', foreign_key: 'author_id'
+
+  friendly_id :slug, use: :slugged
 
   has_many :comments, dependent: :destroy
 

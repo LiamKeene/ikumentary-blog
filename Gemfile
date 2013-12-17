@@ -29,6 +29,7 @@ gem 'turbolinks', '1.3.0'
 gem 'jbuilder', '1.5.0'
 gem 'kaminari'
 gem 'truncate_html'
+gem 'friendly_id', '~> 5.0.0'
 
 group :doc do
   gem 'sdoc', '0.3.20', require: false

@@ -1,11 +1,12 @@
 class Admin::PostsController < Admin::BaseController
   
+  before_action :find_post, only: [:show, :edit, :update, :destroy]
+  
   def index
     @posts = Post.all
   end
   
   def show
-    @post = Post.find(params[:id])
   end
 
   def new
@@ -13,7 +14,6 @@ class Admin::PostsController < Admin::BaseController
   end
 
   def edit
-    @post = Post.find(params[:id])
   end
 
   def create
@@ -27,7 +27,6 @@ class Admin::PostsController < Admin::BaseController
   end
 
   def update
-    @post = Post.find(params[:id])
     
     if @post.update_attributes(post_params)
       redirect_to [:admin, @post]
@@ -37,7 +36,6 @@ class Admin::PostsController < Admin::BaseController
   end
 
   def destroy
-    @post = Post.find(params[:id])
     @post.destroy
 
     redirect_to [:admin, posts]
@@ -47,5 +45,10 @@ class Admin::PostsController < Admin::BaseController
     # Never trust params from the interwebs!  Only allow white-listed params
     def post_params
       params.require(:post).permit(:title, :slug, :content, :author_id, :status)
+    end
+
+  protected
+    def find_post
+      @post = Post.friendly.find(params[:id])
     end
 end
