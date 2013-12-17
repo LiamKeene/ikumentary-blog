@@ -3,7 +3,7 @@ Ikumentary::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'static_pages#home'
+  root 'posts#index'
 
   match '/about',     to: 'static_pages#about',     via: 'get'
   match '/contact',   to: 'static_pages#contact',   via: 'get'
