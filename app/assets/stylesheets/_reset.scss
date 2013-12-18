@@ -1,0 +1,22 @@
+/* HTML5 Reset
+
+Inspiration from Eric Meyer's reset file, but only includes rules that are
+actually used on my site.
+
+*/
+html, body, div,
+h1, h2, a, p, span, pre,
+header, footer, nav, section, article {
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+/* HTML5 Roles */
+header, footer, nav, section, article {
+  display: block;
+}
