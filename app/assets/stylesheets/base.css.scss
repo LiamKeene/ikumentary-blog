@@ -20,5 +20,71 @@ p {
   margin-bottom: $block-padding;
 }
 a {
+  color: $main-red;
   text-decoration: none;
+
+  &:hover {
+    color: lighten($main-red, 20%);
+  }
+}
+
+header, footer {
+
+  &.site {
+    background-color: $main-red;
+    padding: $block-padding;
+  
+    a {
+      color: $font-light-color;
+    
+      &:hover {
+        color: darken($font-light-color, 10%);
+      }
+    }
+  }
+}
+
+#branding {
+  float: right;
+  font-size: 2em;
+}
+
+#nav-site {
+  margin-top: 3em;
+
+  a { 
+    margin: 0 $block-padding / 2;
+  }
+
+  #admin {
+    float: right;
+  }
+}
+
+#content {
+  border: 0.0625em solid #ccc;
+  margin: $block-padding;
+  padding: 0 $block-padding;
+}
+
+article {
+  
+  &.post {
+    border-bottom: 0.0625em solid #ccc;
+    padding: $block-padding 0;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+}
+
+/* Clearfix - don't care about IE6/7 */
+.cf:before,
+.cf:after {
+  content: " ";
+  display: table;
+}
+.cf:after {
+  clear: both;
 }
