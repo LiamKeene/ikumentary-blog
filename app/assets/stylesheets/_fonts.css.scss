@@ -1,0 +1,10 @@
+@font-face {
+  font-family: 'KFHimajiKIDS';
+  src: url(font-path('kfhimajikids-webfont.eot'));
+  src: url(font-path('kfhimajikids-webfont.eot') + '?#iefix') format('embedded-opentype'),
+    url(font-path('kfhimajikids-webfont.woff')) format('woff'),
+    url(font-path('kfhimajikids-webfont.ttf')) format('truetype'),
+    url(font-path('kfhimajikids-webfont.svg') + '#KFHimajiKIDS') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}

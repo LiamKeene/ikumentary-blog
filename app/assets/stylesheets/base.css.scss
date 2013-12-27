@@ -1,5 +1,6 @@
 @import 'reset';
 @import 'variables';
+@import 'fonts';
 
 /* Site-wide styles */
 body {
@@ -36,6 +37,7 @@ header, footer {
   
     a {
       color: $font-light-color;
+      font-family: $header-font;
     
       &:hover {
         color: darken($font-light-color, 10%);
@@ -47,6 +49,7 @@ header, footer {
 #branding {
   float: right;
   font-size: 2em;
+  font-family: $branding-font;
 }
 
 #nav-site {
@@ -69,6 +72,11 @@ header, footer {
 
 article {
   
+  h2 {
+    font-family: $post-title-font;
+    font-size: 1.5em;
+  }
+
   &.post {
     border-bottom: 0.0625em solid #ccc;
     padding: $block-padding 0;
