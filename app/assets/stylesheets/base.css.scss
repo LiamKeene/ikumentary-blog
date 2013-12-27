@@ -47,6 +47,12 @@ header, footer {
   }
 }
 
+nav {
+  a { 
+    margin: 0 $block-padding / 2;
+  }
+}
+
 #branding {
   float: right;
   font-size: 2em;
@@ -55,10 +61,6 @@ header, footer {
 
 #nav-site {
   margin-top: 3em;
-
-  a { 
-    margin: 0 $block-padding / 2;
-  }
 }
 
 #nav-admin-toggle {
@@ -140,6 +142,27 @@ nav.pagination {
     border-radius: $block-padding / 2;
     color: #fff;
   }
+}
+
+#nav-footer {
+  float: left;
+}
+
+#nav-social {
+  float: right;
+
+  img {
+    $overall-size: 2em;
+
+    height: $overall-size * 0.75;
+    width: $overall-size * 0.75;
+  }
+}
+
+#copyright {
+  font-size: 0.75em;
+  margin-top: $block-padding;
+  text-align: center;
 }
 
 /* Clearfix - don't care about IE6/7 */
