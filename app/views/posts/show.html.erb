@@ -4,9 +4,9 @@
 
   <%= render partial: 'posts/post_header', locals: { post: @post } %>
 
-  <div class="post-content">
+  <p>
     <%= @post.content.html_safe %>
-  </div>
+  <p>
 
   <%= render partial: 'posts/post_footer', locals: { post: @post } %>
 

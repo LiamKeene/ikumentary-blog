@@ -14,10 +14,11 @@ h1 {
 }
 h2 {
   font-size: 1.25em;
-  margin-bottom: $block-padding;
+  margin-bottom: $block-padding / 2;
 }
 p {
   font-size: 1.25em;
+  line-height: 1.75em;
   margin-bottom: $block-padding;
 }
 a {
@@ -85,15 +86,59 @@ article {
   h2 {
     font-family: $post-title-font;
     font-size: 1.5em;
+    padding: $block-padding / 2;
   }
 
   &.post {
     border-bottom: 0.0625em solid #ccc;
     padding: $block-padding 0;
 
+    p {
+      font-size: 1em;
+
+      &.post-datetime {
+        color: darken($font-light-color, 10%);
+        font-size: 0.9em;
+        letter-spacing: 0.2em;
+        margin-left: $block-padding;
+      }
+    }
+
     &:last-child {
       border-bottom: none;
     }
+
+    .post-more-link {
+      margin-left: $block-padding * 3;
+    }
+
+    .post-comments-link {
+      float: right;
+      margin-right: $block-padding * 3;
+    }
+  }
+}
+
+/* Index Page Navigation */
+nav.pagination {
+  margin: $block-padding;
+
+  // Make inline-block to widen clickable area
+  span {
+    display: inline-block;
+  }
+
+  // Padding and centering of page text
+  a, span.current {
+    padding: $block-padding / 2 $block-padding * 1.1;
+    text-align: center;
+  }
+
+  // Animation for current page and hovering
+  a:hover, span.current {
+    background: $main-red;
+    border-radius: $block-padding / 2;
+    color: #fff;
   }
 }
 

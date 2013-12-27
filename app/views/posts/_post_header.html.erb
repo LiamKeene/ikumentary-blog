@@ -4,7 +4,7 @@
       </h2>
       <p class="post-datetime">
         <time datetime="<%= post.created_at %>">
-          <%= post.created_at.to_formatted_s(:day_and_month) %>
+          <%= post.created_at.strftime('%B %d, %Y').upcase %>
         </time>
       </p>
     </header>
