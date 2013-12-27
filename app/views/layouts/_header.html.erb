@@ -10,10 +10,11 @@
       <%= link_to 'ABOUT', about_path %>
       <%= link_to 'CONTACT', contact_path %>
       <% if signed_in? %>
-      <div id="admin">
+      <a id="nav-admin-toggle">ADMIN</a>
+      <nav id="nav-admin">
         <%= link_to 'Dashboard', admin_path %>
         <%= link_to 'Sign Out', admin_sign_out_path, method: 'delete' %>
-      </div>
+      </nav>
       <% end %>
     </nav>
   </header>

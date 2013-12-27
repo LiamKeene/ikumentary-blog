@@ -58,9 +58,19 @@ header, footer {
   a { 
     margin: 0 $block-padding / 2;
   }
+}
 
-  #admin {
-    float: right;
+#nav-admin-toggle {
+  float: right;
+}
+
+#nav-admin {
+  display: none;
+
+  a {
+    display: block;
+    text-align: right;
+    margin-top: $block-padding;
   }
 }
 
