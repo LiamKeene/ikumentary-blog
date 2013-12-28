@@ -119,6 +119,18 @@ article {
       border-bottom: none;
     }
 
+    .post-links {
+      display: inline-block;
+      padding: $block-padding / 2 $block-padding * 1.1;
+      text-align: center;
+
+      &:hover {
+        background: $main-red;
+        border-radius: $block-padding / 2;
+        color: #fff;
+      }
+    }
+
     .post-more-link {
       margin-left: $block-padding * 3;
     }

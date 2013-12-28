@@ -9,9 +9,9 @@
       <%= truncate_html(post.content, length: 500, omission: ' ... ') %>
     </p>
     
-    <%= link_to 'Read More →', post_path(post), class: 'post-more-link' %>
+    <%= link_to 'Read More →', post_path(post), class: 'post-links post-more-link' %>
 
-    <%= link_to "#{post.comments.count} Comments", post_path(post, anchor: 'comments-list'), class: 'post-comments-link' %>
+    <%= link_to "#{post.comments.count} Comments", post_path(post, anchor: 'comments-list'), class: 'post-links post-comments-link' %>
     
   </article>
 <% end %>
