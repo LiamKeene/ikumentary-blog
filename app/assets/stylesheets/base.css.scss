@@ -54,13 +54,22 @@ nav {
 }
 
 #branding {
-  float: right;
-  font-size: 2em;
+  display: block;
   font-family: $branding-font;
+  font-size: 2em;
+  text-align: right;
+}
+
+#tag-line {
+  color: darken($font-light-color, 10%);
+  display: block;
+  font-family: $branding-font;
+  font-size: 0.65em;
+  text-align: right;
 }
 
 #nav-site {
-  margin-top: 3em;
+  margin-top: $block-padding;
 }
 
 #nav-admin-toggle {
@@ -160,6 +169,7 @@ nav.pagination {
 }
 
 #copyright {
+  color: darken($font-light-color, 10%);
   font-size: 0.75em;
   margin-top: $block-padding;
   text-align: center;

@@ -1,19 +1,20 @@
   <header class="site cf">
     <%= link_to 'ikumentary', root_path, id: 'branding' %>
+    <span id="tag-line">parenting in japanese in australia</span>
     <a id="nav-toggle">
       <span></span>
       <span></span>
       <span></span>
     </a>
     <nav id="nav-site">
-      <%= link_to 'HOME', root_path %>
-      <%= link_to 'ABOUT', about_path %>
-      <%= link_to 'CONTACT', contact_path %>
+      <%= link_to 'home', root_path %>
+      <%= link_to 'about', about_path %>
+      <%= link_to 'contact', contact_path %>
       <% if signed_in? %>
-      <a id="nav-admin-toggle">ADMIN</a>
+      <a id="nav-admin-toggle">admin</a>
       <nav id="nav-admin">
-        <%= link_to 'Dashboard', admin_path %>
-        <%= link_to 'Sign Out', admin_sign_out_path, method: 'delete' %>
+        <%= link_to 'dashboard', admin_path %>
+        <%= link_to 'sign out', admin_sign_out_path, method: 'delete' %>
       </nav>
       <% end %>
     </nav>
