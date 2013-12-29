@@ -141,6 +141,30 @@ article {
       margin-right: $block-padding * 3;
     }
   }
+
+  &.comment {
+
+    border-bottom: 0.0625em solid #ccc;
+    margin-bottom: $block-padding;
+    padding: $block-padding;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    .comment-author {
+      display: block;
+      font-family: $post-title-font;
+    }
+
+    time {
+      font-size: 0.8em;
+    }
+
+    .comment-content {
+      margin-top: $block-padding;
+    }
+  }
 }
 
 /* Index Page Navigation */
