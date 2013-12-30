@@ -14,13 +14,13 @@ Ikumentary::Application.routes.draw do
     delete 'signout', to: 'sessions#destroy', as: 'sign_out'
   end
 
+  match '/about',     to: 'static_pages#about',     via: 'get'
+  match '/contact',   to: 'static_pages#contact',   via: 'get'
+
   resources :posts, only: [:index, :show], path: '/' do
     get 'page/:page', to: 'posts#index', on: :collection, as: 'post_page'
     resources :comments, only: [:create]
   end
-
-  match '/about',     to: 'static_pages#about',     via: 'get'
-  match '/contact',   to: 'static_pages#contact',   via: 'get'
 
   root 'posts#index'
 
