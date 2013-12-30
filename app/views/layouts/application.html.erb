@@ -15,10 +15,11 @@
     <div class="error error-<%= key %>"><%= value %></div>
     <% end %>
   </div>
-  <div>
+  <div id="content">
     <%= yield %>
   </div>
   <%= render 'layouts/footer' %>
+  <%= render 'layouts/scripts' %>
   <%= debug(params) if Rails.env.development? %>
 </body>
 </html>

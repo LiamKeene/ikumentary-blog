@@ -1,33 +1,31 @@
 <%= form_for ([@post, @comment]) do |f| %>
 
+  <h3>Something to say?</h3>
+
   <%= render 'shared/error_messages', object: f.object %>
   
   <div>
-    <%= f.label :author  do %>
-      Name <span class="required">(required)</span>
-    <% end %>
+    <%= f.label :author, class: 'screen-reader' %>
     <div class="form-input">
-      <%= f.text_field :author%>
+      <%= f.text_field :author, placeholder: 'Name (required)' %>
     </div>
   </div>
   <div>
-    <%= f.label :email do %>
-      Email <span class="required">(required)</span> <span class="nopublish">(Email never made public)</span>
-    <% end %>
+    <%= f.label :email, class: 'screen-reader' %>
     <div class="form-input">
-      <%= f.text_field :email %>
+      <%= f.text_field :email, placeholder: 'Email (required)' %>
     </div>
   </div>
   <div>
-    <%= f.label :url %>
+    <%= f.label :url, class: 'screen-reader' %>
     <div class="form-input">
-      <%= f.text_field :url %>
+      <%= f.text_field :url, placeholder: 'Website (optional)' %>
     </div>
   </div>
   <div>
-    <%= f.label :content %>
+    <%= f.label :content, class: 'screen-reader' %>
     <div class="form-input">
-      <%= f.text_area :content %>
+      <%= f.text_area :content, placeholder: 'I\'m always open to comments, lend me yours!' %>
     </div>
   </div>
   <div>

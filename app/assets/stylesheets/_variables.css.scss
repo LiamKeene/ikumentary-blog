@@ -1,0 +1,29 @@
+/* ikumentary.com - CSS Variables */
+
+/* Red Colours */
+$main-red: #8f1d20;
+$dark-red: #6b2b2d;
+$darker-red: #5d090c;
+$light-red: #c75053;
+$lighter-red: #c77072;
+
+/* Text Colours */
+$font-light-color: #f0f0f0;
+$font-dark-color: #808080;
+$font-grey-color: #333333;
+
+/* Fonts */
+$base-font-color: $font-dark-color;
+$base-font-family: Helvetica, sans-serif;
+$base-font-size: 100% !default;
+$base-line-height: 150%;
+
+$branding-font: 'KFHimajiKIDS';
+$header-font: $branding-font;
+$post-title-font: $branding-font;
+
+/* Borders */
+$single-border-width: 0.0625em;
+
+/* Margins/Padding */
+$block-padding: 0.5em;

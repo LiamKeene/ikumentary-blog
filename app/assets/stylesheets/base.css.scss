@@ -1,0 +1,257 @@
+@import 'reset';
+@import 'variables';
+@import 'fonts';
+
+/* Site-wide styles */
+body {
+  color: $base-font-color;
+  font-family: $base-font-family;
+}
+
+h1 {
+  font-size: 1.5em;
+  margin: 1em 0;
+}
+h2 {
+  font-size: 1.25em;
+  margin-bottom: $block-padding / 2;
+}
+p {
+  font-size: 1.25em;
+  line-height: 1.75em;
+  margin-bottom: $block-padding;
+}
+a {
+  color: $main-red;
+  text-decoration: none;
+
+  &:hover {
+    color: lighten($main-red, 20%);
+  }
+}
+
+header, footer {
+
+  &.site {
+    background-color: $main-red;
+    padding: $block-padding;
+  
+    a {
+      color: $font-light-color;
+      font-family: $header-font;
+    
+      &:hover {
+        color: darken($font-light-color, 10%);
+      }
+    }
+  }
+}
+
+nav {
+  a { 
+    margin: 0 $block-padding / 2;
+  }
+}
+
+#branding {
+  display: block;
+  font-family: $branding-font;
+  font-size: 2em;
+  text-align: right;
+}
+
+#tag-line {
+  color: darken($font-light-color, 10%);
+  display: block;
+  font-family: $branding-font;
+  font-size: 0.65em;
+  text-align: right;
+}
+
+#nav-site {
+  margin-top: $block-padding;
+}
+
+#nav-admin-toggle {
+  float: right;
+}
+
+#nav-admin {
+  display: none;
+
+  a {
+    display: block;
+    text-align: right;
+    margin-top: $block-padding;
+  }
+}
+
+#content {
+  border: 0.0625em solid #ccc;
+  margin: $block-padding;
+  padding: 0 $block-padding;
+}
+
+article {
+  
+  h2 {
+    font-family: $post-title-font;
+    font-size: 1.25em;
+    padding: $block-padding / 2;
+  }
+
+  &.post {
+    border-bottom: 0.0625em solid #ccc;
+    padding: $block-padding 0;
+
+    p {
+      font-size: 1em;
+
+      &.post-datetime {
+        color: darken($font-light-color, 10%);
+        font-size: 0.9em;
+        letter-spacing: 0.2em;
+        margin-left: $block-padding;
+      }
+    }
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    .post-links {
+      display: inline-block;
+      font-size: 0.85em;
+      padding: $block-padding / 2 $block-padding * 1.1;
+      text-align: center;
+
+      &:hover {
+        background: $main-red;
+        border-radius: $block-padding / 2;
+        color: #fff;
+      }
+    }
+
+    .post-more-link {
+      margin-left: $block-padding * 3;
+    }
+
+    .post-comments-link {
+      float: right;
+      margin-right: $block-padding * 3;
+    }
+  }
+
+  &.comment {
+
+    border-bottom: 0.0625em solid #ccc;
+    margin-bottom: $block-padding;
+    padding: $block-padding;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    .comment-author {
+      display: block;
+      font-family: $post-title-font;
+    }
+
+    time {
+      font-size: 0.8em;
+    }
+
+    .comment-content {
+      margin-top: $block-padding;
+    }
+  }
+}
+
+/* Comment Form */
+.screen-reader {
+  // Not sure why these are required, could be markup related
+  height: 0;
+  position: absolute;
+
+  // The Kellem method
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+#comment-form {
+
+  h3 { 
+    margin: 0 
+  }
+
+  input, textarea {
+    border: 0.125em solid #ccc;
+    border-radius: $block-padding;
+    box-sizing: border-box;
+    outline: none;
+    padding: $block-padding;
+    width: 100%;
+
+    &:focus {
+      border-color: $main-red;
+    }
+  }
+}
+
+/* Index Page Navigation */
+nav.pagination {
+  margin: $block-padding;
+
+  // Make inline-block to widen clickable area
+  span {
+    display: inline-block;
+  }
+
+  // Padding and centering of page text
+  a, span.current {
+    padding: $block-padding / 2 $block-padding * 1.1;
+    text-align: center;
+  }
+
+  // Animation for current page and hovering
+  a:hover, span.current {
+    background: $main-red;
+    border-radius: $block-padding / 2;
+    color: #fff;
+  }
+}
+
+#nav-footer {
+  float: left;
+  font-size: 0.8em;
+  margin-top: $block-padding / 2;
+}
+
+#nav-social {
+  float: right;
+
+  img {
+    $overall-size: 2em;
+
+    height: $overall-size * 0.75;
+    width: $overall-size * 0.75;
+  }
+}
+
+#copyright {
+  color: darken($font-light-color, 10%);
+  font-size: 0.7em;
+  margin-top: $block-padding;
+  text-align: center;
+}
+
+/* Clearfix - don't care about IE6/7 */
+.cf:before,
+.cf:after {
+  content: " ";
+  display: table;
+}
+.cf:after {
+  clear: both;
+}
