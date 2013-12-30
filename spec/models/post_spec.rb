@@ -40,18 +40,6 @@ describe Post do
     it { should_not be_valid }
   end
 
-  describe 'when slug is already in use' do
-    let(:post_with_same_slug) { @post.dup }
-
-    it 'should not be valid' do
-      @post.save
-      
-      post_with_same_slug.slug.upcase!
-
-      expect(post_with_same_slug).to_not be_valid
-    end
-  end
-
   describe 'when slug has mixed case' do
     before do
       post_with_mixed_case_slug = @post.dup

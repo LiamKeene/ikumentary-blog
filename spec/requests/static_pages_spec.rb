@@ -9,15 +9,6 @@ describe "StaticPages" do
     it { should have_title(full_title(page_title)) }
   end
 
-  describe "Home Page" do
-    before { visit root_path }
-    let(:heading)     { 'Ikumentary' }
-    let(:page_title)  { '' }
-    
-    it_should_behave_like 'All Static Pages'
-    it { should_not have_title('Home |') }
-  end
-
   describe "About Page" do
     before { visit about_path }
     let(:heading)     { 'About' }
