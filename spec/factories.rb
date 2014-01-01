@@ -15,7 +15,7 @@ FactoryGirl.define do
     sequence(:slug)         { |n| "post-#{n}" }
     sequence(:content)      { |n| "This is the content of post #{n}" }
     author
-    status 'Published'
+    published_at 'Published'
   end
 
   factory :comment do
