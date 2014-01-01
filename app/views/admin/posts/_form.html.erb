@@ -19,8 +19,8 @@
     <%= f.collection_select :author_id, User.all, :id, :name %>
   </div>
   <div>
-    <%= f.label :status %><br>
-    <%= f.text_field :status %>
+    <%= f.label :published_at %><br>
+    <%= f.text_field :published_at %>
   </div>
   <div>
     <%= f.submit %>

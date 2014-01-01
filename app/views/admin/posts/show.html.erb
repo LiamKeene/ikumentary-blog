@@ -20,13 +20,13 @@
 </p>
 
 <p>
-  <strong>Status:</strong>
-  <%= @post.status %>
+  <strong>Created:</strong>
+  <%= @post.created_at %>
 </p>
 
 <p>
-  <strong>Created:</strong>
-  <%= @post.created_at %>
+  <strong>Published:</strong>
+  <%= @post.published_at %>
 </p>
 
 <%= link_to 'Edit', [:edit, :admin, @post] %> |
