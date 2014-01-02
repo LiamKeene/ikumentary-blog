@@ -5,7 +5,7 @@ describe "Post Pages" do
   subject { page }
 
   describe "index" do
-    let(:posts) { FactoryGirl.create_list(:post, 10) }
+    let(:posts) { FactoryGirl.create_list(:post, 5, :published) }
     before { visit posts_path }
 
     it "should list each post" do
@@ -16,7 +16,7 @@ describe "Post Pages" do
   end
 
   describe "show post page" do
-    let(:post) { FactoryGirl.create(:post) }
+    let(:post) { FactoryGirl.create(:post, :published) }
     before { visit post_path(post) }
 
     it { should have_title(full_title(post.title)) }

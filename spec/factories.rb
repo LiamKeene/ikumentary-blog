@@ -15,7 +15,14 @@ FactoryGirl.define do
     sequence(:slug)         { |n| "post-#{n}" }
     sequence(:content)      { |n| "This is the content of post #{n}" }
     author
-    sequence(:published_at) { |n| Time.now - n.days }
+
+    trait :draft do
+      published_at nil
+    end
+
+    trait :published do
+      sequence(:published_at) { |n| Time.now - n.days }
+    end
   end
 
   factory :comment do
