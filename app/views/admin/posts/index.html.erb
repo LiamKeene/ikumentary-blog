@@ -11,8 +11,8 @@
       <th>Slug</th>
       <th>Content</th>
       <th>Author</th>
-      <th>Status</th>
       <th>Created</th>
+      <th>Published</th>
       <th></th>
       <th></th>
       <th></th>
@@ -26,8 +26,8 @@
         <td><%= post.slug %></td>
         <td><%= post.content %></td>
         <td><%= post.author.name %></td>
-        <td><%= post.status %></td>
         <td><%= post.created_at %></td>
+        <td><%= post.published_at %></td>
         <td><%= link_to 'Show', [:admin, post] %></td>
         <td><%= link_to 'Edit', [:edit, :admin, post] %></td>
         <td><%= link_to 'Destroy', [:admin, post], method: :delete, data: { confirm: 'Are you sure?' } %></td>         

@@ -44,7 +44,7 @@ class Admin::PostsController < Admin::BaseController
   private
     # Never trust params from the interwebs!  Only allow white-listed params
     def post_params
-      params.require(:post).permit(:title, :slug, :content, :author_id, :status)
+      params.require(:post).permit(:title, :slug, :content, :author_id, :published_at)
     end
 
   protected

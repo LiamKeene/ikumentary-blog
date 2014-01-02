@@ -11,7 +11,7 @@ describe Post do
   it { should respond_to(:slug) }
   it { should respond_to(:content) }
   it { should respond_to(:author_id) }
-  it { should respond_to(:status) }
+  it { should respond_to(:published_at) }
 
   it { should respond_to(:author) }
   its(:author) { should eq user }
