@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140101124026) do
+ActiveRecord::Schema.define(version: 20140102055915) do
 
   create_table "comments", force: true do |t|
     t.integer  "post_id"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 20140101124026) do
     t.datetime "updated_at"
   end
 
+  add_index "posts", ["published_at"], name: "index_posts_on_published_at"
   add_index "posts", ["slug"], name: "index_posts_on_slug", unique: true
 
   create_table "tests", force: true do |t|
