@@ -15,7 +15,7 @@ FactoryGirl.define do
     sequence(:slug)         { |n| "post-#{n}" }
     sequence(:content)      { |n| "This is the content of post #{n}" }
     author
-    published_at 'Published'
+    sequence(:published_at) { |n| Time.now - n.days }
   end
 
   factory :comment do
