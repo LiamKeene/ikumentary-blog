@@ -9,6 +9,7 @@ class Post < ActiveRecord::Base
   has_many :comments, dependent: :destroy
 
   scope :latest, -> { order('created_at DESC') }
+  scope :published, -> { where('published_at < ?', Time.now).order('published_at DESC') }
 
   paginates_per 5
 
