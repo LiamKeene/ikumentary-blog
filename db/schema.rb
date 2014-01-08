@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140108225459) do
+ActiveRecord::Schema.define(version: 20140108225828) do
 
   create_table "articles", force: true do |t|
     t.string   "title"
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20140108225459) do
   add_index "articles", ["slug"], name: "index_articles_on_slug", unique: true
 
   create_table "comments", force: true do |t|
-    t.integer  "post_id"
+    t.integer  "article_id"
     t.string   "author"
     t.string   "email"
     t.text     "content"
