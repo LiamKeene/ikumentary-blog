@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Post do
 
   let(:user) { FactoryGirl.create(:user) }
-  before { @post = user.posts.build(FactoryGirl.attributes_for(:post)) }
+  before { @post = user.articles.build(FactoryGirl.attributes_for(:post)) }
 
   subject { @post }
 
