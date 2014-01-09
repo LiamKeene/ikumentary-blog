@@ -50,6 +50,6 @@ class Admin::CommentsController < Admin::BaseController
   private
     # Never trust params from the interwebs!  Only allow white-listed params
     def comment_params
-      params.require(:comment).permit(:post_id, :author, :email, :content)
+      params.require(:comment).permit(:article_id, :author, :email, :content)
     end
 end
