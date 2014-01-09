@@ -10,11 +10,15 @@ FactoryGirl.define do
     user_type 'administrator'
   end
 
-  factory :post do
+  factory :article do
     sequence(:title)        { |n| "Post #{n}" }
     sequence(:slug)         { |n| "post-#{n}" }
     sequence(:content)      { |n| "This is the content of post #{n}" }
     author
+
+    factory :post, class: 'Post' do
+      type 'Post'
+    end
 
     trait :draft do
       published_at nil
@@ -26,7 +30,7 @@ FactoryGirl.define do
   end
 
   factory :comment do
-    post
+    article
     sequence(:author)       { |n| "Author #{n}" }
     sequence(:email)        { |n| "author_#{n}@example.com" }
     sequence(:url)          { |n| "author_#{n}.example.com" }
