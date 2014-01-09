@@ -63,10 +63,10 @@ describe Post do
   describe 'comment associations' do
     before { @post.save }
     let!(:older_comment) do
-      FactoryGirl.create(:comment, post: @post, created_at: 1.day.ago)
+      FactoryGirl.create(:comment, article: @post, created_at: 1.day.ago)
     end
     let!(:newer_comment) do
-      FactoryGirl.create(:comment, post: @post, created_at: 1.hour.ago)
+      FactoryGirl.create(:comment, article: @post, created_at: 1.hour.ago)
     end
 
     it 'should destroy associated comments' do

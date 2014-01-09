@@ -7,7 +7,7 @@ describe Comment do
   
   subject { @comment }
 
-  it { should respond_to(:post_id) }
+  it { should respond_to(:article_id) }
   it { should respond_to(:author) }
   it { should respond_to(:email) }
   it { should respond_to(:url) }
@@ -15,13 +15,13 @@ describe Comment do
   it { should respond_to(:ip_addr) }
   it { should respond_to(:agent) }
 
-  it { should respond_to(:post) }
-  its(:post) { should eq post }
+  it { should respond_to(:article) }
+  its(:article) { should eq post }
 
   it { should be_valid }
 
-  describe 'when post_id is not present' do
-    before { @comment.post_id = nil }
+  describe 'when article_id is not present' do
+    before { @comment.article_id = nil }
     it { should_not be_valid }
   end
 
