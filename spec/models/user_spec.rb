@@ -23,7 +23,7 @@ describe User do
 
   it { should respond_to(:authenticate) }
 
-  it { should respond_to(:posts) }
+  it { should respond_to(:articles) }
 
   it { should be_valid }
 
@@ -120,27 +120,27 @@ describe User do
      end
   end
 
-  describe 'post associations' do
+  describe 'article associations' do
     before { @user.save }
-    let!(:older_post) do
-      FactoryGirl.create(:post, author: @user, created_at: 1.day.ago)
+    let!(:older_article) do
+      FactoryGirl.create(:article, author: @user, created_at: 1.day.ago)
     end
-    let!(:newer_post) do
-      FactoryGirl.create(:post, author: @user, created_at: 1.hour.ago)
-    end
-
-    it 'should have the latest posts in descending order by created_at' do
-      expect(@user.posts.latest.to_a).to eq [newer_post, older_post]
+    let!(:newer_article) do
+      FactoryGirl.create(:article, author: @user, created_at: 1.hour.ago)
     end
 
-    it 'should destroy associated posts' do
-      posts = @user.posts.to_a
+    it 'should have the latest articles in descending order by created_at' do
+      expect(@user.articles.latest.to_a).to eq [newer_article, older_article]
+    end
+
+    it 'should destroy associated articles' do
+      articles = @user.articles.to_a
       @user.destroy
 
-      expect(posts).not_to be_empty
+      expect(articles).not_to be_empty
 
-      posts.each do |post|
-        expect(Post.where(id: post.id)).to be_empty
+      articles.each do |article|
+        expect(Post.where(id: article.id)).to be_empty
       end
     end
   end

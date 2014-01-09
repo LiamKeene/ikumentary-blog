@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   before_create :create_remember_token
   before_save { email.downcase! }
 
-  has_many :posts, foreign_key: 'author_id', dependent: :destroy
+  has_many :articles, foreign_key: 'author_id', dependent: :destroy
     
   has_secure_password
 
