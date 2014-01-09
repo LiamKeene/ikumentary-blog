@@ -6,6 +6,7 @@ Ikumentary::Application.routes.draw do
 
     resources :users
     resources :posts
+    resources :pages
     resources :comments
 
     resources :sessions, only: [:create]
