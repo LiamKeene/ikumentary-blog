@@ -20,6 +20,10 @@ FactoryGirl.define do
       type 'Post'
     end
 
+    factory :page, class: 'Page' do
+      type 'Page'
+    end
+
     trait :draft do
       published_at nil
     end
