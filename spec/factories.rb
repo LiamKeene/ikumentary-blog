@@ -11,9 +11,9 @@ FactoryGirl.define do
   end
 
   factory :article do
-    sequence(:title)        { |n| "Post #{n}" }
-    sequence(:slug)         { |n| "post-#{n}" }
-    sequence(:content)      { |n| "This is the content of post #{n}" }
+    sequence(:title)        { |n| "Article #{n}" }
+    sequence(:slug)         { |n| "article-#{n}" }
+    sequence(:content)      { |n| "This is the content of article #{n}" }
     author
 
     factory :post, class: 'Post' do
