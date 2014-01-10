@@ -5,8 +5,7 @@ Ikumentary::Application.routes.draw do
     get '', to: 'dashboard#index', as: '/'
 
     resources :users
-    resources :posts
-    resources :pages
+    resources :articles
     resources :comments
 
     resources :sessions, only: [:create]
