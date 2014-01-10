@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe Comment do
   
-  let(:post) { FactoryGirl.create(:post) }
-  before { @comment = post.comments.build(FactoryGirl.attributes_for(:comment)) }
+  let(:article) { FactoryGirl.create(:article) }
+  before { @comment = article.comments.build(FactoryGirl.attributes_for(:comment)) }
   
   subject { @comment }
 
@@ -16,7 +16,7 @@ describe Comment do
   it { should respond_to(:agent) }
 
   it { should respond_to(:article) }
-  its(:article) { should eq post }
+  its(:article) { should eq article }
 
   it { should be_valid }
 
