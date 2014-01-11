@@ -1,6 +1,7 @@
 class Admin::ArticlesController < Admin::BaseController
   
   before_action :find_article, only: [:show, :edit, :update, :destroy]
+  before_action :setup_sti_model, only: [:new, :create]
   
   def index
     @articles = Article.all
@@ -10,15 +11,12 @@ class Admin::ArticlesController < Admin::BaseController
   end
 
   def new
-    @article = Article.new
   end
 
   def edit
   end
 
   def create
-    @article = Article.new(article_params)
-
     if @article.save
       redirect_to [:admin, @article]
     else
@@ -26,8 +24,7 @@ class Admin::ArticlesController < Admin::BaseController
     end
   end
 
-  def update
-    
+  def update    
     if @article.update_attributes(article_params)
       redirect_to [:admin, @article]
     else
@@ -45,6 +42,18 @@ class Admin::ArticlesController < Admin::BaseController
     # Never trust params from the interwebs!  Only allow white-listed params
     def article_params
       params.require(:article).permit(:title, :slug, :content, :author_id, :published_at)
+    end
+
+    # Sets the `type` attribute from form / query string
+    def setup_sti_model
+      model = nil
+      if !params[:article].blank? and !params[:article][:type].blank?
+        model = params[:article].delete(:type).constantize.to_s
+        @article = Article.new(article_params)
+      else
+        @article = Article.new
+      end
+      @article.type = model
     end
 
   protected
