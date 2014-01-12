@@ -3,15 +3,15 @@
 <% @posts.each do |post| %>
   <article class="post">
 
-    <%= render partial: 'post_header', locals: { post: post } %>
+    <%= render partial: 'posts/post_header', locals: { post: post } %>
 
     <p>
       <%= truncate_html(post.content, length: 500, omission: ' ... ') %>
     </p>
     
-    <%= link_to 'Read More →', post_path(post), class: 'post-links post-more-link' %>
+    <%= link_to 'Read More →', article_path(post), class: 'post-links post-more-link' %>
 
-    <%= link_to "#{post.comments.count} Comments", post_path(post, anchor: 'comments-list'), class: 'post-links post-comments-link' %>
+    <%= link_to "#{post.comments.count} Comments", article_path(post, anchor: 'comments-list'), class: 'post-links post-comments-link' %>
     
   </article>
 <% end %>

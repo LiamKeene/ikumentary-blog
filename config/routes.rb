@@ -17,8 +17,8 @@ Ikumentary::Application.routes.draw do
   match '/about',     to: 'static_pages#about',     via: 'get'
   match '/contact',   to: 'static_pages#contact',   via: 'get'
 
-  resources :posts, only: [:index, :show], path: '/' do
-    get 'page/:page', to: 'posts#index', on: :collection, as: 'post_page'
+  resources :articles, only: [:index, :show], path: '/' do
+    get 'page/:page', to: 'articles#index', on: :collection
     resources :comments, only: [:create]
   end
 
