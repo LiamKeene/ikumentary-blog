@@ -1,0 +1,21 @@
+<% provide(:title, @article.title) %>
+
+<article class="article">
+
+  <%= render partial: 'articles/article_header', locals: { article: @article } %>
+
+  <p>
+    <%= @article.content.html_safe %>
+  <p>
+
+  <%= render partial: 'articles/article_footer', locals: { article: @article } %>
+
+  <div id="comments-list">
+    <%= render @article.comments %>
+  </div>
+
+  <div id="comment-form">
+    <%= render 'articles/comment_form' %>
+  </div>
+
+</article>
