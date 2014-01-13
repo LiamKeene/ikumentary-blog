@@ -95,19 +95,19 @@ nav {
 article {
   
   h2 {
-    font-family: $post-title-font;
+    font-family: $article-title-font;
     font-size: 1.25em;
     padding: $block-padding / 2;
   }
 
-  &.post {
+  &.article {
     border-bottom: 0.0625em solid #ccc;
     padding: $block-padding 0;
 
     p {
       font-size: 1em;
 
-      &.post-datetime {
+      &.article-datetime {
         color: darken($font-light-color, 10%);
         font-size: 0.9em;
         letter-spacing: 0.2em;
@@ -119,7 +119,7 @@ article {
       border-bottom: none;
     }
 
-    .post-links {
+    .article-links {
       display: inline-block;
       font-size: 0.85em;
       padding: $block-padding / 2 $block-padding * 1.1;
@@ -132,11 +132,11 @@ article {
       }
     }
 
-    .post-more-link {
+    .article-more-link {
       margin-left: $block-padding * 3;
     }
 
-    .post-comments-link {
+    .article-comments-link {
       float: right;
       margin-right: $block-padding * 3;
     }
@@ -154,7 +154,7 @@ article {
 
     .comment-author {
       display: block;
-      font-family: $post-title-font;
+      font-family: $article-title-font;
     }
 
     time {
