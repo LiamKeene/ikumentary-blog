@@ -2,8 +2,8 @@
     <div class="cf">
       <nav id="nav-footer">
         <%= link_to 'home', root_path %>
-        <%= link_to 'about', about_path %>
-        <%= link_to 'contact', contact_path %>
+        <%= link_to 'about', article_page_path('about') %>
+        <%= link_to 'contact', article_page_path('contact') %>
       </nav>
       <nav id="nav-social">
         <%= link_to image_tag('twitter.png'), 'https://twitter.com/ikumentary_blog', title: 'Ikumentary on Twitter' %>

@@ -8,8 +8,8 @@
     </a>
     <nav id="nav-site">
       <%= link_to 'home', root_path %>
-      <%= link_to 'about', about_path %>
-      <%= link_to 'contact', contact_path %>
+      <%= link_to 'about', article_page_path('about') %>
+      <%= link_to 'contact', article_page_path('contact') %>
       <% if signed_in? %>
       <a id="nav-admin-toggle">admin</a>
       <nav id="nav-admin">
