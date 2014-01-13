@@ -22,6 +22,8 @@ Ikumentary::Application.routes.draw do
     resources :comments, only: [:create]
   end
 
+  get 'pages/:id', to: 'articles#show_page', as: 'article_page'
+
   root 'posts#index'
 
   # Example of regular route:

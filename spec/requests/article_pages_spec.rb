@@ -27,11 +27,19 @@ describe 'Article Pages' do
     end
   end
 
-  describe "show post page" do
+  describe 'show a post' do
     let(:post) { FactoryGirl.create(:post, :published) }
     before { visit article_path(post) }
 
     it { should have_title(full_title(post.title)) }
     it { should have_content(post.title) }
+  end
+
+  describe 'show a page' do
+    let(:page_obj) { FactoryGirl.create(:page, :published) }
+    before { visit article_page_path(page_obj) }
+
+    it { should have_title(full_title(page_obj.title)) }
+    it { should have_content(page_obj.title) }
   end
 end
