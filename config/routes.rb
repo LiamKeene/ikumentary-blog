@@ -14,9 +14,6 @@ Ikumentary::Application.routes.draw do
     delete 'signout', to: 'sessions#destroy', as: 'sign_out'
   end
 
-  match '/about',     to: 'static_pages#about',     via: 'get'
-  match '/contact',   to: 'static_pages#contact',   via: 'get'
-
   resources :articles, only: [:index, :show], path: '/' do
     get 'page/:page', to: 'articles#index', on: :collection
     resources :comments, only: [:create]
