@@ -12,4 +12,11 @@ class ArticlesController < ApplicationController
     @comment = Comment.new
     render 'posts/show'
   end
+
+  # Show_page contains a single Page
+  def show_page
+    @page = Page.friendly.find(params[:id])
+    @comment = Comment.new
+    render 'pages/show'
+  end
 end

@@ -1,0 +1,10 @@
+    <header>
+      <h2>
+        <%= link_to page.title, article_path(page) %>
+      </h2>
+      <p class="page-datetime">
+        <time datetime="<%= page.published_at %>">
+          <%= page.published_at.strftime('%B %d, %Y').upcase %>
+        </time>
+      </p>
+    </header>
