@@ -1,0 +1,18 @@
+<% provide(:title, 'All Posts') %>
+
+<% @articles.each do |article| %>
+  <article class="article">
+
+    <%= render partial: 'articles/article_header', locals: { article: article } %>
+
+    <p>
+      <%= truncate_html(article.content, length: 500, omission: ' ... ') %>
+    </p>
+    
+    <%= link_to 'Read More →', article_path(article), class: 'article-links article-more-link' %>
+
+    <%= link_to "#{article.comments.count} Comments", article_path(article, anchor: 'comments-list'), class: 'article-links article-comments-link' %>
+    
+  </article>
+<% end %>
+<%= paginate @articles %>

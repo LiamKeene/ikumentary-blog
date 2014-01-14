@@ -1,0 +1,39 @@
+<% provide(:title, 'All Articles') %>
+
+<p><%= link_to 'New Article', [:new, :admin, :article] %></p>
+
+<h1>All Articles</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Slug</th>
+      <th>Content</th>
+      <th>Author</th>
+      <th>Created</th>
+      <th>Published</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @articles.each do |article| %>
+      <tr>
+        <td><%= article.title %></td>
+        <td><%= article.slug %></td>
+        <td><%= article.content %></td>
+        <td><%= article.author.name %></td>
+        <td><%= article.created_at %></td>
+        <td><%= article.published_at %></td>
+        <td><%= link_to 'Show', [:admin, article] %></td>
+        <td><%= link_to 'Edit', [:edit, :admin, article] %></td>
+        <td><%= link_to 'Destroy', [:admin, article], method: :delete, data: { confirm: 'Are you sure?' } %></td>         
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p><%= link_to 'New Article', [:new, :admin, :article] %></p>

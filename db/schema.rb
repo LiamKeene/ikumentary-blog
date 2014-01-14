@@ -11,10 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140102055915) do
+ActiveRecord::Schema.define(version: 20140108232538) do
+
+  create_table "articles", force: true do |t|
+    t.string   "title"
+    t.string   "slug"
+    t.text     "content"
+    t.integer  "author_id"
+    t.string   "type"
+    t.datetime "published_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "articles", ["published_at"], name: "index_articles_on_published_at"
+  add_index "articles", ["slug"], name: "index_articles_on_slug", unique: true
 
   create_table "comments", force: true do |t|
-    t.integer  "post_id"
+    t.integer  "article_id"
     t.string   "author"
     t.string   "email"
     t.text     "content"
@@ -37,19 +51,6 @@ ActiveRecord::Schema.define(version: 20140102055915) do
   add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
-
-  create_table "posts", force: true do |t|
-    t.string   "title"
-    t.string   "slug"
-    t.text     "content"
-    t.integer  "author_id"
-    t.datetime "published_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "posts", ["published_at"], name: "index_posts_on_published_at"
-  add_index "posts", ["slug"], name: "index_posts_on_slug", unique: true
 
   create_table "users", force: true do |t|
     t.string   "name"

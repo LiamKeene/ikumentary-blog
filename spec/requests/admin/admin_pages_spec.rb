@@ -23,7 +23,7 @@ describe "Admin Dashboard" do
       it { should have_content('Dashboard') }
 
       it { should have_link('Manage Users', href: admin_users_path) }
-      it { should have_link('Manage Posts', href: admin_posts_path) }
+      it { should have_link('Manage Articles', href: admin_articles_path) }
       it { should have_link('Manage Comments', href: admin_comments_path) }
     end
   end

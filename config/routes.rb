@@ -5,7 +5,7 @@ Ikumentary::Application.routes.draw do
     get '', to: 'dashboard#index', as: '/'
 
     resources :users
-    resources :posts
+    resources :articles
     resources :comments
 
     resources :sessions, only: [:create]
@@ -14,13 +14,12 @@ Ikumentary::Application.routes.draw do
     delete 'signout', to: 'sessions#destroy', as: 'sign_out'
   end
 
-  match '/about',     to: 'static_pages#about',     via: 'get'
-  match '/contact',   to: 'static_pages#contact',   via: 'get'
-
-  resources :posts, only: [:index, :show], path: '/' do
-    get 'page/:page', to: 'posts#index', on: :collection, as: 'post_page'
+  resources :articles, only: [:index, :show], path: '/' do
+    get 'page/:page', to: 'articles#index', on: :collection
     resources :comments, only: [:create]
   end
+
+  get 'pages/:id', to: 'articles#show_page', as: 'article_page'
 
   root 'posts#index'
 

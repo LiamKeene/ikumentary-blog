@@ -3,8 +3,8 @@
   <%= render 'shared/error_messages', object: f.object %>
   
   <div>
-    <%= f.label :post %><br>
-    <%= f.collection_select :post_id, Post.all, :id, :title %>
+    <%= f.label :article %><br>
+    <%= f.collection_select :article_id, Article.all, :id, :title %>
   </div>
   <div>
     <%= f.label :author %><br>
