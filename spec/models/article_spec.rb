@@ -18,6 +18,8 @@ describe Article do
 
   it { should respond_to(:comments) }
 
+  it { should respond_to(:tags) }
+
   it { should be_valid }
 
   describe 'when title is not present' do
@@ -77,6 +79,32 @@ describe Article do
 
       comments.each do |comment|
         expect(Comment.where(id: comment.id)).to be_empty
+      end
+    end
+  end
+
+  describe 'tag associations' do
+    let!(:first_tag) { FactoryGirl.create(:tag, name: 'first') }
+    let!(:second_tag) { FactoryGirl.create(:tag, name: 'second') }
+    before do
+      @article.save
+      @article.tags << first_tag
+      @article.tags << second_tag
+      @article.reload
+    end
+
+    it 'articles can be tagged' do
+      expect(@article.tags.count).to eq(2)
+      expect(@article.tags.sort_by(&:id)).to eq([first_tag, second_tag].sort_by(&:id))
+    end
+
+    it 'does not destroy tags when deleted' do
+      tags = @article.tags
+      @article.destroy
+      expect(tags).to be_empty
+
+      tags.each do |tag|
+        expect(Tag.where(id: tag.id)).not_to be_empty
       end
     end
   end
