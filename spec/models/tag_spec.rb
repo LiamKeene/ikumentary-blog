@@ -51,4 +51,16 @@ describe Tag do
       it { expect(tag_with_same_name).to_not be_valid }
     end
   end
+
+  describe '#published_articles' do
+    let(:published_article) { FactoryGirl.create(:article, :published) }
+    let(:draft_article) { FactoryGirl.create(:article, :draft) }
+    let(:article_tag) do
+      FactoryGirl.create(:tag, name: 'tag', 
+        articles: [published_article, draft_article])
+    end
+    it 'only returns published articles' do
+      expect(article_tag.published_articles.size).to eq(1)
+    end
+  end
 end

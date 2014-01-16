@@ -13,4 +13,7 @@ class Tag < ActiveRecord::Base
     self.name = self.display_name.to_url
   end
 
+  def published_articles
+    articles.published
+  end
 end
