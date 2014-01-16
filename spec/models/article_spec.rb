@@ -108,4 +108,11 @@ describe Article do
       end
     end
   end
+
+  describe '#published' do
+    let!(:pub_article) { FactoryGirl.create(:article, :published) }
+    let!(:draft_article) { FactoryGirl.create(:article, :draft) }
+
+    it { expect(Article.published.size).to eq(1) }
+  end
 end
