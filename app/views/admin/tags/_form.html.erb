@@ -1,0 +1,17 @@
+<%= form_for [:admin, @tag] do |f| %>
+  
+  <%= render 'shared/error_messages', object: f.object %>
+  
+  <div>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div>
+    <%= f.label :display_name %><br>
+    <%= f.text_field :display_name %>
+  </div>
+  <div>
+    <%= f.submit %>
+  </div>
+
+<% end %>
