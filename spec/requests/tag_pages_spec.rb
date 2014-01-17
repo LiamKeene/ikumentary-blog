@@ -10,7 +10,7 @@ describe 'Tag Pages' do
     before { visit tags_path }
 
     it 'lists all tags' do
-      expect(page).to have_selector('h2', 'All Tags')
+      expect(page).to have_selector('h1', 'All Tags')
 
       Tag.all.each do |tag|
         expect(page).to have_link(tag.display_name, href: tag_path(tag.name))
@@ -30,7 +30,7 @@ describe 'Tag Pages' do
       visit tag_path(tag.name)
     end
 
-    it { expect(page).to have_selector('h2', text: tag.display_name) }
+    it { expect(page).to have_selector('h1', text: tag.display_name) }
 
     it 'lists published articles tagged with "cool-stuff"' do
       articles.each do |art|
