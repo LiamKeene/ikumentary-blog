@@ -6,6 +6,6 @@ class TagsController < ApplicationController
 
   def show
     @tag = Tag.find_by_name(params[:id])
-    @articles = @tag.published_articles
+    @articles = @tag.published_articles.page(params[:page])
   end
 end

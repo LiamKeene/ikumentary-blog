@@ -21,6 +21,7 @@ describe 'Tag Pages' do
   describe 'show a tag' do
     let(:tag) { FactoryGirl.create(:tag, name: 'cool-stuff', display_name: 'Cool Stuff') }
     let(:articles) { FactoryGirl.create_list(:article, 2, :published) }
+    let(:extra_articles) { FactoryGirl.create_list(:article, 10, :published) }
     let(:draft) { FactoryGirl.create(:article, :draft) }
 
     before do
@@ -39,6 +40,13 @@ describe 'Tag Pages' do
 
     it 'does not list draft articles tagged with "cool-stuff"' do
       expect(page).not_to have_selector('h2', text: draft.title)
+    end
+
+    it 'paginates tagged articles' do
+      tag.articles << extra_articles
+      visit tag_path(tag.name)
+      
+      expect(page).to have_selector('nav.pagination')
     end
   end
 end
