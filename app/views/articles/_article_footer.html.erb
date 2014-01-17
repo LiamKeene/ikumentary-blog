@@ -1,10 +1,12 @@
     <footer>
-      <div class="article-meta">
-        <p>
-          <%= link_to "#{article.comments.count} Comments", "#comments-list", title: "Comments about #{article.title}" %>
+      <div class="article-meta cf">
+        <p id="article-comments">
+        <%= link_to "#{article.comments.count} Comments", "#comments-list", title: "Comments about #{article.title}" %>
         </p>
+        <p id="article-tags">
         <% unless article.tags.empty? -%>
           Tagged <%= linked_tag_list(article.tags) %>
         <% end %>
+        </p>
       </div>
     </footer>

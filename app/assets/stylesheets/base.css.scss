@@ -167,6 +167,15 @@ article {
   }
 }
 
+#article-comments { 
+  float: left; 
+  width: 50%;
+}
+#article-tags { 
+  float: right; 
+  width: 50%;
+}
+
 /* Comment Form */
 .screen-reader {
   // Not sure why these are required, could be markup related
