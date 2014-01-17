@@ -43,6 +43,11 @@ FactoryGirl.define do
     agent                   { ['Chrome', 'Firefox', 'Safari'].sample }
   end
 
+  factory :category do
+    sequence(:name)         { |n| "category-#{n}" }
+    sequence(:display_name) { |n| "Category #{n}" }
+  end
+
   factory :tag do
     sequence(:name)         { |n| "tag-#{n}" }
     sequence(:display_name) { |n| "Tag #{n}" }
