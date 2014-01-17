@@ -42,4 +42,9 @@ FactoryGirl.define do
     sequence(:ip_addr)      { |n| "12#{n}.12.34.#{n}#{n}#{n}"}
     agent                   { ['Chrome', 'Firefox', 'Safari'].sample }
   end
+
+  factory :tag do
+    sequence(:name)         { |n| "tag-#{n}" }
+    sequence(:display_name) { |n| "Tag #{n}" }
+  end
 end
