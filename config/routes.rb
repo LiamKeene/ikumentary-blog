@@ -16,6 +16,10 @@ Ikumentary::Application.routes.draw do
     delete 'signout', to: 'sessions#destroy', as: 'sign_out'
   end
 
+  resources :categories, only: [:index, :show] do
+    get ':id/page/:page', :to => 'categories#show', on: :collection
+  end
+
   resources :tags, only: [:index, :show] do
     get ':id/page/:page', :to => 'tags#show', on: :collection
   end
