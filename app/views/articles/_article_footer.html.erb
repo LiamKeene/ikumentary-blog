@@ -1,5 +1,8 @@
     <footer>
       <div class="article-meta cf">
+        <p id="article-categories">
+          Posted in <%= linked_category_list(article.categories) %>
+        </p>
         <p id="article-comments">
         <%= link_to "#{article.comments.count} Comments", "#comments-list", title: "Comments about #{article.title}" %>
         </p>
