@@ -5,7 +5,7 @@ describe 'Tag Pages' do
   subject { page }
 
   describe 'index' do
-    let!(:tags) { FactoryGirl.create_list(:tag, 5) }
+    let(:tags) { FactoryGirl.create_list(:tag, 5) }
 
     before { visit tags_path }
 
