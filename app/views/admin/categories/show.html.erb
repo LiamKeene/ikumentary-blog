@@ -1,0 +1,18 @@
+<% provide(:title, @category.display_name) %>
+<p>
+  <strong>Name:</strong>
+  <%= @category.name %>
+</p>
+
+<p>
+  <strong>Display Name:</strong>
+  <%= @category.display_name %>
+</p>
+
+<p>
+  <strong>Created:</strong>
+  <%= @category.created_at %>
+</p>
+
+<%= link_to 'Edit', [:edit, :admin, @category] %> |
+<%= link_to 'Back', [:admin, :categories] %>

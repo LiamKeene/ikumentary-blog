@@ -18,6 +18,7 @@ describe Article do
 
   it { should respond_to(:comments) }
 
+  it { should respond_to(:categories) }
   it { should respond_to(:tags) }
 
   it { should be_valid }
