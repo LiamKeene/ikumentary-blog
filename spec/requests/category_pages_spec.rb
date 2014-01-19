@@ -7,9 +7,7 @@ describe 'Category Pages' do
   describe 'index' do
     let(:categories) { FactoryGirl.create_list(:category, 5) }
     
-    let(:heading) { 'All Categories' }
-    let(:content) { 'All Categories' }
-    it_behaves_like 'Ikumentary Pages'
+    it { expect(page).to have_title_and_content('All Categories', 'All Categories') }
 
     before { visit categories_path }
 
@@ -27,9 +25,7 @@ describe 'Category Pages' do
     let(:extra_articles) { FactoryGirl.create_list(:article, 10, :published) }
     let(:draft) { FactoryGirl.create(:article, :draft) }
 
-    let(:heading) { category.display_name }
-    let(:content) { category.display_name }
-    it_behaves_like 'Ikumentary Pages'
+    it { expect(page).to have_title_and_content(category.display_name, category.display_name) }
 
     before do
       category.articles << articles

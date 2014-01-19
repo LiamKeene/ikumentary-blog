@@ -10,9 +10,7 @@ describe 'Article Pages' do
       let!(:posts) { FactoryGirl.create_list(:post, 5, :published) }
       before { visit articles_path }
 
-      let(:heading) { 'All Posts' }
-      let(:content) { '' }
-      it_behaves_like 'Ikumentary Pages'
+      it { expect(page).to have_title_and_content('All Posts', '') }
 
       it 'lists each post' do
         Post.all.each do |post|
@@ -35,17 +33,13 @@ describe 'Article Pages' do
     let(:post) { FactoryGirl.create(:post, :published) }
     before { visit article_path(post) }
 
-    let(:heading) { post.title }
-    let(:content) { post.title }
-    it_behaves_like 'Ikumentary Pages'
+    it { expect(page).to have_title_and_content(post.title, post.title) }
   end
 
   describe 'show a page' do
     let(:page_obj) { FactoryGirl.create(:page, :published) }
     before { visit article_page_path(page_obj) }
 
-    let(:heading) { page_obj.title }
-    let(:content) { page_obj.title }
-    it_behaves_like 'Ikumentary Pages'
+    it { expect(page).to have_title_and_content(page_obj.title, page_obj.title) }
   end
 end

@@ -19,9 +19,7 @@ describe "Admin Dashboard" do
         sign_in(user)
       end
 
-      let(:heading) { 'Dashboard' }
-      let(:content) { 'Dashboard' }
-      it_behaves_like 'Ikumentary Pages'
+      it { expect(page).to have_title_and_content('Dashboard', 'Dashboard') }
 
       it { should have_link('Manage Users', href: admin_users_path) }
       it { should have_link('Manage Articles', href: admin_articles_path) }

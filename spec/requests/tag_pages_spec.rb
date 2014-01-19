@@ -6,11 +6,9 @@ describe 'Tag Pages' do
 
   describe 'index' do
     let(:tags) { FactoryGirl.create_list(:tag, 5) }
-
-    let(:heading) { 'All Tags' }
-    let(:content) { 'All Tags' }
-    it_behaves_like 'Ikumentary Pages'
     before { visit tags_path }
+
+    it { expect(page).to have_title_and_content('All Tags', 'All Tags') }
 
     it 'lists all tags' do
 
@@ -26,9 +24,7 @@ describe 'Tag Pages' do
     let(:extra_articles) { FactoryGirl.create_list(:article, 10, :published) }
     let(:draft) { FactoryGirl.create(:article, :draft) }
 
-    let(:heading) { tag.display_name }
-    let(:content) { tag.display_name }
-    it_behaves_like 'Ikumentary Pages'
+    it { expect(page).to have_title_and_content(tag.display_name, tag.display_name) }
 
     before do
       tag.articles << articles

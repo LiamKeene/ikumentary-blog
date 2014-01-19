@@ -7,9 +7,7 @@ describe "Authentication" do
   describe "signin page" do
     before { visit admin_sign_in_path }
 
-    let(:heading) { 'Sign In' }
-    let(:content) { 'Sign In' }
-    it_behaves_like 'Ikumentary Pages'
+    it { expect(page).to have_title_and_content('Sign In', 'Sign In') }
 
     describe "with invalid information" do
       before { click_button 'Sign In' }
