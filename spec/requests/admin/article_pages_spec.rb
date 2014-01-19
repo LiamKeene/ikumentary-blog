@@ -10,8 +10,9 @@ describe "Article Pages" do
     let(:articles) { FactoryGirl.create_list(:article, 5) }
     before { visit admin_articles_path }
 
-    it { should have_title(full_title('All Articles')) }
-    it { should have_content('All Articles') }
+    let(:heading) { 'All Articles' }
+    let(:content) { 'All Articles' }
+    it_behaves_like 'Ikumentary Pages'
 
     it "should tabulate each article" do
       Article.all.each do |article|
@@ -23,8 +24,9 @@ describe "Article Pages" do
   describe "new article page" do
     before { visit new_admin_article_path }
 
-    it { should have_title(full_title('New Article')) }
-    it { should have_content('New Article') }
+    let(:heading) { 'New Article' }
+    let(:content) { 'New Article' }
+    it_behaves_like 'Ikumentary Pages'
   end
 
   describe "show article page" do
@@ -39,8 +41,9 @@ describe "Article Pages" do
     let(:article) { FactoryGirl.create(:article) }
     before { visit edit_admin_article_path(article) }
 
-    it { should have_title(full_title("Edit Article")) }
-    it { should have_content("Edit Article") }
+    let(:heading) { 'Edit Article' }
+    let(:content) { 'Edit Article' }
+    it_behaves_like 'Ikumentary Pages'
   end
 
 end

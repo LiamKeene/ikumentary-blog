@@ -10,8 +10,9 @@ describe "User Pages" do
     let(:users) { FactoryGirl.create_list(:user, 5) }
     before { visit admin_users_path }
 
-    it { should have_title(full_title('All Users')) }
-    it { should have_content('All Users') }
+    let(:heading) { 'All Users' }
+    let(:content) { 'All Users' }
+    it_behaves_like 'Ikumentary Pages'
 
     it "should tabulate each user" do
       User.all.each do |user|
@@ -23,8 +24,9 @@ describe "User Pages" do
   describe "new user page" do
     before { visit new_admin_user_path }
 
-    it { should have_title(full_title('New User')) }
-    it { should have_content('New User') }
+    let(:heading) { 'New User' }
+    let(:content) { 'New User' }
+    it_behaves_like 'Ikumentary Pages'
   end
 
   describe "show user page" do
@@ -39,8 +41,9 @@ describe "User Pages" do
     let(:user) { FactoryGirl.create(:user) }
     before { visit edit_admin_user_path(user) }
 
-    it { should have_title(full_title("Edit User")) }
-    it { should have_content("Edit User") }
+    let(:heading) { 'Edit User' }
+    let(:content) { 'Edit User' }
+    it_behaves_like 'Ikumentary Pages'
   end
 
 end

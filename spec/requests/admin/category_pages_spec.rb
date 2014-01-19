@@ -8,8 +8,9 @@ describe 'Category Pages' do
     let(:categories) { FactoryGirl.create_list(:category, 5) }
     before { visit admin_categories_path }
 
-    it { should have_title(full_title('All Categories')) }
-    it { should have_content('All Categories') }
+    let(:heading) { 'All Categories' }
+    let(:content) { 'All Categories' }
+    it_behaves_like 'Ikumentary Pages'
 
     it 'should tabulate each category' do
       Category.all.each do |category|
@@ -21,8 +22,9 @@ describe 'Category Pages' do
   describe 'new category page' do
     before { visit new_admin_category_path }
 
-    it { should have_title(full_title('New Category')) }
-    it { should have_content('New Category') }
+    let(:heading) { 'New Category' }
+    let(:content) { 'New Category' }
+    it_behaves_like 'Ikumentary Pages'
   end
 
   describe 'show category page' do
@@ -37,7 +39,8 @@ describe 'Category Pages' do
     let(:category) { FactoryGirl.create(:category) }
     before { visit edit_admin_category_path(category) }
 
-    it { should have_title(full_title('Edit Category')) }
-    it { should have_content('Edit Category') }
+    let(:heading) { 'Edit Category' }
+    let(:content) { 'Edit Category' }
+    it_behaves_like 'Ikumentary Pages'
   end
 end

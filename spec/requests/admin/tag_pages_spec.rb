@@ -8,8 +8,9 @@ describe 'Tag Pages' do
     let(:tags) { FactoryGirl.create_list(:tag, 5) }
     before { visit admin_tags_path }
 
-    it { should have_title(full_title('All Tags')) }
-    it { should have_content('All Tags') }
+    let(:heading) { 'All Tags' }
+    let(:content) { 'All Tags' }
+    it_behaves_like 'Ikumentary Pages'
 
     it 'should tabulate each tag' do
       Tag.all.each do |tag|
@@ -21,8 +22,9 @@ describe 'Tag Pages' do
   describe 'new tag page' do
     before { visit new_admin_tag_path }
 
-    it { should have_title(full_title('New Tag')) }
-    it { should have_content('New Tag') }
+    let(:heading) { 'New Tag' }
+    let(:content) { 'New Tag' }
+    it_behaves_like 'Ikumentary Pages'
   end
 
   describe 'show tag page' do
@@ -37,7 +39,8 @@ describe 'Tag Pages' do
     let(:tag) { FactoryGirl.create(:tag) }
     before { visit edit_admin_tag_path(tag) }
 
-    it { should have_title(full_title('Edit Tag')) }
-    it { should have_content('Edit Tag') }
+    let(:heading) { 'Edit Tag' }
+    let(:content) { 'Edit Tag' }
+    it_behaves_like 'Ikumentary Pages'
   end
 end

@@ -10,6 +10,10 @@ describe 'Article Pages' do
       let!(:posts) { FactoryGirl.create_list(:post, 5, :published) }
       before { visit articles_path }
 
+      let(:heading) { 'All Posts' }
+      let(:content) { '' }
+      it_behaves_like 'Ikumentary Pages'
+
       it 'lists each post' do
         Post.all.each do |post|
           expect(page).to have_selector('div', text: post.title)
@@ -31,15 +35,17 @@ describe 'Article Pages' do
     let(:post) { FactoryGirl.create(:post, :published) }
     before { visit article_path(post) }
 
-    it { should have_title(full_title(post.title)) }
-    it { should have_content(post.title) }
+    let(:heading) { post.title }
+    let(:content) { post.title }
+    it_behaves_like 'Ikumentary Pages'
   end
 
   describe 'show a page' do
     let(:page_obj) { FactoryGirl.create(:page, :published) }
     before { visit article_page_path(page_obj) }
 
-    it { should have_title(full_title(page_obj.title)) }
-    it { should have_content(page_obj.title) }
+    let(:heading) { page_obj.title }
+    let(:content) { page_obj.title }
+    it_behaves_like 'Ikumentary Pages'
   end
 end

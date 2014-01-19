@@ -19,8 +19,9 @@ describe "Admin Dashboard" do
         sign_in(user)
       end
 
-      it { should have_title(full_title('Dashboard')) }
-      it { should have_content('Dashboard') }
+      let(:heading) { 'Dashboard' }
+      let(:content) { 'Dashboard' }
+      it_behaves_like 'Ikumentary Pages'
 
       it { should have_link('Manage Users', href: admin_users_path) }
       it { should have_link('Manage Articles', href: admin_articles_path) }
