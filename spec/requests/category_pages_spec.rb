@@ -5,12 +5,13 @@ describe 'Category Pages' do
   subject { page }
 
   describe 'index' do
-    let!(:categories) { FactoryGirl.create_list(:category, 5) }
+    let(:categories) { FactoryGirl.create_list(:category, 5) }
+    
+    it { expect(page).to have_title_and_content('All Categories', 'All Categories') }
 
     before { visit categories_path }
 
     it 'lists all categories' do
-      expect(page).to have_selector('h1', 'All Tags')
 
       Tag.all.each do |category|
         expect(page).to have_link(category.display_name, href: category_path(category.name))
@@ -24,13 +25,13 @@ describe 'Category Pages' do
     let(:extra_articles) { FactoryGirl.create_list(:article, 10, :published) }
     let(:draft) { FactoryGirl.create(:article, :draft) }
 
+    it { expect(page).to have_title_and_content(category.display_name, category.display_name) }
+
     before do
       category.articles << articles
       category.articles << draft
       visit category_path(category.name)
     end
-
-    it { expect(page).to have_selector('h1', text: category.display_name) }
 
     it 'lists published articles categorised under "cool-stuff"' do
       articles.each do |art|

@@ -19,8 +19,7 @@ describe "Admin Dashboard" do
         sign_in(user)
       end
 
-      it { should have_title(full_title('Dashboard')) }
-      it { should have_content('Dashboard') }
+      it { expect(page).to have_title_and_content('Dashboard', 'Dashboard') }
 
       it { should have_link('Manage Users', href: admin_users_path) }
       it { should have_link('Manage Articles', href: admin_articles_path) }

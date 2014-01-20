@@ -8,8 +8,7 @@ describe 'Category Pages' do
     let(:categories) { FactoryGirl.create_list(:category, 5) }
     before { visit admin_categories_path }
 
-    it { should have_title(full_title('All Categories')) }
-    it { should have_content('All Categories') }
+    it { expect(page).to have_title_and_content('All Categories', 'All Categories') }
 
     it 'should tabulate each category' do
       Category.all.each do |category|
@@ -21,23 +20,20 @@ describe 'Category Pages' do
   describe 'new category page' do
     before { visit new_admin_category_path }
 
-    it { should have_title(full_title('New Category')) }
-    it { should have_content('New Category') }
+    it { expect(page).to have_title_and_content('New Category', 'New Category') }
   end
 
   describe 'show category page' do
     let(:category) { FactoryGirl.create(:category) }
     before { visit admin_category_path(category) }
 
-    it { should have_title(full_title(category.display_name)) }
-    it { should have_content(category.name) }
+    it { expect(page).to have_title_and_content(category.display_name, category.name) }
   end
 
   describe 'edit user page' do
     let(:category) { FactoryGirl.create(:category) }
     before { visit edit_admin_category_path(category) }
 
-    it { should have_title(full_title('Edit Category')) }
-    it { should have_content('Edit Category') }
+    it { expect(page).to have_title_and_content('Edit Category', 'Edit Category') }
   end
 end

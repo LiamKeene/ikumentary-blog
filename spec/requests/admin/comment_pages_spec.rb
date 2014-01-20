@@ -10,8 +10,7 @@ describe "Comment Pages" do
     let(:comments) { FactoryGirl.create_list(:comment, 5) }
     before { visit admin_comments_path }
 
-    it { should have_title(full_title('All Comments')) }
-    it { should have_content('All Comments') }
+    it { expect(page).to have_title_and_content('All Comments', 'All Comments') }
 
     it "should tabulate each comment" do
       Comment.all.each do |comment|
@@ -23,8 +22,7 @@ describe "Comment Pages" do
   describe "new comment page" do
     before { visit new_admin_comment_path }
 
-    it { should have_title(full_title('New Comment')) }
-    it { should have_content('New Comment') }
+    it { expect(page).to have_title_and_content('New Comment', 'New Comment') }
 
     it { should_not have_selector('input[name="comment[ip_addr]"]') }
     it { should_not have_selector('input[name="comment[agent]"]') }
@@ -34,16 +32,14 @@ describe "Comment Pages" do
     let(:comment) { FactoryGirl.create(:comment) }
     before { visit admin_comment_path(comment) }
 
-    it { should have_title(full_title('Comment')) }
-    it { should have_content(comment.content) }
+    it { expect(page).to have_title_and_content('Comment', comment.content) }
   end
 
   describe "edit comment page" do
     let(:comment) { FactoryGirl.create(:comment) }
     before { visit edit_admin_comment_path(comment) }
 
-    it { should have_title(full_title("Edit Comment")) }
-    it { should have_content("Edit Comment") }
+    it { expect(page).to have_title_and_content('Edit Comment', 'Edit Comment') }
 
     it { should have_selector('input[name="comment[ip_addr]"]') }
     it { should have_selector('input[name="comment[agent]"]') }

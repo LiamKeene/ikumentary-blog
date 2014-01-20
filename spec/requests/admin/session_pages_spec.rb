@@ -7,8 +7,7 @@ describe "Authentication" do
   describe "signin page" do
     before { visit admin_sign_in_path }
 
-    it { should have_title(full_title('Sign In')) }
-    it { should have_content('Sign In') }
+    it { expect(page).to have_title_and_content('Sign In', 'Sign In') }
 
     describe "with invalid information" do
       before { click_button 'Sign In' }

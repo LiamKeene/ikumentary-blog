@@ -10,8 +10,7 @@ describe "User Pages" do
     let(:users) { FactoryGirl.create_list(:user, 5) }
     before { visit admin_users_path }
 
-    it { should have_title(full_title('All Users')) }
-    it { should have_content('All Users') }
+    it { expect(page).to have_title_and_content('All Users', 'All Users') }
 
     it "should tabulate each user" do
       User.all.each do |user|
@@ -23,24 +22,21 @@ describe "User Pages" do
   describe "new user page" do
     before { visit new_admin_user_path }
 
-    it { should have_title(full_title('New User')) }
-    it { should have_content('New User') }
+    it { expect(page).to have_title_and_content('New User', 'New User') }
   end
 
   describe "show user page" do
     let(:user) { FactoryGirl.create(:user) }
     before { visit admin_user_path(user) }
 
-    it { should have_title(full_title(user.name)) }
-    it { should have_content(user.name) }
+    it { expect(page).to have_title_and_content(user.name, user.name) }
   end
 
   describe "edit user page" do
     let(:user) { FactoryGirl.create(:user) }
     before { visit edit_admin_user_path(user) }
 
-    it { should have_title(full_title("Edit User")) }
-    it { should have_content("Edit User") }
+    it { expect(page).to have_title_and_content('Edit User', 'Edit User') }
   end
 
 end

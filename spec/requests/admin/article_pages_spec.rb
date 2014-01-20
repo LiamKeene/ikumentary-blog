@@ -10,8 +10,7 @@ describe "Article Pages" do
     let(:articles) { FactoryGirl.create_list(:article, 5) }
     before { visit admin_articles_path }
 
-    it { should have_title(full_title('All Articles')) }
-    it { should have_content('All Articles') }
+    it { expect(page).to have_title_and_content('All Articles', 'All Articles') }
 
     it "should tabulate each article" do
       Article.all.each do |article|
@@ -23,24 +22,21 @@ describe "Article Pages" do
   describe "new article page" do
     before { visit new_admin_article_path }
 
-    it { should have_title(full_title('New Article')) }
-    it { should have_content('New Article') }
+    it { expect(page).to have_title_and_content('New Article', 'New Article') }
   end
 
   describe "show article page" do
     let(:article) { FactoryGirl.create(:article) }
     before { visit admin_article_path(article) }
 
-    it { should have_title(full_title(article.title)) }
-    it { should have_content(article.title) }
+    it { expect(page).to have_title_and_content(article.title, article.title) }
   end
 
   describe "edit article page" do
     let(:article) { FactoryGirl.create(:article) }
     before { visit edit_admin_article_path(article) }
 
-    it { should have_title(full_title("Edit Article")) }
-    it { should have_content("Edit Article") }
+    it { expect(page).to have_title_and_content('Edit Article', 'Edit Article') }
   end
 
 end

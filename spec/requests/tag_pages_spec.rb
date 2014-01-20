@@ -5,12 +5,12 @@ describe 'Tag Pages' do
   subject { page }
 
   describe 'index' do
-    let!(:tags) { FactoryGirl.create_list(:tag, 5) }
-
+    let(:tags) { FactoryGirl.create_list(:tag, 5) }
     before { visit tags_path }
 
+    it { expect(page).to have_title_and_content('All Tags', 'All Tags') }
+
     it 'lists all tags' do
-      expect(page).to have_selector('h1', 'All Tags')
 
       Tag.all.each do |tag|
         expect(page).to have_link(tag.display_name, href: tag_path(tag.name))
@@ -23,6 +23,8 @@ describe 'Tag Pages' do
     let(:articles) { FactoryGirl.create_list(:article, 2, :published) }
     let(:extra_articles) { FactoryGirl.create_list(:article, 10, :published) }
     let(:draft) { FactoryGirl.create(:article, :draft) }
+
+    it { expect(page).to have_title_and_content(tag.display_name, tag.display_name) }
 
     before do
       tag.articles << articles

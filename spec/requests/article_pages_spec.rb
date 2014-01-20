@@ -10,6 +10,8 @@ describe 'Article Pages' do
       let!(:posts) { FactoryGirl.create_list(:post, 5, :published) }
       before { visit articles_path }
 
+      it { expect(page).to have_title_and_content('All Posts', '') }
+
       it 'lists each post' do
         Post.all.each do |post|
           expect(page).to have_selector('div', text: post.title)
@@ -31,15 +33,13 @@ describe 'Article Pages' do
     let(:post) { FactoryGirl.create(:post, :published) }
     before { visit article_path(post) }
 
-    it { should have_title(full_title(post.title)) }
-    it { should have_content(post.title) }
+    it { expect(page).to have_title_and_content(post.title, post.title) }
   end
 
   describe 'show a page' do
     let(:page_obj) { FactoryGirl.create(:page, :published) }
     before { visit article_page_path(page_obj) }
 
-    it { should have_title(full_title(page_obj.title)) }
-    it { should have_content(page_obj.title) }
+    it { expect(page).to have_title_and_content(page_obj.title, page_obj.title) }
   end
 end
