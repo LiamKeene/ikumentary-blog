@@ -10,6 +10,9 @@ module Grouping
     # Groupings have and belongs to many Articles
     has_and_belongs_to_many :articles, -> { order('created_at DESC') }
 
+    # Scope to return unique Groupings that contain Articles
+    scope :with_articles, -> { joins(:articles).uniq }
+
     # Groupings all have the :name sttribute
     validates :name, presence: true, uniqueness: true
   end

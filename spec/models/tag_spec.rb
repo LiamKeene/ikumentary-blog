@@ -52,15 +52,34 @@ describe Tag do
     end
   end
 
-  describe '#published_articles' do
-    let(:published_article) { FactoryGirl.create(:article, :published) }
+  context 'with articles' do
+    # Create two published articles with same tag, so we can test
+    # that unique tags with articles are returned
+    let(:pub_article) { FactoryGirl.create(:article, :published) }
+    let(:pub_article_1) { FactoryGirl.create(:article, :published) }
     let(:draft_article) { FactoryGirl.create(:article, :draft) }
-    let(:article_tag) do
+    let!(:article_tag) do
       FactoryGirl.create(:tag, name: 'tag', 
-        articles: [published_article, draft_article])
+        articles: [pub_article, pub_article_1, draft_article])
     end
-    it 'only returns published articles' do
-      expect(article_tag.published_articles.size).to eq(1)
+    let(:empty_tag) { FactoryGirl.create(:tag) }
+
+    describe '#published_articles' do
+      it 'returns published articles' do
+        expect(article_tag.published_articles.size).to eq(2)
+      end
+      it 'does not return draft articles' do
+        expect(article_tag.published_articles).not_to include(draft_article)
+      end
+    end
+
+    describe '.with_articles' do
+      it 'returns unique tags with articles' do
+        expect(Tag.with_articles.size).to eq(1)
+      end
+      it 'does not return tags without articles' do
+        expect(Tag.with_articles).not_to include(empty_tag)
+      end
     end
   end
 end

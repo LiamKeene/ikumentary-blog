@@ -45,22 +45,41 @@ describe Category do
       it { expect(category_with_spaces.name).to eq('category-with-spaces') }
     end
 
-    describe 'categorys are unique' do
+    describe 'categories are unique' do
       let(:category_with_same_name) { @category.dup }
 
       it { expect(category_with_same_name).to_not be_valid }
     end
   end
 
-  describe '#published_articles' do
-    let(:published_article) { FactoryGirl.create(:article, :published) }
+  context 'with articles' do
+    # Create two published articles with same category, so we can test
+    # that unique categories with articles are returned
+    let(:pub_article) { FactoryGirl.create(:article, :published) }
+    let(:pub_article_1) { FactoryGirl.create(:article, :published) }
     let(:draft_article) { FactoryGirl.create(:article, :draft) }
-    let(:article_category) do
+    let!(:article_category) do
       FactoryGirl.create(:category, name: 'category', 
-        articles: [published_article, draft_article])
+        articles: [pub_article, pub_article_1, draft_article])
     end
-    it 'only returns published articles' do
-      expect(article_category.published_articles.size).to eq(1)
+    let(:empty_category) { FactoryGirl.create(:category) }
+
+    describe '#published_articles' do
+      it 'returns published articles' do
+        expect(article_category.published_articles.size).to eq(2)
+      end
+      it 'does not return draft articles' do
+        expect(article_category.published_articles).not_to include(draft_article)
+      end
+    end
+
+    describe '.with_articles' do
+      it 'returns unique categories with articles' do
+        expect(Category.with_articles.size).to eq(1)
+      end
+      it 'does not return categories without articles' do
+        expect(Category.with_articles).not_to include(empty_category)
+      end
     end
   end
 end
