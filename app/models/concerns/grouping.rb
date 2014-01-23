@@ -11,7 +11,9 @@ module Grouping
     has_and_belongs_to_many :articles, -> { order('created_at DESC') }
 
     # Scope to return unique Groupings that contain Articles
-    scope :with_articles, -> { joins(:articles).uniq }
+    scope :with_articles, -> do
+      joins(:articles).where('published_at < ?', Time.now).uniq
+    end
 
     # Groupings all have the :name sttribute
     validates :name, presence: true, uniqueness: true

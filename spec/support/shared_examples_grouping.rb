@@ -58,6 +58,10 @@ shared_examples_for 'a Grouping model' do
       create(factory, name: 'grouping', 
         articles: pub_articles << draft_article)
     end
+    let!(:draft_grouping) do
+      create(factory, name: 'drafts',
+        articles: [draft_article])
+    end
     let(:empty_grouping) { create(factory) }
 
     describe '#published_articles' do
@@ -76,6 +80,9 @@ shared_examples_for 'a Grouping model' do
       end
       it 'does not return groupings without articles' do
         expect(model.with_articles).not_to include(empty_grouping)
+      end
+      it 'does not return groupings without published articles' do
+        expect(model.with_articles).not_to include(draft_grouping)
       end
     end
   end
