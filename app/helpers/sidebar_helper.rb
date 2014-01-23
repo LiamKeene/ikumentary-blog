@@ -1,15 +1,17 @@
 module SidebarHelper
-  def category_navigation_links
-    # Categories with published articles
-    links_array = Category.with_articles.map do |category|
-      [category.display_name, category_path(category.name)]
+
+  def grouping_navigation_links(grouping_class)
+    # Groupings published articles
+    links_array = grouping_class.with_articles.map do |grp|
+      [grp.display_name, url_for(grp)]
     end
   end
 
+  def category_navigation_links
+    grouping_navigation_links(Category)
+  end
+
   def tag_navigation_links
-    # Tags with published articles
-    links_array = Tag.with_articles.map do |tag|
-      [tag.display_name, tag_path(tag.name)]
-    end
+    grouping_navigation_links(Tag)
   end
 end

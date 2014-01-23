@@ -87,3 +87,39 @@ shared_examples_for 'a Grouping model' do
     end
   end
 end
+
+shared_examples_for 'grouping navigation links' do
+
+  describe 'returns an array of URL name and path hashes' do
+
+    let(:ham) { create(factory, name: 'ham', display_name: 'Ham') }
+    let(:spam) { create(factory, name: 'spam', display_name: 'Spam') }
+    let(:eggs) { create(factory, name: 'eggs', display_name: 'Eggs') }
+
+    let(:pub_art1) { create(:article, :published) }
+    let(:pub_art2) { create(:article, :published) }
+    let(:pub_art3) { create(:article, :published) }
+    
+    let(:expected_links) { [] }
+    let(:actual_links) { grouping_navigation_links(model) }
+
+    before do
+      # Assign articles
+      ham.articles << pub_art1
+      spam.articles << pub_art2
+      eggs.articles << pub_art3
+
+      expected_links.append(
+        [ham.display_name, url_for(ham)]
+      ).append(
+        [spam.display_name, url_for(spam)]
+      ).append(
+        [eggs.display_name, url_for(eggs)]
+      )
+    end
+
+    it 'returns an array of URL name and path hashes' do
+      expect(actual_links).to eq(expected_links)
+    end
+  end
+end
