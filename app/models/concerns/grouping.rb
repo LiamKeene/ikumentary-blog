@@ -12,7 +12,10 @@ module Grouping
 
     # Scope to return unique Groupings that contain Articles
     scope :with_articles, -> do
-      joins(:articles).where('published_at < ?', Time.now).uniq
+      joins(:articles)
+      .where('published_at < ?', Time.now)
+      .order('display_name')
+      .uniq
     end
 
     # Groupings all have the :name sttribute

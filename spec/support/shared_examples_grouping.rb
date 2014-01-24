@@ -54,12 +54,16 @@ shared_examples_for 'a Grouping model' do
     end
     let(:draft_article) { create(:article, :draft) }
   
-    let!(:grouping) do
-      create(factory, display_name: 'grouping', 
+    let!(:second_group) do
+      create(factory, display_name: 'Second Group',
+        articles: pub_articles)
+    end
+    let!(:first_group) do
+      create(factory, display_name: 'First Group',
         articles: pub_articles << draft_article)
     end
     let!(:draft_grouping) do
-      create(factory, display_name: 'drafts',
+      create(factory, display_name: 'Drafts',
         articles: [draft_article])
     end
     let(:empty_grouping) { create(factory) }
@@ -67,16 +71,19 @@ shared_examples_for 'a Grouping model' do
     describe '#published_articles' do
 
       it 'returns published articles' do
-        expect(grouping.published_articles.size).to eq(2)
+        expect(first_group.published_articles.size).to eq(2)
       end
       it 'does not return draft articles' do
-        expect(grouping.published_articles).not_to include(draft_article)
+        expect(first_group.published_articles).not_to include(draft_article)
       end
     end
 
     describe '.with_articles' do
       it 'returns unique groupings with articles' do
-        expect(model.with_articles.size).to eq(1)
+        expect(model.with_articles.size).to eq(2)
+      end
+      it 'returns groupings in alphabetical order on their name' do
+        expect(model.with_articles.map { |g| g.name }).to eq(['first-group', 'second-group'])
       end
       it 'does not return groupings without articles' do
         expect(model.with_articles).not_to include(empty_grouping)
