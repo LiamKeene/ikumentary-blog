@@ -110,11 +110,11 @@ shared_examples_for 'grouping navigation links' do
       eggs.articles << pub_art3
 
       expected_links.append(
-        [ham.display_name, url_for(ham)]
+        [ham.display_name, url_for(controller: route, action: :show, id: ham.name)]
       ).append(
-        [spam.display_name, url_for(spam)]
+        [spam.display_name, url_for(controller: route, action: :show, id: spam.name)]
       ).append(
-        [eggs.display_name, url_for(eggs)]
+        [eggs.display_name, url_for(controller: route, action: :show, id: eggs.name)]
       )
     end
 

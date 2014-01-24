@@ -1,9 +1,11 @@
 module SidebarHelper
 
   def grouping_navigation_links(grouping_class)
+    route = grouping_class.to_s.pluralize.underscore.to_sym
+    
     # Groupings published articles
     links_array = grouping_class.with_articles.map do |grp|
-      [grp.display_name, url_for(grp)]
+      [grp.display_name, url_for(controller: route, action: :show, id: grp.name)]
     end
   end
 
