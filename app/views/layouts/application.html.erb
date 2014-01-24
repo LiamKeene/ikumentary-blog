@@ -18,6 +18,7 @@
   <div id="content">
     <%= yield %>
   </div>
+  <%= render 'layouts/sidebar' %>
   <%= render 'layouts/footer' %>
   <%= render 'layouts/scripts' %>
   <%= debug(params) if Rails.env.development? %>

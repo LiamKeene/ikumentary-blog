@@ -54,12 +54,16 @@ shared_examples_for 'a Grouping model' do
     end
     let(:draft_article) { create(:article, :draft) }
   
-    let!(:grouping) do
-      create(factory, name: 'grouping', 
+    let!(:second_group) do
+      create(factory, display_name: 'Second Group',
+        articles: pub_articles)
+    end
+    let!(:first_group) do
+      create(factory, display_name: 'First Group',
         articles: pub_articles << draft_article)
     end
     let!(:draft_grouping) do
-      create(factory, name: 'drafts',
+      create(factory, display_name: 'Drafts',
         articles: [draft_article])
     end
     let(:empty_grouping) { create(factory) }
@@ -67,16 +71,19 @@ shared_examples_for 'a Grouping model' do
     describe '#published_articles' do
 
       it 'returns published articles' do
-        expect(grouping.published_articles.size).to eq(2)
+        expect(first_group.published_articles.size).to eq(2)
       end
       it 'does not return draft articles' do
-        expect(grouping.published_articles).not_to include(draft_article)
+        expect(first_group.published_articles).not_to include(draft_article)
       end
     end
 
     describe '.with_articles' do
       it 'returns unique groupings with articles' do
-        expect(model.with_articles.size).to eq(1)
+        expect(model.with_articles.size).to eq(2)
+      end
+      it 'returns groupings in alphabetical order on their name' do
+        expect(model.with_articles.map { |g| g.name }).to eq(['first-group', 'second-group'])
       end
       it 'does not return groupings without articles' do
         expect(model.with_articles).not_to include(empty_grouping)
@@ -84,6 +91,45 @@ shared_examples_for 'a Grouping model' do
       it 'does not return groupings without published articles' do
         expect(model.with_articles).not_to include(draft_grouping)
       end
+    end
+  end
+end
+
+shared_examples_for 'grouping navigation links' do
+
+  describe 'returns an array of URL name and path hashes' do
+
+    let(:ham) { create(factory, name: 'ham', display_name: 'Ham') }
+    let(:spam) { create(factory, name: 'spam', display_name: 'Spam') }
+    let(:eggs) { create(factory, name: 'eggs', display_name: 'Eggs') }
+
+    let(:pub_art1) { create(:article, :published) }
+    let(:pub_art2) { create(:article, :published) }
+    let(:pub_art3) { create(:article, :published) }
+    
+    let(:expected_links) { [] }
+    let(:actual_links) { grouping_navigation_links(model) }
+
+    before do
+      # Assign articles
+      ham.articles << pub_art1
+      spam.articles << pub_art2
+      eggs.articles << pub_art3
+
+      expected_links.append({
+        name: ham.display_name, 
+        url: url_for(controller: route, action: :show, id: ham.name)
+      }).append({
+        name: spam.display_name, 
+        url: url_for(controller: route, action: :show, id: spam.name)
+      }).append({
+        name: eggs.display_name, 
+        url: url_for(controller: route, action: :show, id: eggs.name)
+      })
+    end
+
+    it 'returns an array of URL name and path hashes' do
+      expect(actual_links).to match_array(expected_links)
     end
   end
 end
