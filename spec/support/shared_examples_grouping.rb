@@ -55,11 +55,11 @@ shared_examples_for 'a Grouping model' do
     let(:draft_article) { create(:article, :draft) }
   
     let!(:grouping) do
-      create(factory, name: 'grouping', 
+      create(factory, display_name: 'grouping', 
         articles: pub_articles << draft_article)
     end
     let!(:draft_grouping) do
-      create(factory, name: 'drafts',
+      create(factory, display_name: 'drafts',
         articles: [draft_article])
     end
     let(:empty_grouping) { create(factory) }
