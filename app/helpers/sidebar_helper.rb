@@ -5,7 +5,10 @@ module SidebarHelper
     
     # Groupings published articles
     links_array = grouping_class.with_articles.map do |grp|
-      [grp.display_name, url_for(controller: route, action: :show, id: grp.name)]
+      {
+        name: grp.display_name, 
+        url: url_for(controller: route, action: :show, id: grp.name)
+      }
     end
   end
 

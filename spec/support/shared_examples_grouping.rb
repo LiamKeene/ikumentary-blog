@@ -109,17 +109,20 @@ shared_examples_for 'grouping navigation links' do
       spam.articles << pub_art2
       eggs.articles << pub_art3
 
-      expected_links.append(
-        [ham.display_name, url_for(controller: route, action: :show, id: ham.name)]
-      ).append(
-        [spam.display_name, url_for(controller: route, action: :show, id: spam.name)]
-      ).append(
-        [eggs.display_name, url_for(controller: route, action: :show, id: eggs.name)]
-      )
+      expected_links.append({
+        name: ham.display_name, 
+        url: url_for(controller: route, action: :show, id: ham.name)
+      }).append({
+        name: spam.display_name, 
+        url: url_for(controller: route, action: :show, id: spam.name)
+      }).append({
+        name: eggs.display_name, 
+        url: url_for(controller: route, action: :show, id: eggs.name)
+      })
     end
 
     it 'returns an array of URL name and path hashes' do
-      expect(actual_links).to eq(expected_links)
+      expect(actual_links).to match_array(expected_links)
     end
   end
 end
