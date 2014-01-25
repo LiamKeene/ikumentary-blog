@@ -15,6 +15,7 @@ FactoryGirl.define do
     sequence(:slug)         { |n| "article-#{n}" }
     sequence(:content)      { |n| "This is the content of article #{n}" }
     author
+    allow_comments true
 
     factory :post, class: 'Post' do
       type 'Post'
