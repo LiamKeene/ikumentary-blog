@@ -15,6 +15,7 @@ FactoryGirl.define do
     sequence(:slug)         { |n| "article-#{n}" }
     sequence(:content)      { |n| "This is the content of article #{n}" }
     author
+    allow_comments true
 
     factory :post, class: 'Post' do
       type 'Post'
@@ -30,6 +31,14 @@ FactoryGirl.define do
 
     trait :published do
       sequence(:published_at) { |n| Time.now - n.days }
+    end
+
+    trait :allow_comments do
+      allow_comments true
+    end
+
+    trait :disallow_comments do
+      allow_comments false
     end
   end
 

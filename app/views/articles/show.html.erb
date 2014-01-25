@@ -14,8 +14,12 @@
     <%= render @article.comments %>
   </div>
 
+<% if @article.allow_comments? %>
   <div id="comment-form">
     <%= render 'articles/comment_form' %>
   </div>
+<% else %>
+  <p>Comments are closed for this <%= @article.type.downcase %></p>
+<% end %>
 
 </article>

@@ -23,6 +23,10 @@
     <%= f.collection_select :author_id, User.all, :id, :name %>
   </div>
   <div>
+    <%= f.label :allow_comments %><br>
+    <%= f.check_box :allow_comments %>
+  </div>
+  <div>
     <%= f.label :published_at %><br>
     <%= f.datetime_select :published_at %>
   </div>

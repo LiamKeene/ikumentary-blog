@@ -16,6 +16,8 @@ describe Article do
   it { should respond_to(:author) }
   its(:author) { should eq user }
 
+  it { should respond_to(:allow_comments) }
+  it { should respond_to(:allow_comments?) }
   it { should respond_to(:comments) }
 
   it { should respond_to(:categories) }
@@ -60,6 +62,11 @@ describe Article do
 
   describe 'when author_id is not present' do
     before { @article.author_id = nil }
+    it { should_not be_valid }
+  end
+
+  describe 'when allow_comments is not present' do
+    before { @article.allow_comments = nil }
     it { should_not be_valid }
   end
 

@@ -11,15 +11,17 @@ class Article < ActiveRecord::Base
   has_and_belongs_to_many :categories
   has_and_belongs_to_many :tags
 
+  paginates_per 5
+
   scope :latest, -> { order('created_at DESC') }
   scope :published, -> { where('published_at < ?', Time.now).order('published_at DESC') }
-
-  paginates_per 5
 
   validates :title,       presence: true, length: { maximum: 255 }
   validates :slug,        presence: true, length: { maximum: 100 }, uniqueness: { case_sensitive: false }
   validates :content,     presence: true
   validates :author_id,   presence: true
+  
+  validates_inclusion_of :allow_comments, in: [true, false]
 
   # Sets the model_name of each child to that of the parent (Article)
   # We do this so that child models will use the articles_controller, without 
@@ -39,4 +41,7 @@ class Article < ActiveRecord::Base
     descendants.map { |c| c.to_s }.sort
   end
 
+  def allow_comments?
+    allow_comments
+  end
 end
