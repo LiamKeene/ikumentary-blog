@@ -29,17 +29,32 @@ describe 'Article Pages' do
     end
   end
 
-  describe 'show a post' do
-    let(:post) { FactoryGirl.create(:post, :published) }
-    before { visit article_path(post) }
+  describe 'show' do
+    describe 'a post' do
+      let(:post) { FactoryGirl.create(:post, :published, :allow_comments) }
+      let(:post_no_comments) { FactoryGirl.create(:post, :published, :disallow_comments) }
+      before { visit article_path(post) }
 
-    it { expect(page).to have_title_and_content(post.title, post.title) }
-  end
+      it { expect(page).to have_title_and_content(post.title, post.title) }
 
-  describe 'show a page' do
-    let(:page_obj) { FactoryGirl.create(:page, :published) }
-    before { visit article_page_path(page_obj) }
+      context 'with comments allowed' do
+        before { visit article_path(post) }
 
-    it { expect(page).to have_title_and_content(page_obj.title, page_obj.title) }
+        it { expect(page).to have_selector('div#comment-form') }
+      end
+
+      context 'with comments not allowed' do
+        before { visit article_path(post_no_comments) }
+
+        it { expect(page).not_to have_selector('div#comment-form') }
+      end
+    end
+
+    describe 'a page' do
+      let(:page_obj) { FactoryGirl.create(:page, :published, :allow_comments) }
+      before { visit article_page_path(page_obj) }
+
+      it { expect(page).to have_title_and_content(page_obj.title, page_obj.title) }
+    end
   end
 end

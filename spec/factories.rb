@@ -31,6 +31,14 @@ FactoryGirl.define do
     trait :published do
       sequence(:published_at) { |n| Time.now - n.days }
     end
+
+    trait :allow_comments do
+      allow_comments true
+    end
+
+    trait :disallow_comments do
+      allow_comments false
+    end
   end
 
   factory :comment do
