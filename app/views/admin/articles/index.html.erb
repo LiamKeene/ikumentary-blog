@@ -11,6 +11,7 @@
       <th>Slug</th>
       <th>Content</th>
       <th>Author</th>
+      <th>Allow Comments?</th>
       <th>Created</th>
       <th>Published</th>
       <th></th>
@@ -26,6 +27,7 @@
         <td><%= article.slug %></td>
         <td><%= article.content %></td>
         <td><%= article.author.name %></td>
+        <td><%= article.allow_comments %></td>
         <td><%= article.created_at %></td>
         <td><%= article.published_at %></td>
         <td><%= link_to 'Show', [:admin, article] %></td>
