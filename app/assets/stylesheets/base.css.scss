@@ -2,6 +2,13 @@
 @import 'variables';
 @import 'fonts';
 
+/* Border-box FTW */
+*, *:after, *:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
 /* Site-wide styles */
 body {
   color: $base-font-color;
