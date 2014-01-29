@@ -8,11 +8,9 @@
 // Import fonts
 @import "fonts";
 
-/* Border-box FTW */
+// Border-box FTW
 *, *:after, *:before {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
+  @include box-sizing;
 }
 
 /* Site-wide styles */
@@ -286,8 +284,6 @@ nav.pagination {
 }
 
 /* Adapted from CSS-tricks.com */
-$gutter-width: $block-padding;
-
 .grid-pad {
   padding: $gutter-width;
 }

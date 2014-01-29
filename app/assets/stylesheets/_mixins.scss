@@ -11,3 +11,10 @@
     clear : both; 
   }
 }
+
+@mixin box-sizing($boxsize: border-box) {
+  -webkit-box-sizing : $boxsize;
+  -moz-box-sizing : $boxsize;
+  -ms-box-sizing : $boxsize;
+  box-sizing : $boxsize; 
+}
