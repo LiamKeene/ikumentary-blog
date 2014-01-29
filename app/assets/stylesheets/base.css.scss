@@ -1,6 +1,12 @@
-@import 'reset';
-@import 'variables';
-@import 'fonts';
+// Import reset
+@import "reset";
+
+// Import variables and mixins
+@import "variables";
+@import "mixins";
+
+// Import fonts
+@import "fonts";
 
 /* Border-box FTW */
 *, *:after, *:before {
@@ -275,14 +281,8 @@ nav.pagination {
   text-align: center;
 }
 
-/* Clearfix - don't care about IE6/7 */
-.cf:before,
-.cf:after {
-  content: " ";
-  display: table;
-}
-.cf:after {
-  clear: both;
+.cf {
+  @include clearfix;
 }
 
 /* Adapted from CSS-tricks.com */
@@ -295,12 +295,7 @@ $gutter-width: $block-padding;
 @media screen and (min-width: 37.5em) {
 
   .grid {
-    // This needs to be a mixin
-    &:after {
-      content: "";
-      display: table;
-      clear: both;
-    }
+    @include clearfix;
   }
 
   [class*='col-'] {
