@@ -8,18 +8,33 @@
   <%= render 'layouts/shim' %>
 </head>
 <body>
-  <%= render 'layouts/header' %>
+  <header class="site cf">
+    <%= render 'layouts/header' %>
+  </header>
 
   <div class="container">
     <% flash.each do |key, value| %>
     <div class="error error-<%= key %>"><%= value %></div>
     <% end %>
   </div>
-  <div id="content">
-    <%= yield %>
+
+  <div class="grid grid-pad">
+    <div class="col-3-4">
+      <div id="content">
+        <%= yield %>
+      </div>
+    </div>
+    <div class="col-1-4">
+      <aside class="sidebar">
+        <%= render 'layouts/sidebar' %>
+      </aside>
+    </div>
   </div>
-  <%= render 'layouts/sidebar' %>
-  <%= render 'layouts/footer' %>
+
+  <footer class="site">
+    <%= render 'layouts/footer' %>
+  </footer>
+
   <%= render 'layouts/scripts' %>
   <%= debug(params) if Rails.env.development? %>
 </body>
