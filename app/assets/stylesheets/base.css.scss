@@ -100,7 +100,7 @@ nav {
 }
 
 #content {
-  border: 0.0625em solid #ccc;
+  border: $single-border-width solid #ccc;
   padding: 0 $block-padding;
 }
 
@@ -111,7 +111,7 @@ article {
   }
 
   &.article {
-    border-bottom: 0.0625em solid #ccc;
+    border-bottom: $single-border-width solid #ccc;
     padding: $block-padding 0;
 
     p {
@@ -154,7 +154,7 @@ article {
 
   &.comment {
 
-    border-bottom: 0.0625em solid #ccc;
+    border-bottom: $single-border-width solid #ccc;
     margin-bottom: $block-padding;
     padding: $block-padding;
 
@@ -205,7 +205,7 @@ article {
   }
 
   input, textarea {
-    border: 0.125em solid #ccc;
+    border: $single-border-width * 2 solid #ccc;
     border-radius: $block-padding;
     outline: none;
     padding: $block-padding;
@@ -241,7 +241,7 @@ nav.pagination {
 }
 
 .sidebar {
-  border: 0.0625em solid #ccc;
+  border: $single-border-width solid #ccc;
   margin-top: $block-padding;
   padding: $block-padding;
 
