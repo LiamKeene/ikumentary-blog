@@ -97,7 +97,6 @@ nav {
 
 #content {
   border: 0.0625em solid #ccc;
-  margin: $block-padding;
   padding: 0 $block-padding;
 }
 
@@ -239,9 +238,9 @@ nav.pagination {
   }
 }
 
-aside.sidebar {
+.sidebar {
   border: 0.0625em solid #ccc;
-  margin: $block-padding;
+  margin-top: $block-padding;
   padding: $block-padding;
 }
 .cat-links {
@@ -280,4 +279,44 @@ aside.sidebar {
 }
 .cf:after {
   clear: both;
+}
+
+/* Adapted from CSS-tricks.com */
+$gutter-width: $block-padding;
+
+.grid-pad {
+  padding: $gutter-width;
+}
+
+@media screen and (min-width: 37.5em) {
+
+  .grid {
+    // This needs to be a mixin
+    &:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+  }
+
+  [class*='col-'] {
+    float: left;
+    padding-left: $gutter-width;
+
+    .grid &:first-child {
+      padding-left: 0;
+    }
+  }
+
+  .col-1-4 {
+    width: 25%;
+  }
+
+  .col-3-4 {
+    width: 75%;
+  }
+
+  .sidebar {
+    margin-top: 0;
+  }
 }

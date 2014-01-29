@@ -18,13 +18,18 @@
     <% end %>
   </div>
 
-  <div id="content">
-    <%= yield %>
+  <div class="grid grid-pad">
+    <div class="col-3-4">
+      <div id="content">
+        <%= yield %>
+      </div>
+    </div>
+    <div class="col-1-4">
+      <aside class="sidebar">
+        <%= render 'layouts/sidebar' %>
+      </aside>
+    </div>
   </div>
-
-  <aside class="sidebar">
-    <%= render 'layouts/sidebar' %>
-  </aside>
 
   <footer class="site">
     <%= render 'layouts/footer' %>
