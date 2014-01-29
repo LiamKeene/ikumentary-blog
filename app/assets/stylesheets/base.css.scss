@@ -107,7 +107,6 @@ nav {
 article {
   
   h2 {
-    font-size: 1.25em;
     padding: $block-padding / 2;
   }
 
@@ -208,7 +207,6 @@ article {
   input, textarea {
     border: 0.125em solid #ccc;
     border-radius: $block-padding;
-    box-sizing: border-box;
     outline: none;
     padding: $block-padding;
     width: 100%;
