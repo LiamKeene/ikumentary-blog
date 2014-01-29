@@ -50,11 +50,11 @@ header, footer {
     padding: $block-padding;
   
     a {
-      color: $font-light-color;
+      color: $font-lighter-color;
       font-family: $header-font;
     
       &:hover {
-        color: darken($font-light-color, 10%);
+        color: $font-light-color;
       }
     }
   }
@@ -74,7 +74,7 @@ nav {
 }
 
 #tag-line {
-  color: darken($font-light-color, 10%);
+  color: $font-light-color;
   display: block;
   font-family: $branding-font;
   font-size: 0.65em;
@@ -119,7 +119,7 @@ article {
       font-size: 1em;
 
       &.article-datetime {
-        color: darken($font-light-color, 10%);
+        color: $font-light-color;
         font-size: 0.9em;
         letter-spacing: 0.2em;
         margin-left: $block-padding;
@@ -273,7 +273,7 @@ nav.pagination {
 }
 
 #copyright {
-  color: darken($font-light-color, 10%);
+  color: $font-light-color;
   font-size: 0.7em;
   margin-top: $block-padding;
   text-align: center;
