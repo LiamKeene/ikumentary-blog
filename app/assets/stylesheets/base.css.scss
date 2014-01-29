@@ -242,6 +242,10 @@ nav.pagination {
   border: 0.0625em solid #ccc;
   margin-top: $block-padding;
   padding: $block-padding;
+
+  h2 {
+    text-align: center;
+  }
 }
 .cat-links {
   list-style-type: circle;
