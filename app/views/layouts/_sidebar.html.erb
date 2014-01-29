@@ -1,4 +1,13 @@
-  <div>
+  <aside class="sidebar">
+    <h2>Recent</h2>
+    <ul>
+      <% Post.published.limit(5).each do |post| %>
+      <li><%= link_to post.title, article_path(post) %></li>
+      <% end %>
+    </ul>
+    <p></p>
+  </aside>  
+  <aside class="sidebar">
   <% unless category_navigation_links.empty? %>
     <h2>Categories</h2>
     <ul class="cat-links">
@@ -7,4 +16,4 @@
       <% end %>
     </ul>
   <% end %>  
-  </div>
+  </aside>
