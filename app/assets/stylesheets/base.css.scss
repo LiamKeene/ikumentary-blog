@@ -296,7 +296,7 @@ $gutter-width: $block-padding;
   padding: $gutter-width;
 }
 
-@media screen and (min-width: 37.5em) {
+@media screen and (min-width: 48em) {
 
   .grid {
     // This needs to be a mixin
