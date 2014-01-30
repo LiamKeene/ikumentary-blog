@@ -246,9 +246,13 @@ nav.pagination {
   h2 {
     text-align: center;
   }
-}
-.cat-links {
-  list-style-type: circle;
+
+  ul {
+    font-size: 0.8em;
+    list-style-type: circle;
+    margin: $block-padding 2 * $block-padding;
+    padding: 0;
+  }
 }
 
 #nav-footer {
