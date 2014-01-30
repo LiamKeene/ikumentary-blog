@@ -1,7 +1,7 @@
   <aside class="sidebar">
     <h2>Recent</h2>
     <ul>
-      <% Post.published.limit(5).each do |post| %>
+      <% Post.recent.each do |post| %>
       <li><%= link_to post.title, article_path(post) %></li>
       <% end %>
     </ul>

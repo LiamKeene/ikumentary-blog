@@ -1,5 +1,7 @@
 class Article < ActiveRecord::Base
 
+  DEFAULT_LIMIT = 5
+
   extend FriendlyId
 
   belongs_to :author, class_name: 'User', foreign_key: 'author_id'
@@ -11,10 +13,11 @@ class Article < ActiveRecord::Base
   has_and_belongs_to_many :categories
   has_and_belongs_to_many :tags
 
-  paginates_per 5
+  paginates_per DEFAULT_LIMIT
 
   scope :latest, -> { order('created_at DESC') }
   scope :published, -> { where('published_at < ?', Time.now).order('published_at DESC') }
+  scope :recent, -> { published.limit(DEFAULT_LIMIT) }
 
   validates :title,       presence: true, length: { maximum: 255 }
   validates :slug,        presence: true, length: { maximum: 100 }, uniqueness: { case_sensitive: false }
