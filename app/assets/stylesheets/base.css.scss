@@ -247,8 +247,11 @@ nav.pagination {
     text-align: center;
   }
 
-  ul {
+  ul, p {
     font-size: 0.8em;
+  }
+
+  ul {
     list-style-type: circle;
     margin: $block-padding 2 * $block-padding;
     padding: 0;
