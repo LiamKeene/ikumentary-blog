@@ -177,8 +177,42 @@ article {
   }
 }
 
+.article-meta {
+
+  border-top: $single-border-width solid #ccc;
+  border-bottom: $single-border-width solid #ccc;
+
+  p {
+    margin-bottom: 0;
+    padding: $block-padding;
+
+    &:first-child {
+      border-right: $single-border-width solid #ccc;
+    }
+  }
+
+  span {
+    display: block;
+  }
+
+  .head {
+    font-size: 0.625em;
+    line-height: 2em;
+    text-transform: uppercase;
+  }
+  .body {
+    font-size: 0.8em;
+    line-height: 2em;
+    font-style: oblique;
+  }
+}
+
 #article-comments { 
   float: left; 
+  width: 50%;
+}
+#article-categories {
+  float: left;
   width: 50%;
 }
 #article-tags { 
