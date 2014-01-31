@@ -1,12 +1,12 @@
     <footer>
       <div class="article-meta cf">
-        <p id="article-comments">
+        <p>
           <span class="head">Comments</span>
           <span class="body">
             <%= link_to "#{article.comments.count} Comments", "#comments-list", title: "Comments about #{article.title}" %>
           </span>
         </p>
-        <p id="article-categories">
+        <p>
           <span class="head">Categories</span>
           <span class="body">
             <%= linked_category_list(article.categories) %>

@@ -183,8 +183,10 @@ article {
   border-bottom: $single-border-width solid #ccc;
 
   p {
+    float: left;
     margin-bottom: 0;
     padding: $block-padding;
+    width: 50%;
 
     &:first-child {
       border-right: $single-border-width solid #ccc;
@@ -205,19 +207,6 @@ article {
     line-height: 2em;
     font-style: oblique;
   }
-}
-
-#article-comments { 
-  float: left; 
-  width: 50%;
-}
-#article-categories {
-  float: left;
-  width: 50%;
-}
-#article-tags { 
-  float: right; 
-  width: 50%;
 }
 
 /* Comment Form */
