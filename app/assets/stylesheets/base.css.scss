@@ -195,6 +195,27 @@ article {
   }
 }
 
+.article-nav {
+  border-bottom: $single-border-width solid $border-color;
+
+  p {
+    float: left;
+    margin-bottom: 0;
+    padding: $block-padding;
+    width: 50%;
+
+    &:first-child {
+      border-right: $single-border-width solid $border-color;
+    }
+  }
+  
+  a {
+    font-size: 0.8em;
+    line-height: 2em;
+    font-style: oblique;
+  }  
+}
+
 .comment-author {
   display: block;
   font-family: $article-title-font;

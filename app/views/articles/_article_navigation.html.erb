@@ -1,0 +1,12 @@
+    <nav class="article-nav cf">
+      <p class="prev-article">
+      <% unless prev_art.nil? %>
+        <%= link_to "← #{prev_art.title}", article_path(prev_art) %>
+      <% end %>
+      </p>
+      <p class="next-article">
+      <% unless next_art.nil? %>
+        <%= link_to "#{next_art.title} →", article_path(next_art) %>
+      <% end %>
+      </p>
+    </nav>

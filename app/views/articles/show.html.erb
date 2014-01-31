@@ -10,6 +10,10 @@
 
   <%= render partial: 'articles/article_footer', locals: { article: @article } %>
 
+  <%= render partial: 'articles/article_navigation', locals: { 
+    next_art: @article.next, prev_art: @article.previous
+  } %>
+
   <section id="comments-list">
     <%= render @article.comments %>
   </section>
