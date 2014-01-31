@@ -1,15 +1,16 @@
     <footer>
       <div class="article-meta cf">
-        <p id="article-categories">
-          Posted in <%= linked_category_list(article.categories) %>
+        <p>
+          <span class="head">Comments</span>
+          <span class="body">
+            <%= link_to "#{article.comments.count} Comments", "#comments-list", title: "Comments about #{article.title}" %>
+          </span>
         </p>
-        <p id="article-comments">
-        <%= link_to "#{article.comments.count} Comments", "#comments-list", title: "Comments about #{article.title}" %>
-        </p>
-        <p id="article-tags">
-        <% unless article.tags.empty? -%>
-          Tagged <%= linked_tag_list(article.tags) %>
-        <% end %>
+        <p>
+          <span class="head">Categories</span>
+          <span class="body">
+            <%= linked_category_list(article.categories) %>
+          </span>
         </p>
       </div>
     </footer>

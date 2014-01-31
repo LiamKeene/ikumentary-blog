@@ -10,14 +10,14 @@
 
   <%= render partial: 'articles/article_footer', locals: { article: @article } %>
 
-  <div id="comments-list">
+  <section id="comments-list">
     <%= render @article.comments %>
-  </div>
+  </section>
 
 <% if @article.allow_comments? %>
-  <div id="comment-form">
+  <section id="comment-form">
     <%= render 'articles/comment_form' %>
-  </div>
+  </section>
 <% else %>
   <p>Comments are closed for this <%= @article.type.downcase %></p>
 <% end %>

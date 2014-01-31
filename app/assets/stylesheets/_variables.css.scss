@@ -7,8 +7,9 @@ $darker-red: #5d090c;
 $light-red: #c75053;
 $lighter-red: #c77072;
 
-/* Text Colours */
-$font-light-color: #f0f0f0;
+/* Text Colours - Greyscale */
+$font-lighter-color: #f0f0f0;
+$font-light-color: darken($font-lighter-color, 10%);
 $font-dark-color: #808080;
 $font-grey-color: #333333;
 
@@ -24,6 +25,10 @@ $article-title-font: $branding-font;
 
 /* Borders */
 $single-border-width: 0.0625em;
+$border-color: #ccc;
 
 /* Margins/Padding */
 $block-padding: 0.5em;
+
+/* Grid Layout */
+$gutter-width: $block-padding;

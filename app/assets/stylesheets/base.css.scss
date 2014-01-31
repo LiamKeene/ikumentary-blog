@@ -1,12 +1,19 @@
-@import 'reset';
-@import 'variables';
-@import 'fonts';
+// Import reset
+@import "reset";
 
-/* Border-box FTW */
+// Import variables and mixins
+@import "variables";
+@import "mixins";
+
+// Import fonts
+@import "fonts";
+
+// Import forms
+@import "forms";
+
+// Border-box FTW
 *, *:after, *:before {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
+  @include box-sizing;
 }
 
 /* Site-wide styles */
@@ -24,9 +31,12 @@ h2 {
   font-family: $article-title-font;
   font-size: 1.25em;
   margin-bottom: $block-padding / 2;
+  padding: $block-padding / 2;
+}
+h3 { 
+  margin: 0 
 }
 p {
-  font-size: 1.25em;
   line-height: 1.75em;
   margin-bottom: $block-padding;
 }
@@ -46,11 +56,11 @@ header, footer {
     padding: $block-padding;
   
     a {
-      color: $font-light-color;
+      color: $font-lighter-color;
       font-family: $header-font;
     
       &:hover {
-        color: darken($font-light-color, 10%);
+        color: $font-light-color;
       }
     }
   }
@@ -70,7 +80,7 @@ nav {
 }
 
 #tag-line {
-  color: darken($font-light-color, 10%);
+  color: $font-light-color;
   display: block;
   font-family: $branding-font;
   font-size: 0.65em;
@@ -95,93 +105,104 @@ nav {
   }
 }
 
-#content {
-  border: 0.0625em solid #ccc;
-  padding: 0 $block-padding;
-}
-
 article {
-  
-  h2 {
-    font-size: 1.25em;
-    padding: $block-padding / 2;
+
+  margin-bottom: $block-padding;
+  padding: $block-padding;
+
+  section {
+    margin-top: $block-padding;
   }
 
   &.article {
-    border-bottom: 0.0625em solid #ccc;
-    padding: $block-padding 0;
 
-    p {
-      font-size: 1em;
-
-      &.article-datetime {
-        color: darken($font-light-color, 10%);
-        font-size: 0.9em;
-        letter-spacing: 0.2em;
-        margin-left: $block-padding;
-      }
-    }
-
-    &:last-child {
-      border-bottom: none;
-    }
-
-    .article-links {
-      display: inline-block;
-      font-size: 0.85em;
-      padding: $block-padding / 2 $block-padding * 1.1;
-      text-align: center;
-
-      &:hover {
-        background: $main-red;
-        border-radius: $block-padding / 2;
-        color: #fff;
-      }
-    }
-
-    .article-more-link {
-      margin-left: $block-padding * 3;
-    }
-
-    .article-comments-link {
-      float: right;
-      margin-right: $block-padding * 3;
-    }
+    border: $single-border-width solid $border-color;
+    
   }
 
   &.comment {
 
-    border-bottom: 0.0625em solid #ccc;
-    margin-bottom: $block-padding;
-    padding: $block-padding;
+    border-bottom: $single-border-width solid $border-color;
 
     &:last-child {
       border-bottom: none;
-    }
-
-    .comment-author {
-      display: block;
-      font-family: $article-title-font;
     }
 
     time {
       font-size: 0.8em;
     }
-
-    .comment-content {
-      margin-top: $block-padding;
-    }
   }
 }
 
-#article-comments { 
-  float: left; 
-  width: 50%;
+.article-datetime {
+  color: $font-light-color;
+  font-size: 0.9em;
+  letter-spacing: 0.2em;
+  margin-left: $block-padding;
 }
-#article-tags { 
-  float: right; 
-  width: 50%;
+
+.article-links {
+  display: inline-block;
+  font-size: 0.85em;
+  padding: $block-padding / 2 $block-padding * 1.1;
+  text-align: center;
+
+  &:hover {
+    background: $main-red;
+    border-radius: $block-padding / 2;
+    color: #fff;
+  }
 }
+
+.article-more-link {
+  margin-left: $block-padding * 3;
+}
+
+.article-comments-link {
+  float: right;
+  margin-right: $block-padding * 3;
+}
+
+.article-meta {
+
+  border-top: $single-border-width solid $border-color;
+  border-bottom: $single-border-width solid $border-color;
+
+  p {
+    float: left;
+    margin-bottom: 0;
+    padding: $block-padding;
+    width: 50%;
+
+    &:first-child {
+      border-right: $single-border-width solid $border-color;
+    }
+  }
+
+  span {
+    display: block;
+  }
+
+  .head {
+    font-size: 0.625em;
+    line-height: 2em;
+    text-transform: uppercase;
+  }
+  .body {
+    font-size: 0.8em;
+    line-height: 2em;
+    font-style: oblique;
+  }
+}
+
+.comment-author {
+  display: block;
+  font-family: $article-title-font;
+}
+
+.comment-content {
+  margin-top: $block-padding;
+} 
 
 /* Comment Form */
 .screen-reader {
@@ -193,26 +214,6 @@ article {
   text-indent: 100%;
   white-space: nowrap;
   overflow: hidden;
-}
-
-#comment-form {
-
-  h3 { 
-    margin: 0 
-  }
-
-  input, textarea {
-    border: 0.125em solid #ccc;
-    border-radius: $block-padding;
-    box-sizing: border-box;
-    outline: none;
-    padding: $block-padding;
-    width: 100%;
-
-    &:focus {
-      border-color: $main-red;
-    }
-  }
 }
 
 /* Index Page Navigation */
@@ -239,7 +240,7 @@ nav.pagination {
 }
 
 .sidebar {
-  border: 0.0625em solid #ccc;
+  border: $single-border-width solid $border-color;
   margin-top: $block-padding;
   padding: $block-padding;
 
@@ -276,25 +277,17 @@ nav.pagination {
 }
 
 #copyright {
-  color: darken($font-light-color, 10%);
+  color: $font-light-color;
   font-size: 0.7em;
   margin-top: $block-padding;
   text-align: center;
 }
 
-/* Clearfix - don't care about IE6/7 */
-.cf:before,
-.cf:after {
-  content: " ";
-  display: table;
-}
-.cf:after {
-  clear: both;
+.cf {
+  @include clearfix;
 }
 
 /* Adapted from CSS-tricks.com */
-$gutter-width: $block-padding;
-
 .grid-pad {
   padding: $gutter-width;
 }
@@ -302,12 +295,7 @@ $gutter-width: $block-padding;
 @media screen and (min-width: 48em) {
 
   .grid {
-    // This needs to be a mixin
-    &:after {
-      content: "";
-      display: table;
-      clear: both;
-    }
+    @include clearfix;
   }
 
   [class*='col-'] {
@@ -330,5 +318,9 @@ $gutter-width: $block-padding;
   .sidebar {
     margin-top: 0;
     margin-bottom: $block-padding;
+  }
+
+  .article:last-child {
+    margin-bottom: 0;
   }
 }
