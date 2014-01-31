@@ -110,6 +110,10 @@ article {
     padding: $block-padding / 2;
   }
 
+  section {
+    margin-top: $block-padding;
+  }
+
   &.article {
     border-bottom: $single-border-width solid $border-color;
     padding: $block-padding 0;
