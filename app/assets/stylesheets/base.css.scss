@@ -28,9 +28,12 @@ h2 {
   font-family: $article-title-font;
   font-size: 1.25em;
   margin-bottom: $block-padding / 2;
+  padding: $block-padding / 2;
+}
+h3 { 
+  margin: 0 
 }
 p {
-  font-size: 1.25em;
   line-height: 1.75em;
   margin-bottom: $block-padding;
 }
@@ -103,10 +106,6 @@ article {
 
   margin-bottom: $block-padding;
   padding: $block-padding;
-  
-  h2 {
-    padding: $block-padding / 2;
-  }
 
   section {
     margin-top: $block-padding;
@@ -116,15 +115,11 @@ article {
 
     border: $single-border-width solid $border-color;
 
-    p {
-      font-size: 1em;
-
-      &.article-datetime {
-        color: $font-light-color;
-        font-size: 0.9em;
-        letter-spacing: 0.2em;
-        margin-left: $block-padding;
-      }
+    .article-datetime {
+      color: $font-light-color;
+      font-size: 0.9em;
+      letter-spacing: 0.2em;
+      margin-left: $block-padding;
     }
 
     .article-links {
@@ -218,10 +213,6 @@ article {
 }
 
 #comment-form {
-
-  h3 { 
-    margin: 0 
-  }
 
   input, textarea {
     border: $single-border-width * 2 solid $border-color;
