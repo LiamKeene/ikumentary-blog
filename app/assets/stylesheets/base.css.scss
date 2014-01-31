@@ -8,6 +8,9 @@
 // Import fonts
 @import "fonts";
 
+// Import forms
+@import "forms";
+
 // Border-box FTW
 *, *:after, *:before {
   @include box-sizing;
@@ -211,18 +214,6 @@ article {
   text-indent: 100%;
   white-space: nowrap;
   overflow: hidden;
-}
-
-input, textarea {
-  border: $single-border-width * 2 solid $border-color;
-  border-radius: $block-padding;
-  outline: none;
-  padding: $block-padding;
-  width: 100%;
-
-  &:focus {
-    border-color: $main-red;
-  }
 }
 
 /* Index Page Navigation */
