@@ -100,7 +100,7 @@ nav {
 }
 
 #content {
-  border: $single-border-width solid #ccc;
+  border: $single-border-width solid $border-color;
   padding: 0 $block-padding;
 }
 
@@ -111,7 +111,7 @@ article {
   }
 
   &.article {
-    border-bottom: $single-border-width solid #ccc;
+    border-bottom: $single-border-width solid $border-color;
     padding: $block-padding 0;
 
     p {
@@ -154,7 +154,7 @@ article {
 
   &.comment {
 
-    border-bottom: $single-border-width solid #ccc;
+    border-bottom: $single-border-width solid $border-color;
     margin-bottom: $block-padding;
     padding: $block-padding;
 
@@ -179,8 +179,8 @@ article {
 
 .article-meta {
 
-  border-top: $single-border-width solid #ccc;
-  border-bottom: $single-border-width solid #ccc;
+  border-top: $single-border-width solid $border-color;
+  border-bottom: $single-border-width solid $border-color;
 
   p {
     float: left;
@@ -189,7 +189,7 @@ article {
     width: 50%;
 
     &:first-child {
-      border-right: $single-border-width solid #ccc;
+      border-right: $single-border-width solid $border-color;
     }
   }
 
@@ -228,7 +228,7 @@ article {
   }
 
   input, textarea {
-    border: $single-border-width * 2 solid #ccc;
+    border: $single-border-width * 2 solid $border-color;
     border-radius: $block-padding;
     outline: none;
     padding: $block-padding;
@@ -264,7 +264,7 @@ nav.pagination {
 }
 
 .sidebar {
-  border: $single-border-width solid #ccc;
+  border: $single-border-width solid $border-color;
   margin-top: $block-padding;
   padding: $block-padding;
 
