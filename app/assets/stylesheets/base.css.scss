@@ -114,35 +114,7 @@ article {
   &.article {
 
     border: $single-border-width solid $border-color;
-
-    .article-datetime {
-      color: $font-light-color;
-      font-size: 0.9em;
-      letter-spacing: 0.2em;
-      margin-left: $block-padding;
-    }
-
-    .article-links {
-      display: inline-block;
-      font-size: 0.85em;
-      padding: $block-padding / 2 $block-padding * 1.1;
-      text-align: center;
-
-      &:hover {
-        background: $main-red;
-        border-radius: $block-padding / 2;
-        color: #fff;
-      }
-    }
-
-    .article-more-link {
-      margin-left: $block-padding * 3;
-    }
-
-    .article-comments-link {
-      float: right;
-      margin-right: $block-padding * 3;
-    }
+    
   }
 
   &.comment {
@@ -153,19 +125,39 @@ article {
       border-bottom: none;
     }
 
-    .comment-author {
-      display: block;
-      font-family: $article-title-font;
-    }
-
     time {
       font-size: 0.8em;
     }
-
-    .comment-content {
-      margin-top: $block-padding;
-    }
   }
+}
+
+.article-datetime {
+  color: $font-light-color;
+  font-size: 0.9em;
+  letter-spacing: 0.2em;
+  margin-left: $block-padding;
+}
+
+.article-links {
+  display: inline-block;
+  font-size: 0.85em;
+  padding: $block-padding / 2 $block-padding * 1.1;
+  text-align: center;
+
+  &:hover {
+    background: $main-red;
+    border-radius: $block-padding / 2;
+    color: #fff;
+  }
+}
+
+.article-more-link {
+  margin-left: $block-padding * 3;
+}
+
+.article-comments-link {
+  float: right;
+  margin-right: $block-padding * 3;
 }
 
 .article-meta {
@@ -199,6 +191,15 @@ article {
     font-style: oblique;
   }
 }
+
+.comment-author {
+  display: block;
+  font-family: $article-title-font;
+}
+
+.comment-content {
+  margin-top: $block-padding;
+} 
 
 /* Comment Form */
 .screen-reader {
