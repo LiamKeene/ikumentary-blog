@@ -123,4 +123,22 @@ describe Article do
 
     it { expect(Article.published.size).to eq(1) }
   end
+
+  context '#next and #previous methods' do
+    let!(:art_1) { FactoryGirl.create(:article, :published, published_at: Time.now - 1.day) }
+    let!(:art_2) { FactoryGirl.create(:article, :published, published_at: Time.now - 1.hour) }
+    let!(:art_3) { FactoryGirl.create(:article, :published, published_at: Time.now) }
+
+    describe '#next' do
+      it { expect(art_1.next).to eq(art_2) }
+      it { expect(art_2.next).to eq(art_3) }
+      it { expect(art_3.next).to eq(nil) }
+    end
+
+    describe '#previous' do
+      it { expect(art_1.previous).to eq(nil) }
+      it { expect(art_2.previous).to eq(art_1) }
+      it { expect(art_3.previous).to eq(art_2) }
+    end
+  end
 end

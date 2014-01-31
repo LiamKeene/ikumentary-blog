@@ -47,4 +47,12 @@ class Article < ActiveRecord::Base
   def allow_comments?
     allow_comments
   end
+
+  def next
+    Article.where('published_at > ?', published_at).order('published_at ASC').first
+  end
+
+  def previous
+    Article.where('published_at < ?', published_at).order('published_at DESC').first
+  end
 end
