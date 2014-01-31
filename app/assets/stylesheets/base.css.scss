@@ -163,20 +163,29 @@ article {
   margin-right: $block-padding * 3;
 }
 
+.article-extra {
+
+  p {
+    float: left;
+    line-height: 1.25em;
+    margin-bottom: 0;
+    padding: $block-padding;
+    width: 50%;
+  }
+
+  a {
+    font-size: 0.8em;
+    font-style: oblique;
+  } 
+}
+
 .article-meta {
 
   border-top: $single-border-width solid $border-color;
   border-bottom: $single-border-width solid $border-color;
-
-  p {
-    float: left;
-    margin-bottom: 0;
-    padding: $block-padding;
-    width: 50%;
-
-    &:first-child {
-      border-right: $single-border-width solid $border-color;
-    }
+    
+  p:first-child {
+    border-right: $single-border-width solid $border-color;
   }
 
   span {
@@ -185,35 +194,8 @@ article {
 
   .head {
     font-size: 0.625em;
-    line-height: 2em;
     text-transform: uppercase;
   }
-  .body {
-    font-size: 0.8em;
-    line-height: 2em;
-    font-style: oblique;
-  }
-}
-
-.article-nav {
-  border-bottom: $single-border-width solid $border-color;
-
-  p {
-    float: left;
-    margin-bottom: 0;
-    padding: $block-padding;
-    width: 50%;
-
-    &:first-child {
-      border-right: $single-border-width solid $border-color;
-    }
-  }
-  
-  a {
-    font-size: 0.8em;
-    line-height: 2em;
-    font-style: oblique;
-  }  
 }
 
 .comment-author {
