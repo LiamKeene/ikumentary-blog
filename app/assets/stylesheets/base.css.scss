@@ -99,12 +99,10 @@ nav {
   }
 }
 
-#content {
-  border: $single-border-width solid $border-color;
-  padding: 0 $block-padding;
-}
-
 article {
+
+  margin-bottom: $block-padding;
+  padding: $block-padding;
   
   h2 {
     padding: $block-padding / 2;
@@ -115,8 +113,8 @@ article {
   }
 
   &.article {
-    border-bottom: $single-border-width solid $border-color;
-    padding: $block-padding 0;
+
+    border: $single-border-width solid $border-color;
 
     p {
       font-size: 1em;
@@ -127,10 +125,6 @@ article {
         letter-spacing: 0.2em;
         margin-left: $block-padding;
       }
-    }
-
-    &:last-child {
-      border-bottom: none;
     }
 
     .article-links {
@@ -159,8 +153,6 @@ article {
   &.comment {
 
     border-bottom: $single-border-width solid $border-color;
-    margin-bottom: $block-padding;
-    padding: $block-padding;
 
     &:last-child {
       border-bottom: none;
@@ -338,5 +330,9 @@ nav.pagination {
 
   .sidebar {
     margin-top: 0;
+  }
+
+  .article:last-child {
+    margin-bottom: 0;
   }
 }
