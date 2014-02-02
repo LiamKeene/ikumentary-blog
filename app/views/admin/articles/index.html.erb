@@ -8,11 +8,7 @@
   <thead>
     <tr>
       <th>Title</th>
-      <th>Slug</th>
-      <th>Content</th>
       <th>Author</th>
-      <th>Allow Comments?</th>
-      <th>Created</th>
       <th>Published</th>
       <th></th>
       <th></th>
@@ -23,13 +19,9 @@
   <tbody>
     <% @articles.each do |article| %>
       <tr>
-        <td><%= article.title %></td>
-        <td><%= article.slug %></td>
-        <td><%= article.content %></td>
+        <td><%= link_to "#{article.title}", [:edit, :admin, article] %></td>
         <td><%= article.author.name %></td>
-        <td><%= article.allow_comments %></td>
-        <td><%= article.created_at %></td>
-        <td><%= article.published_at %></td>
+        <td><%= format_published_date(article.published_at) %></td>
         <td><%= link_to 'Show', [:admin, article] %></td>
         <td><%= link_to 'Edit', [:edit, :admin, article] %></td>
         <td><%= link_to 'Destroy', [:admin, article], method: :delete, data: { confirm: 'Are you sure?' } %></td>         
