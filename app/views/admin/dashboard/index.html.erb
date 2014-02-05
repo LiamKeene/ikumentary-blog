@@ -2,8 +2,18 @@
 
 <h1>Dashboard</h1>
 
-<%= link_to 'Manage Users', [:admin, :users] %>
-<%= link_to 'Manage Articles', [:admin, :articles] %>
-<%= link_to 'Manage Comments', [:admin, :comments] %>
-<%= link_to 'Manage Categories', [:admin, :categories] %>
-<%= link_to 'Manage Tags', [:admin, :tags] %>
+<div class="admin-box">
+  <%= link_to 'Manage Users', [:admin, :users] %>
+</div>
+<div class="admin-box">
+  <%= link_to 'Manage Articles', [:admin, :articles] %>
+</div>
+<div class="admin-box">
+  <%= link_to 'Manage Comments', [:admin, :comments] %>
+</div>
+<div class="admin-box">
+  <%= link_to 'Manage Categories', [:admin, :categories] %>
+</div>
+<div class="admin-box">
+  <%= link_to 'Manage Tags', [:admin, :tags] %>
+</div>
