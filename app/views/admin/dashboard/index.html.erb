@@ -3,19 +3,29 @@
 <h1>Dashboard</h1>
 
 <div class="cf">
-  <div class="admin-box">
-    <%= link_to 'Manage Users', [:admin, :users] %>
-  </div>
-  <div class="admin-box">
-    <%= link_to 'Manage Articles', [:admin, :articles] %>
-  </div>
-  <div class="admin-box">
-    <%= link_to 'Manage Comments', [:admin, :comments] %>
-  </div>
-  <div class="admin-box">
-    <%= link_to 'Manage Categories', [:admin, :categories] %>
-  </div>
-  <div class="admin-box">
-    <%= link_to 'Manage Tags', [:admin, :tags] %>
-  </div>
+  <%= link_to [:admin, :users] do %>
+    <div class="admin-box">
+      <h2>Manage Users</h2>
+    </div>
+  <% end %>
+  <%= link_to [:admin, :articles] do %>
+    <div class="admin-box">
+      <h2>Manage Articles</h2>
+    </div>
+  <% end %>
+  <%= link_to [:admin, :comments] do %>
+    <div class="admin-box">
+      <h2>Manage Comments</h2>
+    </div>
+  <% end %>
+  <%= link_to [:admin, :categories] do %>
+    <div class="admin-box">
+      <h2>Manage Categories</h2>
+    </div>
+  <% end %>
+  <%= link_to [:admin, :tags] do %>
+    <div class="admin-box">
+      <h2>Manage Tags</h2>
+    </div>
+  <% end %>
 </div>
