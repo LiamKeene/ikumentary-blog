@@ -1,0 +1,11 @@
+@import 'variables';
+
+.admin-box {
+  border: $single-border-width solid #ccc;
+  float: left;
+  height: 5em;
+  margin: $block-padding;
+  min-width: 15em;
+  padding: $block-padding;
+  text-align:center;
+}
