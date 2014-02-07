@@ -91,6 +91,32 @@ describe Article do
     end
   end
 
+  describe 'category associations' do
+    let!(:first_category) { FactoryGirl.create(:category, name: 'first') }
+    let!(:second_category) { FactoryGirl.create(:category, name: 'second') }
+    before do
+      @article.save
+      @article.categories << first_category
+      @article.categories << second_category
+      @article.reload
+    end
+
+    it 'articles can be categorised' do
+      expect(@article.categories.count).to eq(2)
+      expect(@article.categories.sort_by(&:id)).to eq([first_category, second_category].sort_by(&:id))
+    end
+
+    it 'does not destroy categories when deleted' do
+      categories = @article.categories
+      @article.destroy
+      expect(categories).to be_empty
+
+      categories.each do |category|
+        expect(Category.where(id: category.id)).not_to be_empty
+      end
+    end
+  end
+
   describe 'tag associations' do
     let!(:first_tag) { FactoryGirl.create(:tag, name: 'first') }
     let!(:second_tag) { FactoryGirl.create(:tag, name: 'second') }
