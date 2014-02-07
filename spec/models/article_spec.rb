@@ -95,10 +95,9 @@ describe Article do
     let!(:first_category) { FactoryGirl.create(:category, name: 'first') }
     let!(:second_category) { FactoryGirl.create(:category, name: 'second') }
     before do
-      @article.save
       @article.categories << first_category
       @article.categories << second_category
-      @article.reload
+      @article.save
     end
 
     it 'articles can be categorised' do
@@ -121,10 +120,9 @@ describe Article do
     let!(:first_tag) { FactoryGirl.create(:tag, name: 'first') }
     let!(:second_tag) { FactoryGirl.create(:tag, name: 'second') }
     before do
-      @article.save
       @article.tags << first_tag
       @article.tags << second_tag
-      @article.reload
+      @article.save
     end
 
     it 'articles can be tagged' do
