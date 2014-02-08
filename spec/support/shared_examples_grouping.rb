@@ -46,6 +46,10 @@ shared_examples_for 'a Grouping model' do
   end
 
   context 'with articles' do
+    # Skip the callback :check_default_category as it will assign a new Category
+    # "Uncategorised" to the article before the spec'ed ones
+    before { Article.skip_callback(:save, :before, :check_default_category) }
+    after { Article.set_callback(:save, :before, :check_default_category) }
     let(:pub_articles) do
       [
         create(:article, :published),
@@ -98,6 +102,10 @@ end
 shared_examples_for 'grouping navigation links' do
 
   describe 'returns an array of URL name and path hashes' do
+    # Skip the callback :check_default_category as it will assign a new Category
+    # "Uncategorised" to the article before the spec'ed ones
+    before { Article.skip_callback(:save, :before, :check_default_category) }
+    after { Article.set_callback(:save, :before, :check_default_category) }
 
     let(:ham) { create(factory, name: 'ham', display_name: 'Ham') }
     let(:spam) { create(factory, name: 'spam', display_name: 'Spam') }

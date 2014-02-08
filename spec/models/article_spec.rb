@@ -114,6 +114,41 @@ describe Article do
         expect(Category.where(id: category.id)).not_to be_empty
       end
     end
+
+    context 'when no categories are specified when saved' do
+      before do
+        @article.categories = []
+      end
+
+      context 'and when the category: Uncategorised exists' do
+        before do
+          # Ensure that the `Uncategorised` Category exists
+          FactoryGirl.create(:category, name: 'uncategorised')
+
+          @article.save
+        end
+        
+        it 'assigns the category' do
+          expect(@article.categories.size).to eq(1)
+          expect(@article.categories.first.name).to eq('uncategorised')
+        end
+      end
+
+      context 'and when the category: Uncategorised doesn\'t exist' do
+        before do
+          # Ensure that the `Uncategorised` Category does not exist
+          Category.find_by_name('uncategorised').destroy
+
+          @article.save
+        end
+
+        it 'creates the category and assigns it' do
+          expect(Category.exists?(name: 'uncategorised')).to be(1)
+          expect(@article.categories.size).to eq(1)
+          expect(@article.categories.first.name).to eq('uncategorised')
+        end
+      end
+    end
   end
 
   describe 'tag associations' do
