@@ -9,3 +9,8 @@
   padding: $block-padding;
   text-align:center;
 }
+
+// Gives the main content full width
+.col-3-4 { width: 100%; }
+// Sidebar should not be rendered (check application.html.erb) - no styles required
+.col-1-4 {  }
