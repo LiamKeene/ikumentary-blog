@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe 'Tag Pages' do
+  let(:user) { FactoryGirl.create(:user) }
+  before(:each) { sign_in(user) }
 
   subject { page }
 

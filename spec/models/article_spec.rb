@@ -91,14 +91,73 @@ describe Article do
     end
   end
 
+  describe 'category associations' do
+    let!(:first_category) { FactoryGirl.create(:category, name: 'first') }
+    let!(:second_category) { FactoryGirl.create(:category, name: 'second') }
+    before do
+      @article.categories << first_category
+      @article.categories << second_category
+      @article.save
+    end
+
+    it 'articles can be categorised' do
+      expect(@article.categories.count).to eq(2)
+      expect(@article.categories.sort_by(&:id)).to eq([first_category, second_category].sort_by(&:id))
+    end
+
+    it 'does not destroy categories when deleted' do
+      categories = @article.categories
+      @article.destroy
+      expect(categories).to be_empty
+
+      categories.each do |category|
+        expect(Category.where(id: category.id)).not_to be_empty
+      end
+    end
+
+    context 'when no categories are specified when saved' do
+      before do
+        @article.categories = []
+      end
+
+      context 'and when the category: Uncategorised exists' do
+        before do
+          # Ensure that the `Uncategorised` Category exists
+          FactoryGirl.create(:category, name: 'uncategorised')
+
+          @article.save
+        end
+        
+        it 'assigns the category' do
+          expect(@article.categories.size).to eq(1)
+          expect(@article.categories.first.name).to eq('uncategorised')
+        end
+      end
+
+      context 'and when the category: Uncategorised doesn\'t exist' do
+        before do
+          # Ensure that the `Uncategorised` Category does not exist
+          Category.find_by_name('uncategorised').destroy
+
+          @article.save
+        end
+
+        it 'creates the category and assigns it' do
+          expect(Category.exists?(name: 'uncategorised')).to be(1)
+          expect(@article.categories.size).to eq(1)
+          expect(@article.categories.first.name).to eq('uncategorised')
+        end
+      end
+    end
+  end
+
   describe 'tag associations' do
     let!(:first_tag) { FactoryGirl.create(:tag, name: 'first') }
     let!(:second_tag) { FactoryGirl.create(:tag, name: 'second') }
     before do
-      @article.save
       @article.tags << first_tag
       @article.tags << second_tag
-      @article.reload
+      @article.save
     end
 
     it 'articles can be tagged' do

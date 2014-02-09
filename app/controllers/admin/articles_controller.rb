@@ -41,7 +41,7 @@ class Admin::ArticlesController < Admin::BaseController
   private
     # Never trust params from the interwebs!  Only allow white-listed params
     def article_params
-      params.require(:article).permit(:title, :slug, :content, :author_id, :published_at)
+      params.require(:article).permit(:type, :title, :slug, :content, :author_id, {category_ids: []}, {tag_ids: []}, :allow_comments, :published_at)
     end
 
     # Sets the `type` attribute from form / query string

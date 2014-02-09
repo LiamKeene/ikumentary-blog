@@ -4,6 +4,8 @@ class Article < ActiveRecord::Base
 
   extend FriendlyId
 
+  before_save :check_default_category
+
   belongs_to :author, class_name: 'User', foreign_key: 'author_id'
 
   friendly_id :slug, use: :slugged
@@ -55,4 +57,12 @@ class Article < ActiveRecord::Base
   def previous
     Article.where('published_at < ?', published_at).order('published_at DESC').first
   end
+
+  protected
+    def check_default_category
+      uncategorised = Category.find_or_create_by!(
+        display_name: 'Uncategorised', name: 'uncategorised'
+      )
+      self.categories << uncategorised if self.categories.empty?          
+    end
 end
