@@ -25,7 +25,7 @@ body {
 h1 {
   font-family: $article-title-font;
   font-size: 1.5em;
-  margin: 1em 0;
+  margin: 1em 0 1em 1em;
 }
 h2 {
   font-family: $article-title-font;
@@ -106,10 +106,16 @@ nav {
   }
 }
 
-article {
-
+article, .content-box {  
   margin-bottom: $block-padding;
   padding: $block-padding;
+}
+
+.content-box {
+  border: $single-border-width solid $border-color;
+}
+
+article {
 
   section {
     margin-top: $block-padding;
