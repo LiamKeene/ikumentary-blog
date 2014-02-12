@@ -48,6 +48,11 @@ a {
     color: lighten($main-red, 20%);
   }
 }
+ul {
+  list-style-type: circle;
+  margin: $block-padding 2 * $block-padding;
+  padding-left: $block-padding;
+}
 
 header, footer {
 
@@ -260,12 +265,6 @@ nav.pagination {
 
   ul, p {
     font-size: 0.8em;
-  }
-
-  ul {
-    list-style-type: circle;
-    margin: $block-padding 2 * $block-padding;
-    padding: 0;
   }
 }
 
