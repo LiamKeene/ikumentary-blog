@@ -71,6 +71,15 @@ header, footer {
   }
 }
 
+.page-wrap {
+  @include clearfix;
+  margin-bottom: -$sticky-footer-height;
+}
+
+footer.site, .page-wrap:after {
+  height: $sticky-footer-height;
+}
+
 nav {
   a { 
     margin: 0 $block-padding / 2;
