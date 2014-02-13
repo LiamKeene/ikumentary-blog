@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 shared_examples_for 'a Grouping model' do
   include_context 'subject class'
 

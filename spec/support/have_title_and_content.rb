@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 # Matcher that checks if a page has_title and has_content
 RSpec::Matchers.define :have_title_and_content do |title, content|
   match do |page|
