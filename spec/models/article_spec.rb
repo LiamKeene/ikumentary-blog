@@ -123,7 +123,7 @@ describe Article do
       context 'and when the category: Uncategorised exists' do
         before do
           # Ensure that the `Uncategorised` Category exists
-          FactoryGirl.create(:category, name: 'uncategorised')
+          Category.find_by_name('uncategorised') || create(:category, name: 'uncategorised')
 
           @article.save
         end
