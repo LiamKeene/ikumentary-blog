@@ -31,7 +31,7 @@ Ikumentary::Application.routes.draw do
 
   get 'pages/:id', to: 'articles#show_page', as: 'article_page'
 
-  root 'posts#index'
+  root 'articles#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
