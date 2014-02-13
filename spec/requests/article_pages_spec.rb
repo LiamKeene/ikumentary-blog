@@ -40,13 +40,13 @@ describe 'Article Pages' do
       context 'with comments allowed' do
         before { visit article_path(post) }
 
-        it { expect(page).to have_selector('div#comment-form') }
+        it { expect(page).to have_selector('#comment-form') }
       end
 
       context 'with comments not allowed' do
         before { visit article_path(post_no_comments) }
 
-        it { expect(page).not_to have_selector('div#comment-form') }
+        it { expect(page).not_to have_selector('#comment-form') }
       end
     end
 
