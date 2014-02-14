@@ -50,11 +50,11 @@ shared_examples_for 'a Grouping model' do
     after { Article.set_callback(:save, :before, :check_default_category) }
     let(:pub_articles) do
       [
-        create(:article, :published),
-        create(:article, :published)
+        create(:post, :published),
+        create(:page, :published)
       ]
     end
-    let(:draft_article) { create(:article, :draft) }
+    let(:draft_article) { create(:post, :draft) }
   
     let!(:second_group) do
       create(factory, display_name: 'Second Group',
