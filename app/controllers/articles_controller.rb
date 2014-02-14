@@ -1,5 +1,16 @@
 class ArticlesController < ApplicationController
 
+  # Feed contains only Posts
+  def feed
+    @articles = Post.published.limit(15)
+    @title = 'Ikumentary Blog'
+    @updated = @articles.maximum(:updated_at)
+
+    respond_to do |format|
+      format.atom { render 'index' }
+    end
+  end    
+
   # Index page contains only Posts
   def index
     @articles = Post.published.page params[:page]

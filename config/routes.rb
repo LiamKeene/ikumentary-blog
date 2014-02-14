@@ -25,6 +25,7 @@ Ikumentary::Application.routes.draw do
   end
 
   resources :articles, only: [:index, :show], path: '/' do
+    get 'feed.:format', to: 'articles#feed', format: 'atom', on: :collection
     get 'page/:page', to: 'articles#index', on: :collection
     resources :comments, only: [:create]
   end
