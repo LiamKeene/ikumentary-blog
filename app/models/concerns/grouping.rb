@@ -8,13 +8,13 @@ module Grouping
     before_save :create_name
 
     # Groupings have and belongs to many Articles
-    has_and_belongs_to_many :articles, -> { order('created_at DESC') }
+    has_and_belongs_to_many :articles, -> { order('articles.created_at DESC') }
 
     # Scope to return unique Groupings that contain Articles
     scope :with_articles, -> do
       joins(:articles)
-      .where('published_at < ?', Time.now)
-      .order('display_name')
+      .where('articles.published_at < ?', Time.now)
+      .order("#{self.table_name}.display_name")
       .uniq
     end
 
