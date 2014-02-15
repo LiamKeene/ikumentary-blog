@@ -18,6 +18,9 @@ module Grouping
       .uniq
     end
 
+    # Scope to return unique Groupings that contain Posts
+    scope :with_posts, -> { with_articles.where(articles: {type: 'Post'}) }
+
     # Groupings all have the :name sttribute
     validates :name, presence: true, uniqueness: true
   end

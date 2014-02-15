@@ -56,6 +56,7 @@ shared_examples_for 'a Grouping model' do
     end
     let(:draft_article) { create(:post, :draft) }
   
+    # Create groupings in non-alphabetical order on their display_name
     let!(:second_group) do
       create(factory, display_name: 'Second Group',
         articles: pub_articles)
@@ -63,6 +64,10 @@ shared_examples_for 'a Grouping model' do
     let!(:first_group) do
       create(factory, display_name: 'First Group',
         articles: pub_articles << draft_article)
+    end
+    let!(:third_group) do
+      create(factory, display_name: 'Third Group',
+        articles: create_list(:page, 1, :published))
     end
     let!(:draft_grouping) do
       create(factory, display_name: 'Drafts',
@@ -82,16 +87,32 @@ shared_examples_for 'a Grouping model' do
 
     describe '.with_articles' do
       it 'returns unique groupings with articles' do
-        expect(model.with_articles.size).to eq(2)
+        expect(model.with_articles.size).to eq(3)
       end
       it 'returns groupings in alphabetical order on their name' do
-        expect(model.with_articles.map { |g| g.name }).to eq(['first-group', 'second-group'])
+        expect(model.with_articles.map(&:name)).to eq(['first-group', 'second-group', 'third-group'])
       end
       it 'does not return groupings without articles' do
         expect(model.with_articles).not_to include(empty_grouping)
       end
       it 'does not return groupings without published articles' do
         expect(model.with_articles).not_to include(draft_grouping)
+      end
+    end
+
+    describe '.with_posts' do
+      it 'returns unique groupings with posts' do
+        expect(model.with_posts.size).to eq(2)
+      end
+      it 'returns groupins in alphabetical order on their name' do
+        expect(model.with_posts.map(&:name)).to eq(['first-group', 'second-group'])
+      end
+      it 'does not return groupings without posts' do
+        expect(model.with_posts).not_to include(empty_grouping)
+        expect(model.with_posts).not_to include(third_group)
+      end
+      it 'does not return groupings without published articles' do
+        expect(model.with_posts).not_to include(draft_grouping)
       end
     end
   end
