@@ -10,6 +10,7 @@ describe Article do
   it { should respond_to(:title) }
   it { should respond_to(:slug) }
   it { should respond_to(:content) }
+  it { should respond_to(:extract) }
   it { should respond_to(:author_id) }
   it { should respond_to(:published_at) }
 
