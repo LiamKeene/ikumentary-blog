@@ -205,8 +205,10 @@ describe Article do
   describe '#get_extract' do
     let(:has_extract) { create(:article, content: 'Some short content', extract: 'Check this out') }
     let(:no_extract) { create(:article, content: 'No extract here') }
+    let(:has_html) { create(:article, content: '<p>HTML tags begone!</p>') }
     
     it { expect(has_extract.get_extract).to eq(has_extract.extract) }
     it { expect(no_extract.get_extract).to eq(no_extract.content) }
+    it { expect(has_html.get_extract).to eq('HTML tags begone!') }
   end
 end

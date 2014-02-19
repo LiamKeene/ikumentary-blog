@@ -52,7 +52,7 @@ class Article < ActiveRecord::Base
   end
 
   def get_extract
-    self.extract || truncate(self.content, length: 150, omission: ' ... ')
+    self.extract || truncate(strip_tags(self.content), length: 150, omission: ' ... ')
   end
 
   def next
