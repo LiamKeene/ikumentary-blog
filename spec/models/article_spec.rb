@@ -201,4 +201,12 @@ describe Article do
       it { expect(art_3.previous).to eq(art_2) }
     end
   end
+
+  describe '#get_extract' do
+    let(:has_extract) { create(:article, content: 'Some short content', extract: 'Check this out') }
+    let(:no_extract) { create(:article, content: 'No extract here') }
+    
+    it { expect(has_extract.get_extract).to eq(has_extract.extract) }
+    it { expect(no_extract.get_extract).to eq(no_extract.content) }
+  end
 end

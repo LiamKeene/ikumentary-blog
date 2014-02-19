@@ -3,6 +3,7 @@ class Article < ActiveRecord::Base
   DEFAULT_LIMIT = 5
 
   extend FriendlyId
+  include ActionView::Helpers::TextHelper
 
   before_save :check_default_category
 
@@ -48,6 +49,10 @@ class Article < ActiveRecord::Base
 
   def allow_comments?
     allow_comments
+  end
+
+  def get_extract
+    self.extract || truncate(self.content, length: 150, omission: ' ... ')
   end
 
   def next
