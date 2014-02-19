@@ -61,6 +61,15 @@ describe Article do
     it { should_not be_valid }
   end
 
+  describe 'when extract contains HTML' do
+    before do
+      @article.extract = '<p>Nasty HTML</p>'
+      @article.save
+    end
+  
+    it { expect(@article.extract).to eq('Nasty HTML') }
+  end
+
   describe 'when author_id is not present' do
     before { @article.author_id = nil }
     it { should_not be_valid }

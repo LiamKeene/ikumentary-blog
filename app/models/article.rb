@@ -6,6 +6,7 @@ class Article < ActiveRecord::Base
   include ActionView::Helpers::TextHelper
 
   before_save :check_default_category
+  before_save :remove_extract_html
 
   belongs_to :author, class_name: 'User', foreign_key: 'author_id'
 
@@ -69,5 +70,9 @@ class Article < ActiveRecord::Base
         display_name: 'Uncategorised', name: 'uncategorised'
       )
       self.categories << uncategorised if self.categories.empty?          
+    end
+
+    def remove_extract_html
+      self.extract = strip_tags(self.extract)
     end
 end
