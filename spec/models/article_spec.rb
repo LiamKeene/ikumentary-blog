@@ -10,6 +10,7 @@ describe Article do
   it { should respond_to(:title) }
   it { should respond_to(:slug) }
   it { should respond_to(:content) }
+  it { should respond_to(:extract) }
   it { should respond_to(:author_id) }
   it { should respond_to(:published_at) }
 
@@ -58,6 +59,15 @@ describe Article do
   describe 'when content is not present' do
     before { @article.content = '' }
     it { should_not be_valid }
+  end
+
+  describe 'when extract contains HTML' do
+    before do
+      @article.extract = '<p>Nasty HTML</p>'
+      @article.save
+    end
+  
+    it { expect(@article.extract).to eq('Nasty HTML') }
   end
 
   describe 'when author_id is not present' do
@@ -199,5 +209,15 @@ describe Article do
       it { expect(art_2.previous).to eq(art_1) }
       it { expect(art_3.previous).to eq(art_2) }
     end
+  end
+
+  describe '#get_extract' do
+    let(:has_extract) { create(:article, content: 'Some short content', extract: 'Check this out') }
+    let(:no_extract) { create(:article, content: 'No extract here') }
+    let(:has_html) { create(:article, content: '<p>HTML tags begone!</p>') }
+    
+    it { expect(has_extract.get_extract).to eq(has_extract.extract) }
+    it { expect(no_extract.get_extract).to eq(no_extract.content) }
+    it { expect(has_html.get_extract).to eq('HTML tags begone!') }
   end
 end

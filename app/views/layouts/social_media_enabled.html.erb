@@ -1,0 +1,23 @@
+<% content_for :html_attrs do %>
+  prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#"
+<% end %>
+
+<% content_for :meta_tags do %>
+  <!-- OpenGraph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="<%= @article.title %>" />
+  <meta property="og:url" content="<%= article_url(@article) %>" />
+  <meta property="og:site_name" content="ikumentary" />
+  <meta property="og:description" content="<%= @article.get_extract %>" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@ikumentary" />
+  <meta name="twitter:title" content="<%= @article.title %>" />
+  <meta name="twitter:description" content="<%= @article.get_extract %>" />
+
+  <!-- Facebok Page -->
+  <meta property="fb:admins" content="813530376" />
+<% end %>
+
+<%= render :template => 'layouts/application' %>

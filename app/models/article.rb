@@ -3,8 +3,10 @@ class Article < ActiveRecord::Base
   DEFAULT_LIMIT = 5
 
   extend FriendlyId
+  include ActionView::Helpers::TextHelper
 
   before_save :check_default_category
+  before_save :remove_extract_html
 
   belongs_to :author, class_name: 'User', foreign_key: 'author_id'
 
@@ -50,6 +52,10 @@ class Article < ActiveRecord::Base
     allow_comments
   end
 
+  def get_extract
+    self.extract || truncate(strip_tags(self.content), length: 150, omission: ' ... ')
+  end
+
   def next
     Article.where('published_at > ?', published_at).order('published_at ASC').first
   end
@@ -64,5 +70,9 @@ class Article < ActiveRecord::Base
         display_name: 'Uncategorised', name: 'uncategorised'
       )
       self.categories << uncategorised if self.categories.empty?          
+    end
+
+    def remove_extract_html
+      self.extract = strip_tags(self.extract)
     end
 end
