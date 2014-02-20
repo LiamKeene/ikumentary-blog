@@ -10,6 +10,12 @@
   <meta property="og:site_name" content="ikumentary" />
   <meta property="og:description" content="<%= @article.get_extract %>" />
 
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@ikumentary" />
+  <meta name="twitter:title" content="<%= @article.title %>" />
+  <meta name="twitter:description" content="<%= @article.get_extract %>" />
+
   <!-- Facebok Page -->
   <meta property="fb:admins" content="813530376" />
 <% end %>
