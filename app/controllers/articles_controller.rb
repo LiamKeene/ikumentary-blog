@@ -1,5 +1,7 @@
 class ArticlesController < ApplicationController
 
+  layout 'layouts/social_media_enabled', except: [:feed, :index]
+
   # Feed contains only Posts
   def feed
     @articles = Post.published.limit(15)
