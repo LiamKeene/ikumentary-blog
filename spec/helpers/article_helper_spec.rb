@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe ArticleHelper do
   
-  describe 'format_date' do
+  describe 'format_published_date' do
 
     let(:pub_article) do
       create(:article, published_at: 'Sat, 25 Jan 2014 11:02:40 UTC +00:00')
