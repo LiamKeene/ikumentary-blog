@@ -7,10 +7,19 @@ describe ArticleHelper do
   
   describe 'format_published_date' do
     let(:pub_date) { format_published_date(pub_article.published_at) }
+    let(:pub_date_1) { format_published_date(pub_article.published_at, '%B %d, %Y') }
     let(:draft_date) { format_published_date(draft_article.published_at) }
     
-    it 'formats the published_at date of an article' do
-      expect(pub_date).to eq('25/01/2014')
+    context 'when no format is given' do
+      it 'formats the date using the %d/%m/%Y format' do
+        expect(pub_date).to eq('25/01/2014')
+      end
+    end
+
+    context 'when a format is given' do
+      it 'formats the date of an article using the given format' do
+        expect(pub_date_1).to eq('January 25, 2014')
+      end
     end
 
     it 'returns "Unpublished" if the article is a draft' do

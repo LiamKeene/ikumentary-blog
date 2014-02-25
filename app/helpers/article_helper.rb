@@ -1,8 +1,8 @@
 module ArticleHelper
   # Formats the published date of an article or returns 'Unpublished' if it is
   # a draft
-  def format_published_date(date)
-    !date.nil? ? date.strftime('%d/%m/%Y') : 'Unpublished'
+  def format_published_date(date, format = '%d/%m/%Y')
+    !date.nil? ? date.strftime(format) : 'Unpublished'
   end
   # Formats the published date of an article according to the specs laid out
   # for the `datetime` attribute of the HTML5 time element.  If the article is
