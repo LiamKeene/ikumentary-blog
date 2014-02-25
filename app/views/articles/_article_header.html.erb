@@ -3,8 +3,8 @@
         <%= link_to article.title, article_path(article) %>
       </h2>
       <p class="article-datetime">
-        <time datetime="<%= article.published_at.strftime('%Y-%m-%d %H:%M:%S%z') %>">
-          <%= article.published_at.strftime('%B %d, %Y').upcase %>
+        <time datetime="<%= format_html5_time(article.published_at) %>">
+          <%= format_published_date(article.published_at, '%B %d, %Y').upcase %>
         </time>
       </p>
     </header>
