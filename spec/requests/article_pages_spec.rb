@@ -6,7 +6,7 @@ describe 'Article Pages' do
 
   describe 'index' do
 
-    context 'published posts' do
+    context 'with published posts' do
       let!(:posts) { FactoryGirl.create_list(:post, 5, :published) }
       before { visit articles_path }
 
@@ -19,12 +19,26 @@ describe 'Article Pages' do
       end
     end
 
-    context 'draft posts' do
-      let!(:draft) { FactoryGirl.create(:post, :draft) }
-      before { visit articles_path }
+    context 'with draft posts' do
+      let!(:draft) { FactoryGirl.create(:post, :draft) }      
 
-      it 'does not list drafts' do
-        expect(page).to_not have_selector('div', text: draft.title)
+      context 'viewed as an admin' do
+        let(:user) { FactoryGirl.create(:user) }
+        before do
+          sign_in(user)
+          visit articles_path
+        end
+
+        it 'lists draft posts' do
+          expect(page).to have_selector('div', text: draft.title)
+        end
+      end
+
+      context 'viewed as a public user' do
+        before { visit articles_path }
+        it 'does not list drafts' do
+          expect(page).to_not have_selector('div', text: draft.title)
+        end
       end
     end
   end
