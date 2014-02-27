@@ -194,20 +194,33 @@ describe Article do
   end
 
   context '#next and #previous methods' do
-    let!(:art_1) { FactoryGirl.create(:article, :published, published_at: Time.now - 1.day) }
-    let!(:art_2) { FactoryGirl.create(:article, :published, published_at: Time.now - 1.hour) }
-    let!(:art_3) { FactoryGirl.create(:article, :published, published_at: Time.now) }
+    let!(:art_1) { create(:post, :published, published_at: Time.now - 1.day) }
+    let!(:art_2) { create(:post, :draft) }
+    let!(:art_3) { create(:page, :published, published_at: Time.now - 1.hour) }
+    let!(:art_4) { create(:post, :published, published_at: Time.now) }
 
     describe '#next' do
-      it { expect(art_1.next).to eq(art_2) }
-      it { expect(art_2.next).to eq(art_3) }
-      it { expect(art_3.next).to eq(nil) }
+      it 'skips drafts and Pages' do
+        expect(art_1.next).to eq(art_4)
+      end
+      it { expect(art_4.next).to eq(nil) }
+
+      context 'with include_pages option' do
+        it { expect(art_1.next({include_pages: true})).to eq(art_3) }
+        it { expect(art_3.next({include_pages: true})).to eq(art_4) }
+      end
     end
 
     describe '#previous' do
       it { expect(art_1.previous).to eq(nil) }
-      it { expect(art_2.previous).to eq(art_1) }
-      it { expect(art_3.previous).to eq(art_2) }
+      it 'skips drafts and Pages' do
+        expect(art_4.previous).to eq(art_1)
+      end
+
+      context 'with include_pages option' do
+        it { expect(art_4.previous({include_pages: true})).to eq(art_3) }
+        it { expect(art_3.previous({include_pages: true})).to eq(art_1) }
+      end
     end
   end
 

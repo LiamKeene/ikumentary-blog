@@ -56,12 +56,14 @@ class Article < ActiveRecord::Base
     self.extract || truncate(strip_tags(self.content), length: 150, omission: ' ... ')
   end
 
-  def next
-    Article.where('published_at > ?', published_at).order('published_at ASC').first
+  def next(include_pages: false)
+    model_class = include_pages ? Article : Post
+    model_class.where('published_at > ?', published_at).order('published_at ASC').first
   end
 
-  def previous
-    Article.where('published_at < ?', published_at).order('published_at DESC').first
+  def previous(include_pages: false)
+    model_class = include_pages ? Article : Post
+    model_class.where('published_at < ?', published_at).order('published_at DESC').first
   end
 
   protected
