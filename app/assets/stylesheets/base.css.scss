@@ -53,6 +53,12 @@ ul {
   margin: $block-padding 2 * $block-padding;
   padding-left: $block-padding;
 }
+.small {
+  font-size: 90%;
+}
+.smaller {
+  font-size: 80%;
+}
 
 header, footer {
 
