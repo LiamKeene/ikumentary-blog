@@ -13,8 +13,8 @@ class TagsController < ApplicationController
       end
 
       format.atom do
-        @articles = @tag.published_articles.limit(15)
-        @title = "Ikumentary Blog - #{@tag.displa_name}"
+        @articles = @tag.published_articles.limit(Settings['articles.feed.limit'])
+        @title = "#{Settings['articles.feed.title']} - #{@tag.display_name}"
         @updated = @articles.maximum(:updated_at)
 
         render 'articles/index'
