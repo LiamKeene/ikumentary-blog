@@ -31,6 +31,8 @@ gem 'kaminari'
 gem 'truncate_html'
 gem 'friendly_id', '~> 5.0.0'
 gem 'rails-settings-cached', '0.3.1'
+gem 'ckeditor'
+gem 'paperclip'
 
 group :doc do
   gem 'sdoc', '0.3.20', require: false
