@@ -27,5 +27,8 @@ module Ikumentary
 
     # Add app/assets/fonts to asset pipeline
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
+
+    # Autoload CKEditor models
+    config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
   end
 end
