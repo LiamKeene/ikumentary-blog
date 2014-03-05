@@ -13,8 +13,8 @@ class CategoriesController < ApplicationController
       end
 
       format.atom do
-        @articles = @category.published_articles.limit(15)
-        @title = "Ikumentary Blog - #{@category.display_name}"
+        @articles = @category.published_articles.limit(Settings['articles.feed.limit'])
+        @title = "#{Settings['articles.feed.title']} - #{@category.display_name}"
         @updated = @articles.maximum(:updated_at)
 
         render 'articles/index'
