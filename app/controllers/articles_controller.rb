@@ -16,7 +16,7 @@ class ArticlesController < ApplicationController
   # Index page contains only Posts
   def index
     # Signed in users can see all Posts, public users only published Posts
-    model_array = (signed_in? && Post.all) || Post.published
+    model_array = (signed_in? && Post.admin_all) || Post.published
     @articles = model_array.page params[:page]
   end
 

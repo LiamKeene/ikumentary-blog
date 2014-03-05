@@ -19,6 +19,7 @@ class Article < ActiveRecord::Base
 
   paginates_per DEFAULT_LIMIT
 
+  scope :admin_all, -> { order('COALESCE(published_at, created_at) DESC') }
   scope :latest, -> { order('created_at DESC') }
   scope :published, -> { where('published_at < ?', Time.now).order('published_at DESC') }
   scope :recent, -> { published.limit(DEFAULT_LIMIT) }
