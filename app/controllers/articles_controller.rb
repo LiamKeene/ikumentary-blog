@@ -4,8 +4,8 @@ class ArticlesController < ApplicationController
 
   # Feed contains only Posts
   def feed
-    @articles = Post.published.limit(15)
-    @title = 'Ikumentary Blog'
+    @articles = Post.published.limit(Settings['articles.feed.limit'])
+    @title = Settings['articles.feed.title']
     @updated = @articles.maximum(:updated_at)
 
     respond_to do |format|
