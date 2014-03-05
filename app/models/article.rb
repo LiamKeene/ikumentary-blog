@@ -1,7 +1,5 @@
 class Article < ActiveRecord::Base
 
-  DEFAULT_LIMIT = 5
-
   extend FriendlyId
   include ActionView::Helpers::TextHelper
 
@@ -17,12 +15,12 @@ class Article < ActiveRecord::Base
   has_and_belongs_to_many :categories
   has_and_belongs_to_many :tags
 
-  paginates_per DEFAULT_LIMIT
+  paginates_per Settings['articles.limit']
 
   scope :admin_all, -> { order('COALESCE(published_at, created_at) DESC') }
   scope :latest, -> { order('created_at DESC') }
   scope :published, -> { where('published_at < ?', Time.now).order('published_at DESC') }
-  scope :recent, -> { published.limit(DEFAULT_LIMIT) }
+  scope :recent, -> { published.limit(Settings['articles.limit']) }
 
   validates :title,       presence: true, length: { maximum: 255 }
   validates :slug,        presence: true, length: { maximum: 100 }, uniqueness: { case_sensitive: false }
