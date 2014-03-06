@@ -7,6 +7,9 @@
   <%= stylesheet_link_tag    "admin", media: "all", "data-turbolinks-track" => true %>
   <% end %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <% if params[:controller].starts_with?('admin/') %>
+  <%= javascript_include_tag "admin/application", "data-turbolinks-track" => true %>
+  <% end %>
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <%= yield :meta_tags %>
