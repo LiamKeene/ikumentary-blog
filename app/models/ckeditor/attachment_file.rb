@@ -1,7 +1,10 @@
 class Ckeditor::AttachmentFile < Ckeditor::Asset
   has_attached_file :data,
-                    :url => "/ckeditor_assets/attachments/:id/:filename",
-                    :path => ":rails_root/public/ckeditor_assets/attachments/:id/:filename"
+                    :hash_data => "attachments/:id/:filename",
+                    :hash_digest => Settings.paperclip_hash_digest,
+                    :hash_secret => Settings.paperclip_attachment_hash_secret,
+                    :url => "/ckeditor_assets/:hash",
+                    :path => ":rails_root/public/:url"
 
   validates_with AttachmentContentTypeValidator, attributes: :data, content_type: %w(application/pdf)
   validates_with AttachmentPresenceValidator, attributes: :data
