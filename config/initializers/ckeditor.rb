@@ -1,4 +1,5 @@
 # Use this hook to configure ckeditor
+include Admin::SessionsHelper
 Ckeditor.setup do |config|
   # ==> ORM configuration
   # Load and configure the ORM. Supports :active_record (default), :mongo_mapper and
@@ -16,6 +17,7 @@ Ckeditor.setup do |config|
 
   # Setup authorization to be run as a before filter
   # config.authorize_with :cancan
+  config.authorize_with { authorize }
 
   # Asset model classes
   # config.picture_model { Ckeditor::Picture }
