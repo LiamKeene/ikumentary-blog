@@ -17,9 +17,13 @@
 }
 
 /* Site-wide styles */
+html {
+  height: 100%;
+}
 body {
   color: $base-font-color;
   font-family: $base-font-family;
+  height: 100%;
 }
 
 h1 {
@@ -80,6 +84,7 @@ header, footer {
 .page-wrap {
   @include clearfix;
   margin-bottom: -$sticky-footer-height;
+  min-height: 100%;
 }
 
 footer.site, .page-wrap:after {
