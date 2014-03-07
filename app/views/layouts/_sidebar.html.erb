@@ -1,0 +1,23 @@
+  <aside class="sidebar">
+    <h2>About</h2>
+    <p><%= raw(Settings['blog.about']) %></p>
+  </aside>
+  <aside class="sidebar">
+    <h2>Recent</h2>
+    <ul>
+      <% Post.recent.each do |post| %>
+      <li><%= link_to post.title, article_path(post) %></li>
+      <% end %>
+    </ul>
+    <p></p>
+  </aside>  
+  <aside class="sidebar">
+    <h2>Categories</h2>
+  <% unless category_navigation_links.empty? %>
+    <ul>
+      <% category_navigation_links.each do |link| %>
+      <li><%= link_to link[:name], link[:url] %></li>
+      <% end %>
+    </ul>
+  <% end %>  
+  </aside>

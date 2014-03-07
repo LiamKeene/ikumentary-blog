@@ -1,0 +1,13 @@
+<% provide(:title, 'All Tags') %>
+
+<div class="content-box">
+  <h1>All Tags</h1>
+
+  <ul>
+  <% @tags.each do |tag| %>
+    <li>
+      <%= link_to tag.display_name, tag_path(tag.name) %>
+    </li>
+  <% end %>
+  </ul>
+</div>

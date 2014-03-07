@@ -1,12 +1,39 @@
 Ikumentary::Application.routes.draw do
+  mount Ckeditor::Engine => '/ckeditor'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
+  namespace :admin do
+    get '', to: 'dashboard#index', as: '/'
 
-  # You can have the root of your site routed with "root"
-  root 'static_pages#home'
+    resources :users
+    resources :articles
+    resources :comments
+    resources :categories
+    resources :tags
 
-  match '/about',     to: 'static_pages#about',     via: 'get'
-  match '/contact',   to: 'static_pages#contact',   via: 'get'
+    resources :sessions, only: [:create]
+
+    get 'signin', to: 'sessions#new', as: 'sign_in'
+    delete 'signout', to: 'sessions#destroy', as: 'sign_out'
+  end
+
+  resources :categories, only: [:index, :show] do
+    get ':id/page/:page', :to => 'categories#show', on: :collection
+  end
+
+  resources :tags, only: [:index, :show] do
+    get ':id/page/:page', :to => 'tags#show', on: :collection
+  end
+
+  resources :articles, only: [:index, :show], path: '/' do
+    get 'feed.:format', to: 'articles#feed', format: 'atom', on: :collection
+    get 'page/:page', to: 'articles#index', on: :collection
+    resources :comments, only: [:create]
+  end
+
+  get 'pages/:id', to: 'articles#show_page', as: 'article_page'
+
+  root 'articles#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

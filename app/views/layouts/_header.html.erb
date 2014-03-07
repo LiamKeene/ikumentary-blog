@@ -1,13 +1,19 @@
-  <header>
-    <%= link_to image_tag('ikumentary-logo.png'), root_path %>
+    <%= link_to Settings['blog.title'], root_path, id: 'branding' %>
+    <span id="tag-line"><%= Settings['blog.subtitle'] %></span>
     <a id="nav-toggle">
       <span></span>
       <span></span>
       <span></span>
     </a>
-    <nav>
-      <%= link_to 'Home', root_path %>
-      <%= link_to 'About', about_path %>
-      <%= link_to 'Contact', contact_path %>
+    <nav id="nav-site">
+      <%= link_to 'home', root_path %>
+      <%= link_to 'about', article_page_path('about') %>
+      <%= link_to 'contact', article_page_path('contact') %>
+      <% if signed_in? %>
+      <a id="nav-admin-toggle">admin</a>
+      <nav id="nav-admin">
+        <%= link_to 'dashboard', admin_path %>
+        <%= link_to 'sign out', admin_sign_out_path, method: 'delete' %>
+      </nav>
+      <% end %>
     </nav>
-  </header>

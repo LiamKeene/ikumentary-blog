@@ -1,0 +1,39 @@
+<% provide(:title, 'All Users') %>
+
+<p><%= link_to 'New User', [:new, :admin, :user] %></p>
+
+<h1>All Users</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Display Name</th>
+      <th>Login</th>
+      <th>Email</th>
+      <th>User Type</th>
+      <th>Created</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.display_name %></td>
+        <td><%= user.login %></td>
+        <td><%= user.email %></td>
+        <td><%= user.user_type %></td>
+        <td><%= user.created_at %></td>
+        <td><%= link_to 'Show', [:admin, user] %></td>
+        <td><%= link_to 'Edit', [:edit, :admin, user] %></td>
+        <td><%= link_to 'Destroy', [:admin, user], method: :delete, data: { confirm: 'Are you sure?' } %></td>         
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p><%= link_to 'New User', [:new, :admin, :user] %></p>

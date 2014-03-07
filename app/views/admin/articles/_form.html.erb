@@ -1,0 +1,45 @@
+<%= form_for [:admin, @article] do |f| %>
+  
+  <%= render 'shared/error_messages', object: f.object %>
+  
+  <div>
+    <%= f.label :type %><br>
+    <%= f.select :type, Article.select_options %>
+  </div>
+  <div>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div>
+    <%= f.label :slug %><br>
+    <%= f.text_field :slug %>
+  </div>
+  <div>
+    <%= f.label :content %><br>
+    <%= f.text_area :content, class: 'ckeditor' %>
+  </div>
+  <div>
+    <%= f.label :author %><br>
+    <%= f.collection_select :author_id, User.all, :id, :name %>
+  </div>
+  <div>
+    <%= f.label :categories %><br>
+    <%= f.collection_check_boxes :category_ids, Category.all, :id, :display_name, {selected: @article.categories.map { |c| c.id } }, multiple: true %>
+  </div>
+  <div>
+    <%= f.label :tags %><br>
+    <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :display_name, {selected: @article.tags.map { |t| t.id } }, multiple: true %>
+  </div>
+  <div>
+    <%= f.label :allow_comments %><br>
+    <%= f.check_box :allow_comments %>
+  </div>
+  <div>
+    <%= f.label :published_at %><br>
+    <%= f.datetime_select :published_at, include_blank: true %>
+  </div>
+  <div>
+    <%= f.submit %>
+  </div>
+
+<% end %>

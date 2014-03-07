@@ -1,0 +1,13 @@
+<% provide(:title, 'All Categories') %>
+
+<div class="content-box">
+  <h1>All Categories</h1>
+
+  <ul>
+  <% @categories.each do |category| %>
+    <li>
+      <%= link_to category.display_name, category_path(category.name) %>
+    </li>
+  <% end %>
+  </ul>
+</div>

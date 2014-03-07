@@ -1,13 +1,15 @@
-  <footer>
-    <div>
-      <p>© 2013 Ikumentary Blog</p>
+    <div class="cf">
+      <nav id="nav-footer">
+        <%= link_to 'home', root_path %>
+        <%= link_to 'about', article_page_path('about') %>
+        <%= link_to 'contact', article_page_path('contact') %>
+      </nav>
+      <nav id="nav-social">
+        <%= link_to image_tag('twitter.png'), 'https://twitter.com/ikumentary_blog', title: 'Ikumentary on Twitter' %>
+        <%= link_to image_tag('facebook.png'), 'https://facebook.com/ikumentary_blog', title: 'Ikumentary on Twitter' %>
+        <%= link_to image_tag('rss-feed.png'), 'http://feeds.feedburner.com/ikumentary_blog', title: 'Ikumentary RSS Feed' %>
+      </nav>
     </div>
-    <nav>
-      <%= link_to 'Home', root_path %>
-      <%= link_to 'About', about_path %>
-      <%= link_to 'Contact', contact_path %>
-      <%= link_to image_tag('twitter.png'), 'https://twitter.com/ikumentary_blog', title: 'Ikumentary on Twitter' %>
-      <%= link_to image_tag('facebook.png'), 'https://facebook.com/ikumentary_blog', title: 'Ikumentary on Twitter' %>
-      <%= link_to image_tag('rss-feed.png'), 'http://feeds.feedburner.com/ikumentary_blog', title: 'Ikumentary RSS Feed' %>
-    </nav>
-  </footer>
+    <div id="copyright">
+      <p><%= Settings['blog.title'] %> created by <%= link_to 'liam keene', 'http://liamkeene.com', title: 'Liam Keene' %> using <%= link_to 'rails', 'http://rubyonrails.org/', title: 'Ruby on Rails' %></p>
+    </div>

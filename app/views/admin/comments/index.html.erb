@@ -1,0 +1,41 @@
+<% provide(:title, 'All Comments') %>
+
+<p><%= link_to 'New Comment', [:new, :admin, :comment] %></p>
+
+<h1>All Comments</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Article</th>
+      <th>Author</th>
+      <th>Email</th>
+      <th>Content</th>
+      <th>IP Address</th>
+      <th>User Agent</th>
+      <th>Created</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @comments.each do |comment| %>
+      <tr>
+        <td><%= comment.article.title %></td>
+        <td><%= comment.author %></td>
+        <td><%= comment.email %></td>
+        <td><%= comment.content %></td>
+        <td><%= comment.ip_addr %></td>
+        <td><%= comment.agent %></td>
+        <td><%= comment.created_at %></td>
+        <td><%= link_to 'Show', [:admin, comment] %></td>
+        <td><%= link_to 'Edit', [:edit, :admin, comment] %></td>
+        <td><%= link_to 'Destroy', [:admin, comment], method: :delete, data: { confirm: 'Are you sure?' } %></td>         
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p><%= link_to 'New Comment', [:new, :admin, :comment] %></p>

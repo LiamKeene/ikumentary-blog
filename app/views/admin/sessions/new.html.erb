@@ -1,0 +1,13 @@
+<% provide(:title, "Sign In") %>
+<h1>Sign In</h1>
+
+<%= form_for(:session, url: admin_sessions_path) do |f| %>
+  
+  <%= f.label :login %>
+  <%= f.text_field :login %>
+
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+
+  <%= f.submit 'Sign In' %>
+<% end %>

@@ -1,0 +1,350 @@
+// Import reset
+@import "reset";
+
+// Import variables and mixins
+@import "variables";
+@import "mixins";
+
+// Import fonts
+@import "fonts";
+
+// Import forms
+@import "forms";
+
+// Border-box FTW
+*, *:after, *:before {
+  @include box-sizing;
+}
+
+/* Site-wide styles */
+body {
+  color: $base-font-color;
+  font-family: $base-font-family;
+}
+
+h1 {
+  font-family: $article-title-font;
+  font-size: 1.5em;
+  margin: 1em 0 1em 1em;
+}
+h2 {
+  font-family: $article-title-font;
+  font-size: 1.25em;
+  margin-bottom: $block-padding / 2;
+  padding: $block-padding / 2;
+}
+h3 { 
+  margin: 0 
+}
+p {
+  line-height: 1.75em;
+  margin-bottom: $block-padding;
+}
+a {
+  color: $main-red;
+  text-decoration: none;
+
+  &:hover {
+    color: lighten($main-red, 20%);
+  }
+}
+ul {
+  list-style-type: circle;
+  margin: $block-padding 2 * $block-padding;
+  padding-left: $block-padding;
+}
+.small {
+  font-size: 90%;
+}
+.smaller {
+  font-size: 80%;
+}
+
+header, footer {
+
+  &.site {
+    background-color: $main-red;
+    padding: $block-padding;
+  
+    a {
+      color: $font-lighter-color;
+      font-family: $header-font;
+    
+      &:hover {
+        color: $font-light-color;
+      }
+    }
+  }
+}
+
+.page-wrap {
+  @include clearfix;
+  margin-bottom: -$sticky-footer-height;
+}
+
+footer.site, .page-wrap:after {
+  height: $sticky-footer-height;
+}
+
+nav {
+  a { 
+    margin: 0 $block-padding / 2;
+  }
+}
+
+#branding {
+  display: block;
+  font-family: $branding-font;
+  font-size: 2em;
+  text-align: right;
+}
+
+#tag-line {
+  color: $font-light-color;
+  display: block;
+  font-family: $branding-font;
+  font-size: 0.65em;
+  text-align: right;
+}
+
+#nav-site {
+  margin-top: $block-padding;
+}
+
+#nav-admin-toggle {
+  cursor: pointer;
+  float: right;
+}
+
+#nav-admin {
+  display: none;
+
+  a {
+    display: block;
+    text-align: right;
+    margin-top: $block-padding;
+  }
+}
+
+article, .content-box {  
+  margin-bottom: $block-padding;
+  padding: $block-padding;
+}
+
+.content-box {
+  border: $single-border-width solid $border-color;
+}
+
+article {
+
+  section {
+    margin-top: $block-padding;
+  }
+
+  &.article {
+
+    border: $single-border-width solid $border-color;
+    
+  }
+
+  &.comment {
+
+    border-bottom: $single-border-width solid $border-color;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    time {
+      font-size: 0.8em;
+    }
+  }
+}
+
+.article-datetime {
+  color: $font-light-color;
+  font-size: 0.9em;
+  letter-spacing: 0.2em;
+  margin-left: $block-padding;
+}
+
+.article-links {
+  display: inline-block;
+  font-size: 0.85em;
+  padding: $block-padding / 2 $block-padding * 1.1;
+  text-align: center;
+
+  &:hover {
+    background: $main-red;
+    border-radius: $block-padding / 2;
+    color: #fff;
+  }
+}
+
+.article-more-link {
+  margin-left: $block-padding * 3;
+}
+
+.article-comments-link {
+  float: right;
+  margin-right: $block-padding * 3;
+}
+
+.article-extra {
+
+  p {
+    float: left;
+    line-height: 1.25em;
+    margin-bottom: 0;
+    padding: $block-padding;
+    width: 50%;
+  }
+
+  a {
+    font-size: 0.8em;
+    font-style: oblique;
+  } 
+}
+
+.article-meta {
+
+  border-top: $single-border-width solid $border-color;
+  border-bottom: $single-border-width solid $border-color;
+    
+  p:first-child {
+    border-right: $single-border-width solid $border-color;
+  }
+
+  span {
+    display: block;
+  }
+
+  .head {
+    font-size: 0.625em;
+    text-transform: uppercase;
+  }
+}
+
+.comment-author {
+  display: block;
+  font-family: $article-title-font;
+}
+
+.comment-content {
+  margin-top: $block-padding;
+} 
+
+/* Comment Form */
+.screen-reader {
+  // Not sure why these are required, could be markup related
+  height: 0;
+  position: absolute;
+
+  // The Kellem method
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* Index Page Navigation */
+nav.pagination {
+  margin: $block-padding;
+
+  // Make inline-block to widen clickable area
+  span {
+    display: inline-block;
+  }
+
+  // Padding and centering of page text
+  a, span.current {
+    padding: $block-padding / 2 $block-padding * 1.1;
+    text-align: center;
+  }
+
+  // Animation for current page and hovering
+  a:hover, span.current {
+    background: $main-red;
+    border-radius: $block-padding / 2;
+    color: #fff;
+  }
+}
+
+.sidebar {
+  border: $single-border-width solid $border-color;
+  margin-top: $block-padding;
+  padding: $block-padding;
+
+  h2 {
+    text-align: center;
+  }
+
+  ul, p {
+    font-size: 0.8em;
+  }
+}
+
+#nav-footer {
+  float: left;
+  font-size: 0.8em;
+  margin-top: $block-padding / 2;
+}
+
+#nav-social {
+  float: right;
+
+  img {
+    $overall-size: 2em;
+
+    height: $overall-size * 0.75;
+    width: $overall-size * 0.75;
+  }
+}
+
+#copyright {
+  color: $font-light-color;
+  font-size: 0.7em;
+  margin-top: $block-padding;
+  text-align: center;
+}
+
+.cf {
+  @include clearfix;
+}
+
+/* Adapted from CSS-tricks.com */
+.grid-pad {
+  padding: $gutter-width;
+}
+
+@media screen and (min-width: 48em) {
+
+  .grid {
+    @include clearfix;
+  }
+
+  [class*='col-'] {
+    float: left;
+    padding-left: $gutter-width;
+
+    .grid &:first-child {
+      padding-left: 0;
+    }
+  }
+
+  .col-1-4 {
+    width: 25%;
+  }
+
+  .col-3-4 {
+    width: 75%;
+  }
+
+  .sidebar {
+    margin-top: 0;
+    margin-bottom: $block-padding;
+  }
+
+  .article:last-child {
+    margin-bottom: 0;
+  }
+}

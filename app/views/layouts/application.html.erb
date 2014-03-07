@@ -1,17 +1,49 @@
 <!DOCTYPE html>
-<html>
+<html <%= yield(:html_attrs) %>>
 <head>
   <title><%= full_title(yield(:title)) %></title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <% if params[:controller].starts_with?('admin/') %>
+  <%= stylesheet_link_tag    "admin", media: "all", "data-turbolinks-track" => true %>
+  <% end %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <% if params[:controller].starts_with?('admin/') %>
+  <%= javascript_include_tag "admin/application", "data-turbolinks-track" => true %>
+  <% end %>
   <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <%= yield :meta_tags %>
   <%= render 'layouts/shim' %>
 </head>
 <body>
-  <%= render 'layouts/header' %>
-  <div>
-    <%= yield %>
+<div class="page-wrap">
+  <header class="site cf">
+    <%= render 'layouts/header' %>
+  </header>
+
+  <div class="container">
+    <% flash.each do |key, value| %>
+    <div class="error error-<%= key %>"><%= value %></div>
+    <% end %>
   </div>
+
+  <div class="grid grid-pad">
+    <div class="col-3-4">
+      <%= yield %>
+    </div>
+    <div class="col-1-4">
+    <% unless params[:controller].starts_with?('admin/') %>
+      <%= render 'layouts/sidebar' %>
+    <% end %>
+    </div>
+  </div>
+</div>
+<footer class="site">
   <%= render 'layouts/footer' %>
+</footer>
+  
+<%= render 'layouts/scripts' %>
+<%= render 'layouts/google_analytics' %>
+<%= debug(params) if Rails.env.development? %>
 </body>
 </html>
